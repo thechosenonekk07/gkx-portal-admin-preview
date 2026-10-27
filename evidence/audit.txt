@@ -1,0 +1,76 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 298-359
+~			297 text 审核管理
+~			40 text 评论审核
++		298 container
++			299 tab group 审核内容类型
++				300 tab (selected, settable, boolean) 评论审核, Value: 1
++				301 tab (selectable, settable, boolean) 认证学者审核, Value: 0
++				302 tab (selectable, settable, boolean) 报告审核, Value: 0
++			303 table
++				304 row
++					305 cell
++						306 container
++							307 checkbox (settable, integer) Description: 选择当前页全部数据, Value: 0
++					308 cell
++						309 text 用户名
++					310 cell
++						311 text 评论内容
++					312 cell
++						313 text 审核渠道
++					314 cell
++						315 text 提交时间
++					316 cell
++						317 text 状态
++					318 cell
++						319 text 操作
++				320 row
++					321 cell
++						322 container
++							323 checkbox (settable, integer) Description: 选择第 1 条数据, Value: 0
++					324 cell
++						325 text 李安
++					326 cell
++						327 container 这篇论文对人工智能发展趋势的分析很有参考价值。
++							328 text 这篇论文对人工智能发展趋势的分析…
++					329 cell
++						330 text 门户论文
++					331 cell
++						332 text 2026-07-13 10:24
++					333 cell
++						334 text 待审核
++					335 cell
++						336 button 审核通过
++						337 button 审核驳回
++				338 row
++					339 cell
++						340 container
++							341 checkbox (settable, integer) Description: 选择第 2 条数据, Value: 0
++					342 cell
++						343 text 王宁
++					344 cell
++						345 container 希望社区后续可以增加更多智能制造案例。
++							346 text 希望社区后续可以增加更多智能制造…
++					347 cell
++						348 text 社区评论
++					349 cell
++						350 text 2026-07-13 09:48
++					351 cell
++						352 text 待审核
++					353 cell
++						354 button 审核通过
++						355 button 审核驳回
++			356 container 分页
++				357 text 共 2 条
++				358 button (disabled) 上一页
++					359 image
++				360 button 1
++				361 button (disabled) 下一页
++					362 image
++				363 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
++					364 menu
++						365 (selected) 10 条/页
++						366 20 条/页
++						367 50 条/页
+The focused UI element is 14 button 评论审核

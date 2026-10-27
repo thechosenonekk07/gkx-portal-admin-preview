@@ -1,0 +1,5 @@
+/* Resource identifiers are display data, using the same typography as names. */
+.scholar-picker-modal .resource-picker-id {
+  color: inherit;
+  font: inherit;
+}

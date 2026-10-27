@@ -1,0 +1,156 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 系统管理
+			40 text 公告管理
+		298 container
+			299 container 当前首页公告
+				300 text 当前首页公告
+				301 text 门户首页导航下方仅展示一条已发布公告 · 当前在线原型数据保存在本浏览器 已发布
+				302 container 首页公告展示预览
+					303 text 公告 门户服务持续优化中，欢迎体验智能科研、智能阅读与综合科技服务。
+				304 text 发布时间  2026-08-16 09:00 不自动下线
+			305 button 新建公告
+			306 container
+				307 text 发布状态
+				308 pop up button (collapsed) Description: 发布状态, Secondary Actions: Expand
+			309 text field (settable) 搜索公告内容
+			310 button 查询
+			311 button 重置
+			312 table
+				313 row
+					314 cell
+						315 text 公告内容
+					316 cell
+						317 text 跳转方式
+					318 cell
+						319 text 发布时间
+					320 cell
+						321 text 下线时间
+					322 cell
+						323 text 状态
+					324 cell
+						325 text 操作
+				326 row
+					327 cell
+						328 container 门户服务持续优化中，欢迎体验智能科研、智能阅读与综合科技服务。
+							329 text 门户服务持续优化中，欢迎体验智能…
+					330 cell
+						331 text 无跳转
+					332 cell
+						333 text 2026-08-16 09:00
+					334 cell
+						335 text —
+					336 cell
+						337 text 已发布
+					338 cell
+						339 button 预览
+						340 button 编辑
+						341 button 下线
+				342 row
+					343 cell
+						344 container 新用户使用指南已更新，欢迎查看门户常用功能说明。
+							345 text 新用户使用指南已更新，欢迎查看门…
+					346 cell
+						347 text 站内链接
+					348 cell
+						349 text —
+					350 cell
+						351 text —
+					352 cell
+						353 text 草稿
+					354 cell
+						355 button 预览
+						356 button 编辑
+						357 button 发布
+						358 button 删除
+				359 row
+					360 cell
+						361 container 科研数据服务将于8月20日22:00进行例行维护，预计30分钟。
+							362 text 科研数据服务将于8月20日22:…
+					363 cell
+						364 text 站内链接
+					365 cell
+						366 text 2026-08-20 18:00
+					367 cell
+						368 text 2026-08-21 08:00
+					369 cell
+						370 text 已下线
+					371 cell
+						372 button 预览
+						373 button 编辑
+						374 button 发布
+						375 button 删除
+				376 row
+					377 cell
+						378 container 门户首页功能升级已完成，感谢您的关注与支持。
+							379 text 门户首页功能升级已完成，感谢您的…
+					380 cell
+						381 text 无跳转
+					382 cell
+						383 text 2026-07-28 10:00
+					384 cell
+						385 text 2026-08-16 09:00
+					386 cell
+						387 text 已下线
+					388 cell
+						389 button 预览
+						390 button 编辑
+						391 button 发布
+						392 button 删除
+			393 container 分页
+				394 text 共 4 条
+				395 button (disabled) 上一页
+					396 image
+				397 button 1
+				398 button (disabled) 下一页
+					399 image
+				400 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					401 menu
+						402 (selected) 10 条/页
+						403 20 条/页
+						404 50 条/页
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 9 button 公告管理

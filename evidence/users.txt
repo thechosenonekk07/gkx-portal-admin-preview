@@ -1,0 +1,239 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 权限管理
+			40 text 用户管理
+		298 container
+			299 heading 组织管理（组织列表查看）, Value: 2
+				300 text 组织管理（组织列表查看）
+			301 text field (settable) 组织检索
+			302 outline
+				303 container
+					304 button 收起国科信
+						305 image
+					306 text 国科信
+					307 button (collapsed) Description: 国科信组织操作, Secondary Actions: Expand
+						308 image
+				309 container
+					310 button 收起研究中心
+						311 image
+					312 text 研究中心
+					313 button (collapsed) Description: 研究中心组织操作, Secondary Actions: Expand
+						314 image
+				315 container
+					316 button 展开人工智能研究部
+					317 text 人工智能研究部
+					318 button (collapsed) Description: 人工智能研究部组织操作, Secondary Actions: Expand
+						319 image
+				320 container
+					321 button 展开智能制造研究部
+					322 text 智能制造研究部
+					323 button (collapsed) Description: 智能制造研究部组织操作, Secondary Actions: Expand
+						324 image
+				325 container
+					326 button 展开战略咨询组
+					327 text 战略咨询组
+					328 button (collapsed) Description: 战略咨询组组织操作, Secondary Actions: Expand
+						329 image
+				330 container
+					331 button 收起运营中心
+						332 image
+					333 text 运营中心
+					334 button (collapsed) Description: 运营中心组织操作, Secondary Actions: Expand
+						335 image
+				336 container
+					337 button 展开数据运营部
+					338 text 数据运营部
+					339 button (collapsed) Description: 数据运营部组织操作, Secondary Actions: Expand
+						340 image
+				341 container
+					342 button 展开门户运营部
+					343 text 门户运营部
+					344 button (collapsed) Description: 门户运营部组织操作, Secondary Actions: Expand
+						345 image
+			346 button 组织数据管理
+			347 heading 用户管理, Value: 2
+				348 text 用户管理
+			349 text 用户列表展示
+			350 container
+				351 button 用户注册
+				352 button 用户数据对接
+				353 text 账号状态
+				354 pop up button (collapsed) Description: 账号状态, Secondary Actions: Expand
+				355 text field (settable) 搜索用户姓名
+				356 button 查询
+				357 button 重置
+			358 table
+				359 row
+					360 cell
+						361 text 用户ID
+					362 cell
+						363 text 姓名
+					364 cell
+						365 text 归属组织名称
+					366 cell
+						367 text 手机号
+					368 cell
+						369 text 邮箱
+					370 cell
+						371 text 创建时间
+					372 cell
+						373 text 账号状态
+					374 cell
+						375 text 操作
+				376 row
+					377 cell
+						378 text U20260001
+					379 cell
+						380 text 张明远
+					381 cell
+						382 text 研究中心
+					383 cell
+						384 text 13800000001
+					385 cell
+						386 text zhangmingyuan@gkx.cn
+					387 cell
+						388 text 2026-07-01
+					389 cell
+						390 switch Description: 张明远账号当前启用，点击切换, Value: 1
+						391 text 启用
+					392 cell
+						393 button 查看详情
+						394 button 分配角色
+						395 button 注销用户
+				396 row
+					397 cell
+						398 text U20260002
+					399 cell
+						400 text 陈思敏
+					401 cell
+						402 text 战略咨询组
+					403 cell
+						404 text 13800000002
+					405 cell
+						406 text chensimin@gkx.cn
+					407 cell
+						408 text 2026-07-03
+					409 cell
+						410 switch Description: 陈思敏账号当前禁用，点击切换, Value: 0
+						411 text 禁用
+					412 cell
+						413 button 查看详情
+						414 button 分配角色
+						415 button 注销用户
+				416 row
+					417 cell
+						418 text U20260003
+					419 cell
+						420 text 王若琳
+					421 cell
+						422 text 人工智能研究部
+					423 cell
+						424 text 13800000003
+					425 cell
+						426 text wangruolin@gkx.cn
+					427 cell
+						428 text 2026-07-05
+					429 cell
+						430 switch Description: 王若琳账号当前启用，点击切换, Value: 1
+						431 text 启用
+					432 cell
+						433 button 查看详情
+						434 button 分配角色
+						435 button 注销用户
+				436 row
+					437 cell
+						438 text U20260004
+					439 cell
+						440 text 李致远
+					441 cell
+						442 text 智能制造研究部
+					443 cell
+						444 text 13800000004
+					445 cell
+						446 text lizhiyuan@gkx.cn
+					447 cell
+						448 text 2026-07-07
+					449 cell
+						450 switch Description: 李致远账号当前启用，点击切换, Value: 1
+						451 text 启用
+					452 cell
+						453 button 查看详情
+						454 button 分配角色
+						455 button 注销用户
+				456 row
+					457 cell
+						458 text U20260005
+					459 cell
+						460 text 周岚
+					461 cell
+						462 text 数据运营部
+					463 cell
+						464 text 13800000005
+					465 cell
+						466 text zhoulan@gkx.cn
+					467 cell
+						468 text 2026-07-09
+					469 cell
+						470 switch Description: 周岚账号当前禁用，点击切换, Value: 0
+						471 text 禁用
+					472 cell
+						473 button 查看详情
+						474 button 分配角色
+						475 button 注销用户
+			476 container 分页
+				477 text 共 5 条
+				478 button (disabled) 上一页
+					479 image
+				480 button 1
+				481 button (disabled) 下一页
+					482 image
+				483 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					484 menu
+						485 (selected) 10 条/页
+						486 20 条/页
+						487 50 条/页
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 19 button 用户管理

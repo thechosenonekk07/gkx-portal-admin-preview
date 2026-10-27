@@ -1,0 +1,15 @@
+.DS_Store
+.local-preview/
+node_modules/
+*.log
+.dist-build-*/
+__pycache__/
+*.pyc
+/dist/
+/pages-dist/
+/.pages-build-*/
+.env
+.env.*
+!.env.example
+*.pem
+*.key

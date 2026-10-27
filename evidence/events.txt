@@ -1,0 +1,157 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 系统管理
+			298 button 埋点管理
+			40 text 埋点信息管理
+		299 container
+			300 button 新增埋点事件
+			301 button 批量上传
+			302 container
+				303 text 模块
+				304 pop up button (collapsed) Description: 模块, Secondary Actions: Expand
+			305 text field (settable) 搜索事件ID
+			306 button 查询
+			307 button 重置
+			308 table
+				309 row
+					310 cell
+						311 text 事件ID
+					312 cell
+						313 text 所属功能模块
+					314 cell
+						315 text 埋点标签
+					316 cell
+						317 text 埋点路径
+					318 cell
+						319 text 触发机制
+					320 cell
+						321 text 创建时间
+					322 cell
+						323 text 操作
+				324 row
+					325 cell
+						326 text EVT_REPORT_VIEW
+					327 cell
+						328 text 报告管理
+					329 cell
+						330 text 报告查看
+					331 cell
+						332 text /report/detail
+					333 cell
+						334 text 点击
+					335 cell
+						336 text 2026-07-08 10:20
+					337 cell
+						338 button 查看详情
+						339 button 修改
+						340 button 删除
+				341 row
+					342 cell
+						343 text EVT_USER_REGISTER
+					344 cell
+						345 text 用户管理
+					346 cell
+						347 text 用户注册
+					348 cell
+						349 text /user/register
+					350 cell
+						351 text 提交
+					352 cell
+						353 text 2026-07-06 14:35
+					354 cell
+						355 button 查看详情
+						356 button 修改
+						357 button 删除
+				358 row
+					359 cell
+						360 text EVT_ROLE_CONFIG
+					361 cell
+						362 text 权限配置
+					363 cell
+						364 text 权限配置
+					365 cell
+						366 container /permission/config
+							367 text /permission/conf…
+					368 cell
+						369 text 保存
+					370 cell
+						371 text 2026-07-03 09:18
+					372 cell
+						373 button 查看详情
+						374 button 修改
+						375 button 删除
+				376 row
+					377 cell
+						378 text EVT_FORM_PRINT
+					379 cell
+						380 text 审核管理
+					381 cell
+						382 text 表单打印
+					383 cell
+						384 container /audit/form/print
+							385 text /audit/form/prin…
+					386 cell
+						387 text 点击
+					388 cell
+						389 text 2026-07-02 16:42
+					390 cell
+						391 button 查看详情
+						392 button 修改
+						393 button 删除
+			394 container 分页
+				395 text 共 4 条
+				396 button (disabled) 上一页
+					397 image
+				398 button 1
+				399 button (disabled) 下一页
+					400 image
+				401 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					402 menu
+						403 (selected) 10 条/页
+						404 20 条/页
+						405 50 条/页
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 17 button 埋点信息管理

@@ -1,0 +1,34 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 348-375
+~			40 text 表单中心
+~			300 button 新建表单
+~						307 text 表单ID
+~						309 text 表单名称
+~						311 text 组件数量
+~						313 text 最近修改时间
+~						321 text FORM-202607-001
+~						323 text 报告审核表单
+~						325 text 3
+~						327 text 2026-07-10 14:30
+~						329 button 设计
+~						330 button 打印
+~						337 text FORM-202607-002
+~						339 text 认证学者审核表单
+~						341 text 3
+~						343 text 2026-07-09 10:15
+~						345 button 设计
+~						346 button 打印
++			348 container 分页
++				349 text 共 2 条
++				350 button (disabled) 上一页
++					351 image
++				352 button 1
++				353 button (disabled) 下一页
++					354 image
++				355 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
++					356 menu
++						357 (selected) 10 条/页
++						358 20 条/页
++						359 50 条/页
+The focused UI element is 13 button 表单中心

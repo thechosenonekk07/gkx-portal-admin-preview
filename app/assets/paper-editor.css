@@ -1,0 +1,151 @@
+/* Figma 751:27969: 640px shell, 24px insets, 8/16px form rhythm. */
+.paper-editor-modal {
+  width: min(640px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  border-radius: 8px;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--gkx-text-primary);
+}
+
+.paper-editor-modal .modal-header {
+  padding: 24px 24px 16px;
+  min-height: 64px;
+  align-items: flex-start;
+}
+
+.paper-editor-modal .modal-header h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+
+.paper-editor-modal .modal-header > button {
+  margin: -4px -8px -4px 0;
+  background-image: url("./paper-editor/close.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.paper-editor-modal .modal-header > button > svg { visibility: hidden; }
+.paper-editor-modal .modal-form-body { padding: 0 24px 24px; overscroll-behavior: contain; }
+.paper-editor-fields { display: flex; flex-direction: column; gap: 16px; }
+
+.paper-editor-modal .tk-group {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paper-editor-modal .tk-group-title {
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.paper-editor-modal .tk-group-title::before { flex: 0 0 3px; border-radius: 0; }
+.paper-section-divider { height: 1px; background: url("./paper-editor/divider.svg") left center repeat-x; }
+
+.paper-editor-modal .tk-row { display: flex; flex-direction: column; gap: 8px; margin: 0; min-width: 0; }
+.paper-editor-modal .tk-row-label { font-size: 14px; font-weight: 400; line-height: 22px; }
+.paper-editor-modal .tk-row-label em { font-size: 12px; line-height: 20px; }
+.paper-editor-modal .tk-row-inputs { width: 100%; gap: 16px; flex-wrap: nowrap; align-items: flex-start; }
+.paper-editor-modal .tk-row-inputs > .tk-sub { min-width: 0; }
+.paper-editor-modal .tk-sub { min-width: 0; flex-direction: column; align-items: stretch; gap: 8px; }
+.paper-editor-modal .tk-sub > em { font-size: 12px; line-height: 20px; color: var(--gkx-text-secondary); }
+
+.paper-editor-modal .tk-sub input,
+.paper-editor-modal .tk-sub textarea {
+  height: 32px;
+  padding: 4px 12px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 22px;
+  outline: none;
+  border-color: var(--gkx-border);
+  transition: border-color 160ms ease;
+}
+
+.paper-editor-modal .tk-sub textarea { min-height: 88px; height: 88px; padding-block: 8px; }
+.paper-editor-modal .tk-sub input:enabled:hover,
+.paper-editor-modal .tk-sub textarea:enabled:hover { border-color: var(--gkx-text-tertiary); }
+.paper-editor-modal .tk-sub input:enabled:focus,
+.paper-editor-modal .tk-sub textarea:enabled:focus { border-color: var(--gkx-brand); }
+.paper-editor-modal input::placeholder,
+.paper-editor-modal textarea::placeholder { color: var(--gkx-text-tertiary); }
+
+.paper-field-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.paper-editor-modal .tk-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 12px;
+  margin: 0;
+  border: 0;
+  border-radius: 4px;
+  background: #f7f8fa;
+}
+
+.paper-editor-modal .tk-card-title { margin: 0; font-size: 12px; font-weight: 400; line-height: 20px; color: var(--gkx-text-secondary); }
+.paper-editor-modal .tk-card-remove {
+  width: 28px; height: 28px; min-height: 28px; padding: 6px; margin: -4px -6px -4px 0; font-size: 0;
+  background-image: url("./paper-editor/delete.svg"); background-position: center; background-repeat: no-repeat;
+}
+.paper-editor-modal .tk-pick-field {
+  min-width: 0; gap: 0; width: 100%; height: 32px;
+  border: 1px solid var(--gkx-border); border-radius: 4px; background: #fff;
+  transition: border-color 160ms ease;
+}
+.paper-editor-modal .tk-pick-field:hover { border-color: var(--gkx-text-tertiary); }
+.paper-editor-modal .tk-pick-field:focus-within,
+.paper-editor-modal .tk-pick-field:has([aria-expanded="true"]) { border-color: var(--gkx-brand); }
+.paper-editor-modal .tk-pick-field > .tk-sub { min-width: 0; height: 30px; }
+.paper-editor-modal .tk-pick-field input { height: 30px; padding-block: 3px; border: 0; border-radius: 4px 0 0 4px; }
+.paper-editor-modal .tk-icon-btn {
+  flex: 0 0 38px; width: 38px; height: 30px; padding: 0; font-size: 0;
+  border: 0; border-left: 1px solid var(--gkx-border); border-radius: 0 3px 3px 0;
+  background-image: url("./paper-editor/more.svg"); background-position: center; background-repeat: no-repeat;
+  transition: background-color 160ms ease;
+}
+.paper-editor-modal .tk-icon-btn:hover,
+.paper-editor-modal .tk-icon-btn[aria-expanded="true"] { background-color: var(--gkx-brand-light); }
+.paper-editor-modal .tk-add { height: 32px; border-radius: 4px; margin: 0; font-size: 14px; }
+.paper-editor-modal .paper-add-author { display: flex; align-items: center; justify-content: center; gap: 4px; border-color: var(--gkx-brand); }
+.paper-editor-modal .modal-footer .btn { min-width: 64px; font: inherit; font-size: 14px; }
+.paper-editor-modal button:focus-visible { outline: 2px solid var(--gkx-brand); outline-offset: 2px; }
+
+.paper-editor-modal .gkx-select-trigger > svg { display: none; }
+.paper-editor-modal .gkx-select-trigger::after {
+  content: "";
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  background: url("./paper-editor/chevron.svg") center no-repeat;
+  transition: transform 160ms ease;
+}
+.paper-editor-modal .gkx-select.is-open .gkx-select-trigger::after { transform: rotate(180deg); }
+
+@media (max-width: 600px) {
+  .paper-editor-modal { max-height: calc(100dvh - 32px); }
+  .paper-editor-modal .modal-header { padding: 20px 16px 16px; }
+  .paper-editor-modal .modal-form-body { padding: 0 16px 20px; }
+  .paper-editor-modal .modal-footer { padding: 16px; }
+  .paper-field-pair { grid-template-columns: minmax(0, 1fr); }
+  .paper-editor-modal .tk-row-inputs { flex-direction: column; gap: 12px; }
+  .paper-editor-modal .tk-row-inputs > .tk-sub { width: 100%; flex: auto; }
+  .paper-editor-modal .tk-row-label em { display: inline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-editor-modal { animation: none; }
+  .paper-editor-modal *, .paper-editor-modal *::after { transition: none; }
+}

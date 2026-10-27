@@ -1,0 +1,105 @@
+{
+  "origin": "https://musical-puppy-d5bee5.netlify.app",
+  "entry": "/",
+  "captured_at": "2026-10-27T02:31:42.441203+00:00",
+  "scope": "All same-origin public resources referenced recursively by the deployed HTML, scripts and CSS; bytes preserved.",
+  "files": [
+    {
+      "path": "/",
+      "local": "source/index.html",
+      "bytes": 1080,
+      "sha256": "28d34701156ac411807d9a34ab1508725d15e47236051b540d544f6fd8b11955",
+      "content_type": "text/html; charset=UTF-8",
+      "url": "https://musical-puppy-d5bee5.netlify.app/"
+    },
+    {
+      "path": "/.netlify/scripts/hud?variant=public",
+      "local": "source/.netlify/scripts/hud",
+      "bytes": 35855,
+      "sha256": "88fa6c7bd63b25cc72af6457ccbac715fab533e4b94136f72d6f25c71f02d7e7",
+      "content_type": "application/javascript; charset=utf-8",
+      "url": "https://musical-puppy-d5bee5.netlify.app/.netlify/scripts/hud?variant=public"
+    },
+    {
+      "path": "/assets/dashboard-active-users-3d.png",
+      "local": "source/assets/dashboard-active-users-3d.png",
+      "bytes": 43713,
+      "sha256": "8b82f6b969e51286414637c51c85ddaa975dfa15fe2b66cae92eda1cc92190c3",
+      "content_type": "image/png",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/dashboard-active-users-3d.png"
+    },
+    {
+      "path": "/assets/dashboard-click-rate-3d.png",
+      "local": "source/assets/dashboard-click-rate-3d.png",
+      "bytes": 52863,
+      "sha256": "17a32a5aaad797f355aabfab9807ccae5ed1856dd7956348ecaf54ed0c92fcec",
+      "content_type": "image/png",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/dashboard-click-rate-3d.png"
+    },
+    {
+      "path": "/assets/dashboard-event-total-3d.png",
+      "local": "source/assets/dashboard-event-total-3d.png",
+      "bytes": 56657,
+      "sha256": "87f2cb1b34be1c40b6f628345173b6418bbfbf70fc977f5aee5e3282f9cac482",
+      "content_type": "image/png",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/dashboard-event-total-3d.png"
+    },
+    {
+      "path": "/assets/dashboard-path-conversion-3d.png",
+      "local": "source/assets/dashboard-path-conversion-3d.png",
+      "bytes": 46062,
+      "sha256": "2c1d9715ade461a55e93d7f3a1c3e0ee05fe3d14e3cef2617aaac44344665e56",
+      "content_type": "image/png",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/dashboard-path-conversion-3d.png"
+    },
+    {
+      "path": "/assets/gkx-logo.png",
+      "local": "source/assets/gkx-logo.png",
+      "bytes": 2458,
+      "sha256": "57f418ed33da49ba7574971a5d5fd1f901e3479b01df078171f146329eb379d2",
+      "content_type": "image/png",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/gkx-logo.png"
+    },
+    {
+      "path": "/assets/index-B6663s1A.css",
+      "local": "source/assets/index-B6663s1A.css",
+      "bytes": 378131,
+      "sha256": "acf8e19cb64631ca93b19e692a8fdbcd799c21bf0f94bb2e8a5d4926b4a006c5",
+      "content_type": "text/css; charset=UTF-8",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/index-B6663s1A.css"
+    },
+    {
+      "path": "/assets/index-BAtbBJtO.js",
+      "local": "source/assets/index-BAtbBJtO.js",
+      "bytes": 516686,
+      "sha256": "9c513318ded916acc8cbc48eae151821f255a38a0dfabfccda5db1c8cc594da0",
+      "content_type": "application/javascript; charset=UTF-8",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/index-BAtbBJtO.js"
+    },
+    {
+      "path": "/assets/sidebar-collapsed.svg",
+      "local": "source/assets/sidebar-collapsed.svg",
+      "bytes": 893,
+      "sha256": "1a7861519811c470173fc2028c8397345ba10406074441ad103cb5381ffbd806",
+      "content_type": "image/svg+xml",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/sidebar-collapsed.svg"
+    },
+    {
+      "path": "/assets/sidebar-expanded.svg",
+      "local": "source/assets/sidebar-expanded.svg",
+      "bytes": 914,
+      "sha256": "1b0df73aa872e6103fbf96cf7c875a421c1bf55e5edd27706cfe0af8afafa283",
+      "content_type": "image/svg+xml",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/sidebar-expanded.svg"
+    },
+    {
+      "path": "/assets/user-avatar.png",
+      "local": "source/assets/user-avatar.png",
+      "bytes": 1656,
+      "sha256": "824b17de2c6b00f58ae24c246c31398639d07107517edda114797ca89db5b51d",
+      "content_type": "image/png",
+      "url": "https://musical-puppy-d5bee5.netlify.app/assets/user-avatar.png"
+    }
+  ],
+  "unavailable": []
+}

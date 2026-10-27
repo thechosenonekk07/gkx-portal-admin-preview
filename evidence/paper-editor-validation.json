@@ -1,0 +1,61 @@
+{
+  "reference": {
+    "fileKey": "hzL6avnHyttiEroV2hs8oi",
+    "page": "304:172",
+    "editor": "751:27969"
+  },
+  "metrics": {
+    "assets": {
+      "chevron": "url(\"http://127.0.0.1:8773/assets/paper-editor/chevron.svg\")",
+      "close": "url(\"http://127.0.0.1:8773/assets/paper-editor/close.svg\")",
+      "divider": "url(\"http://127.0.0.1:8773/assets/paper-editor/divider.svg\")"
+    },
+    "authorBackground": "rgb(247, 248, 250)",
+    "authors": 2,
+    "body": {
+      "height": 828,
+      "width": 640,
+      "x": 363,
+      "y": 88
+    },
+    "bodyOverflow": "auto",
+    "bodyScroll": 0,
+    "formGap": "16px",
+    "horizontalOverflow": false,
+    "labelGap": "8px",
+    "lockedId": {
+      "bg": "rgb(247, 248, 250)",
+      "disabled": true
+    },
+    "modal": {
+      "height": 956,
+      "width": 640,
+      "x": 363,
+      "y": 24
+    },
+    "sectionTitleAlignment": "flex-start",
+    "textInput": {
+      "fontSize": "14px",
+      "height": 32
+    },
+    "viewport": {
+      "height": 1004,
+      "width": 1366
+    }
+  },
+  "checks": {
+    "bilingualInput": true,
+    "languageSelection": true,
+    "chevronRotation": true,
+    "escapeClosesSelectOnly": true,
+    "authorPickerFocus": true,
+    "escapeClosesPickerOnly": true,
+    "pickerPaginationEscape": true,
+    "tabWrap": true,
+    "shiftTabWrap": true,
+    "addRemoveAuthor": true,
+    "resetRestoresInitialDraft": true,
+    "emptyTitleBlockedWithWarning": true,
+    "realSaveNotTested": true
+  }
+}

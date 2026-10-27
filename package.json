@@ -1,0 +1,20 @@
+{
+  "name": "musical-puppy-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "musical-puppy 原始站点快照、可编辑副本与固定本地预览",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:pages": "node scripts/build-pages.mjs",
+    "local:start": "node scripts/preview.mjs start",
+    "local:status": "node scripts/preview.mjs status",
+    "local:stop": "node scripts/preview.mjs stop",
+    "check": "node scripts/check.mjs",
+    "verify:origin": "node scripts/check.mjs --origin",
+    "verify:http": "node scripts/check.mjs --http"
+  }
+}

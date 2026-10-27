@@ -1,0 +1,124 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 权限管理
+			40 text 资源管理
+		298 container
+			299 tab group 资源管理类型
+				300 tab (selected, settable, boolean) 接口资源管理, Value: 1
+				301 tab (selectable, settable, boolean) 人才库资源, Value: 0
+				302 tab (selectable, settable, boolean) 报告资源, Value: 0
+				303 tab (selectable, settable, boolean) 智库资源, Value: 0
+			304 tab group 接口资源管理功能
+				305 tab (selectable, settable, boolean) 令牌管理, Value: 0
+				306 tab (selectable, settable, boolean) 接口调用文档展示, Value: 0
+				307 tab (selected, settable, boolean) 接口调用日志, Value: 1
+			308 container
+				309 text 时间范围
+				310 pop up button (collapsed) Description: 时间范围, Secondary Actions: Expand
+			311 container
+				312 text 调用结果
+				313 pop up button (collapsed) Description: 调用结果, Secondary Actions: Expand
+			314 text field (settable) 搜索接口名称
+			315 button 查询
+			316 button 重置
+			317 table
+				318 row
+					319 cell
+						320 text 调用时间
+					321 cell
+						322 text 调用方IP
+					323 cell
+						324 text 接口地址
+					325 cell
+						326 text 响应结果
+					327 cell
+						328 text 调用耗时
+					329 cell
+						330 text 操作
+				331 row
+					332 cell
+						333 container 2026-07-13 14:38:22
+							334 text 2026-07-13 14:38…
+					335 cell
+						336 text 10.0.0.18
+					337 cell
+						338 container /api/v1/talents/scholars
+							339 text /api/v1/talents/…
+					340 cell
+						341 text 成功
+					342 cell
+						343 text 86ms
+					344 cell
+						345 button 查看
+				346 row
+					347 cell
+						348 container 2026-07-13 14:21:08
+							349 text 2026-07-13 14:21…
+					350 cell
+						351 text 10.0.0.32
+					352 cell
+						353 container /api/v1/reports/TR001
+							354 text /api/v1/reports/…
+					355 cell
+						356 text 成功
+					357 cell
+						358 text 112ms
+					359 cell
+						360 button 查看
+			361 container 分页
+				362 text 共 2 条
+				363 button (disabled) 上一页
+					364 image
+				365 button 1
+				366 button (disabled) 下一页
+					367 image
+				368 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					369 menu
+						370 (selected) 10 条/页
+						371 20 条/页
+						372 50 条/页
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 307 tab (selected, settable, boolean) 接口调用日志, Value: 1

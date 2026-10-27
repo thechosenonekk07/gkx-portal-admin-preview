@@ -1,0 +1,52 @@
+{
+  "figma": {
+    "file": "hzL6avnHyttiEroV2hs8oi",
+    "node": "2384:11594"
+  },
+  "referenceSearchMetrics": {
+    "borderRadius": "4px",
+    "fontSize": "14px",
+    "height": 32,
+    "queryBackground": "rgb(22, 93, 255)",
+    "resetBackground": "rgb(255, 255, 255)"
+  },
+  "metrics": {
+    "demoLabel": "演示数据",
+    "modalOverflow": false,
+    "radioChecked": "选择林知远",
+    "rows": 10,
+    "search": {
+      "borderRadius": "4px",
+      "fontSize": "14px",
+      "height": 32,
+      "queryBackground": "rgb(22, 93, 255)",
+      "resetBackground": "rgb(255, 255, 255)"
+    },
+    "searchGap": "16px",
+    "viewport": {
+      "height": 720,
+      "width": 1280
+    }
+  },
+  "checks": {
+    "toolbarTopDelta": 0,
+    "figmaTrashIcon": true,
+    "joinedPickerWidth": 38,
+    "joinedPickerHeight": 32,
+    "searchQueryAndEnter": true,
+    "searchResetAndClear": true,
+    "emptyResultsMessage": true,
+    "pageTwo": true,
+    "crossPageSelectionRetained": true,
+    "keyboardRadio": true,
+    "confirmBackfill": true,
+    "reopenRestoresSelection": true,
+    "scholarOrgNameAndIdSynchronized": true,
+    "deleteAndAddAuthor": true,
+    "resetRestoresOriginalAuthors": true,
+    "nestedSelectEscape": true,
+    "pickerEscapeAndFocusRestore": true,
+    "tabTrap": true,
+    "realBackendConnected": false
+  }
+}

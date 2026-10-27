@@ -1,0 +1,46 @@
+/* Reuse the established GKX select styling and arrow rotation everywhere. */
+.gkx-select-trigger > svg {
+  pointer-events: none;
+}
+
+.gkx-select-menu {
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.gkx-select-menu button {
+  scroll-margin-block: 4px;
+  white-space: pre;
+}
+
+.gkx-select-menu button:disabled,
+.gkx-select-menu button:disabled:hover {
+  color: var(--gkx-text-disabled);
+  background: transparent;
+  cursor: not-allowed;
+}
+
+.pagination-size {
+  border: 0;
+  background: transparent;
+}
+
+.pagination-size > .gkx-select {
+  min-width: 104px;
+  height: 32px;
+}
+
+.pagination-size .gkx-select-trigger {
+  color: inherit;
+  font: inherit;
+}
+
+.pagination-size .gkx-select-trigger svg {
+  position: static;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gkx-select-trigger svg {
+    transition: none;
+  }
+}

@@ -1,0 +1,255 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 权限管理
+			40 text 页面管理
+		298 container
+			299 text 分级管理
+			300 button 新建页面
+			301 table
+				302 row
+					303 cell
+						304 text 菜单/页面标题
+					305 cell
+						306 text 路由地址(URL)
+					307 cell
+						308 text 父级页面
+					309 cell
+						310 text 启用状态
+					311 cell
+						312 text 操作
+				313 row
+					314 cell
+						315 button 收起系统管理
+							316 image
+						317 text 系统管理
+					318 cell
+						319 container /system-management
+							320 text /system-manageme…
+					321 cell
+						322 text -
+					323 cell
+						324 text 启用
+					325 cell
+						326 button 新建页面
+						327 button 修改页面
+						328 button 删除页面
+				329 row
+					330 cell
+						331 button 展开报告管理
+						332 text 报告管理
+					333 cell
+						334 container /report-management
+							335 text /report-manageme…
+					336 cell
+						337 text 系统管理
+					338 cell
+						339 text 启用
+					340 cell
+						341 button 新建页面
+						342 button 修改页面
+						343 button 删除页面
+				344 row
+					345 cell
+						346 button 收起审核管理
+							347 image
+						348 text 审核管理
+					349 cell
+						350 container /audit-management
+							351 text /audit-managemen…
+					352 cell
+						353 text 系统管理
+					354 cell
+						355 text 启用
+					356 cell
+						357 button 新建页面
+						358 button 修改页面
+						359 button 删除页面
+				360 row
+					361 cell
+						362 button 展开流程中心
+						363 text 流程中心
+					364 cell
+						365 text /workflow-center
+					366 cell
+						367 text 审核管理
+					368 cell
+						369 text 启用
+					370 cell
+						371 button (disabled) Description: 新建页面, Help: 最多支持三级页面
+						372 button 修改页面
+						373 button 删除页面
+				374 row
+					375 cell
+						376 button 展开表单中心
+						377 text 表单中心
+					378 cell
+						379 text /form-center
+					380 cell
+						381 text 审核管理
+					382 cell
+						383 text 启用
+					384 cell
+						385 button (disabled) Description: 新建页面, Help: 最多支持三级页面
+						386 button 修改页面
+						387 button 删除页面
+				388 row
+					389 cell
+						390 button 展开评论审核
+						391 text 评论审核
+					392 cell
+						393 text /audit-content
+					394 cell
+						395 text 审核管理
+					396 cell
+						397 text 启用
+					398 cell
+						399 button (disabled) Description: 新建页面, Help: 最多支持三级页面
+						400 button 修改页面
+						401 button 删除页面
+				402 row
+					403 cell
+						404 button 展开埋点管理
+						405 text 埋点管理
+					406 cell
+						407 text /event-tracking
+					408 cell
+						409 text 系统管理
+					410 cell
+						411 text 启用
+					412 cell
+						413 button 新建页面
+						414 button 修改页面
+						415 button 删除页面
+				416 row
+					417 cell
+						418 button 收起权限管理
+							419 image
+						420 text 权限管理
+					421 cell
+						422 container /permission-management
+							423 text /permission-mana…
+					424 cell
+						425 text -
+					426 cell
+						427 text 启用
+					428 cell
+						429 button 新建页面
+						430 button 修改页面
+						431 button 删除页面
+				432 row
+					433 cell
+						434 button 展开用户管理
+						435 text 用户管理
+					436 cell
+						437 text /user-management
+					438 cell
+						439 text 权限管理
+					440 cell
+						441 text 启用
+					442 cell
+						443 button 新建页面
+						444 button 修改页面
+						445 button 删除页面
+				446 row
+					447 cell
+						448 button 展开角色管理
+						449 text 角色管理
+					450 cell
+						451 text /role-management
+					452 cell
+						453 text 权限管理
+					454 cell
+						455 text 启用
+					456 cell
+						457 button 新建页面
+						458 button 修改页面
+						459 button 删除页面
+				460 row
+					461 cell
+						462 button 展开页面管理
+						463 text 页面管理
+					464 cell
+						465 text /page-management
+					466 cell
+						467 text 权限管理
+					468 cell
+						469 text 启用
+					470 cell
+						471 button 新建页面
+						472 button 修改页面
+						473 button 删除页面
+				474 row
+					475 cell
+						476 button 展开资源管理
+						477 text 资源管理
+					478 cell
+						479 container /resource-management
+							480 text /resource-manage…
+					481 cell
+						482 text 权限管理
+					483 cell
+						484 text 启用
+					485 cell
+						486 button 新建页面
+						487 button 修改页面
+						488 button 删除页面
+				489 row
+					490 cell
+						491 button 展开权限配置
+						492 text 权限配置
+					493 cell
+						494 container /permission-config
+							495 text /permission-conf…
+					496 cell
+						497 text 权限管理
+					498 cell
+						499 text 禁用
+					500 cell
+						501 button 新建页面
+						502 button 修改页面
+						503 button 删除页面
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 21 button 页面管理

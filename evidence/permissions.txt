@@ -1,0 +1,147 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 权限管理
+			40 text 权限配置
+		298 container
+			299 tab group 权限配置类型
+				300 tab (selected, settable, boolean) 用户, Value: 1
+				301 tab (selectable, settable, boolean) 角色, Value: 0
+			302 text field (settable) 搜索用户姓名
+			303 button 查询
+			304 button 重置
+			305 table
+				306 row
+					307 cell
+						308 text 用户ID
+					309 cell
+						310 text 用户姓名
+					311 cell
+						312 text 所属组织名称
+					313 cell
+						314 text 手机号
+					315 cell
+						316 text 当前角色
+					317 cell
+						318 text 操作
+				319 row
+					320 cell
+						321 text U20260001
+					322 cell
+						323 text 张明远
+					324 cell
+						325 text 研究中心
+					326 cell
+						327 text 13800000001
+					328 cell
+						329 text 普通用户
+					330 cell
+						331 button 分配角色
+				332 row
+					333 cell
+						334 text U20260002
+					335 cell
+						336 text 陈思敏
+					337 cell
+						338 text 战略咨询组
+					339 cell
+						340 text 13800000002
+					341 cell
+						342 text 机构用户、政府用户
+					343 cell
+						344 button 分配角色
+				345 row
+					346 cell
+						347 text U20260003
+					348 cell
+						349 text 王若琳
+					350 cell
+						351 text 人工智能研究部
+					352 cell
+						353 text 13800000003
+					354 cell
+						355 text 未分配
+					356 cell
+						357 button 分配角色
+				358 row
+					359 cell
+						360 text U20260004
+					361 cell
+						362 text 李致远
+					363 cell
+						364 text 智能制造研究部
+					365 cell
+						366 text 13800000004
+					367 cell
+						368 text 未分配
+					369 cell
+						370 button 分配角色
+				371 row
+					372 cell
+						373 text U20260005
+					374 cell
+						375 text 周岚
+					376 cell
+						377 text 数据运营部
+					378 cell
+						379 text 13800000005
+					380 cell
+						381 text 未分配
+					382 cell
+						383 button 分配角色
+			384 container 分页
+				385 text 共 5 条
+				386 button (disabled) 上一页
+					387 image
+				388 button 1
+				389 button (disabled) 下一页
+					390 image
+				391 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					392 menu
+						393 (selected) 10 条/页
+						394 20 条/页
+						395 50 条/页
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 23 button 权限配置

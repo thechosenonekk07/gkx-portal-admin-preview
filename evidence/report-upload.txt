@@ -1,0 +1,344 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			40 text 报告管理
+		297 container
+			298 button 报告上传
+			299 button 查看操作记录
+			300 text field (settable) 搜索报告标题
+			301 button 查询
+			302 button 重置
+			303 table
+				304 row
+					305 cell
+						306 text 报告标题
+					307 cell
+						308 text 报告来源
+					309 cell
+						310 text 报告类型
+					311 cell
+						312 text 所属栏目
+					313 cell
+						314 text 署名信息
+					315 cell
+						316 text 行业分类
+					317 cell
+						318 text 发布机构
+					319 cell
+						320 text 发布时间
+					321 cell
+						322 text 主题分类
+					323 cell
+						324 text 状态
+					325 cell
+						326 text 版本
+					327 cell
+						328 text 上传时间
+						329 container 上传时间排序
+							330 checkbox Description: 排序规则设置：上传时间升序, Value: 0
+							331 checkbox Description: 排序规则设置：上传时间降序, Value: 1
+					332 cell
+						333 text 操作
+				548 row
+					549 cell
+						550 text 先进储能技术发展研究
+					551 cell
+						552 text 平台创作
+					553 cell
+						554 text 研究报告
+					555 cell
+						556 text 研究报告
+					557 cell
+						558 text 作者：平台创作
+					559 cell
+						560 text 能源动力
+					561 cell
+						562 text 国科信研究中心
+					563 cell
+						564 text 2026-09-30
+					565 cell
+						566 text 新能源专题库
+					567 cell
+						568 text 待上架
+					569 cell
+						570 text V1.0 · 2026-09-30 09:50
+					571 cell
+						572 text 2026-09-30
+					573 cell
+						574 button 查看
+						575 button 上架
+				576 row
+					577 cell
+						578 text 未来产业报告：智能制造
+					579 cell
+						580 text 平台创作
+					581 cell
+						582 text 研究报告
+					583 cell
+						584 text 研究报告
+					585 cell
+						586 text 作者：平台创作
+					587 cell
+						588 text 机械运输
+					589 cell
+						590 text 国科信研究中心
+					591 cell
+						592 text 2026-09-28
+					593 cell
+						594 text 数字基建专题库
+					595 cell
+						596 text 草稿
+					597 cell
+						598 text 尚未提交
+					599 cell
+						600 text 2026-09-28
+					601 cell
+						602 button 查看
+						603 button 编辑
+						604 button 提交审核
+						605 button 删除
+				606 row
+					607 cell
+						608 text 新能源汽车消费趋势洞察
+					609 cell
+						610 text 用户创造
+					611 cell
+						612 text 洞察报告
+					613 cell
+						614 text 洞察报告
+					615 cell
+						616 text 作者：陈思敏
+					617 cell
+						618 text 机械运输
+					619 cell
+						620 text 个人创作者
+					621 cell
+						622 text 2026-09-27
+					623 cell
+						624 text 新能源专题库
+					625 cell
+						626 text 待审核
+					627 cell
+						628 text V1.2 · 2026-09-27 09:50
+					629 cell
+						630 text 2026-09-27
+					631 cell
+						632 button 查看
+						633 button 撤回
+				634 row
+					635 cell
+						636 text TR报告：人工智能
+					637 cell
+						638 text 平台创作
+					639 cell
+						640 text 战略咨询报告
+					641 cell
+						642 text 战略咨询报告
+					643 cell
+						644 text 作者：平台创作
+					645 cell
+						646 text 信息电子
+					647 cell
+						648 text 国科信研究中心
+					649 cell
+						650 text 2026-09-25
+					651 cell
+						652 text 人工智能专题库
+					653 cell
+						654 text 已驳回
+					655 cell
+						656 text V1.0 · 2026-09-25 09:50
+					657 cell
+						658 text 2026-09-25
+					659 cell
+						660 button 查看
+						661 button 查看原因
+						662 button 编辑
+						663 button (disabled) Description: 提交审核, Help: 请先编辑申请信息或重新上传成稿，再提交审核
+				450 row
+					451 cell
+						452 text 量子计算产业研究
+					453 cell
+						454 text 平台创作
+					455 cell
+						456 text 研究报告
+					457 cell
+						458 text 研究报告
+					459 cell
+						460 text 作者：平台创作
+					461 cell
+						462 text 信息电子
+					463 cell
+						464 text 国科信研究中心
+					465 cell
+						466 text 2026-09-20
+					467 cell
+						468 text 人工智能专题库
+					469 cell
+						470 text 已上架
+					471 cell
+						472 text 线上 V1.1 · 2026-09-20 09:50
+					473 cell
+						474 text 2026-09-20
+					475 cell
+						476 button 查看
+						477 button Description: 置顶, Help: 置顶后，该报告将在列表顶部优先展示
+						478 button 下架
+				664 row
+					665 cell
+						666 text 2026全球AI产业研报
+					667 cell
+						668 text 外部研报
+					669 cell
+						670 text 研究报告
+					671 cell
+						672 text 研报库
+					673 cell
+						674 text 发布机构：IDC
+					675 cell
+						676 text 信息电子
+					677 cell
+						678 text IDC
+					679 cell
+						680 text 2026-09-18
+					681 cell
+						682 text 人工智能专题库
+					683 cell
+						684 text 已下架
+					685 cell
+						686 text V1.1 · 2026-09-18 09:50
+					687 cell
+						688 text 2026-09-18
+					689 cell
+						690 button 查看
+						691 button 编辑
+						692 button 提交审核
+						693 button 删除
+				694 row
+					695 cell
+						696 text 全球机器人市场报告
+					697 cell
+						698 text 外部研报
+					699 cell
+						700 text 洞察报告
+					701 cell
+						702 text 研报库
+					703 cell
+						704 text 发布机构：IFR
+					705 cell
+						706 text 机械运输
+					707 cell
+						708 text IFR
+					709 cell
+						710 text 2026-09-16
+					711 cell
+						712 text 人工智能专题库
+					713 cell
+						714 text 发布失败
+					715 cell
+						716 text V1.0 · 2026-09-16 09:50
+					717 cell
+						718 text 2026-09-16
+					719 cell
+						720 button 查看
+			536 container 分页
+				537 text 共 7 条
+				538 button (disabled) 上一页
+					539 image
+				540 button 1
+				541 button (disabled) 下一页
+					542 image
+				543 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					544 menu
+						545 (selected) 10 条/页
+						546 20 条/页
+						547 50 条/页
+		721 container
+			722 heading 报告上传/信息修改, Value: 2
+				723 text 报告上传/信息修改
+			724 button 关闭对话框
+				725 image
+			726 container
+				727 text *
+				728 text PDF格式文件
+				729 button *PDF格式文件
+				730 button 点击上传
+				731 text 仅支持 PDF 格式文件
+				732 text *
+				733 text 报告标题
+				734 text field (settable) *报告标题
+				735 text *
+				736 text 报告类型
+				737 combo box (collapsed) *报告类型, Value: 请选择, Secondary Actions: Expand
+					738 text 请选择
+				739 text *
+				740 text 报告来源
+				741 combo box (collapsed) *报告来源, Value: 请选择, Secondary Actions: Expand
+					742 text 请选择
+				743 text *
+				744 text 行业分类
+				745 combo box (collapsed) *行业分类, Value: 请选择, Secondary Actions: Expand
+					746 text 请选择
+				747 text *
+				748 text 发布机构
+				749 text field (settable) *发布机构
+				750 text *
+				751 text 发布时间
+				752 combo box (collapsed) *发布时间, Value: 年 / 月 / 日, Secondary Actions: Expand
+					753 text 年 / 月 / 日
+				754 text *
+				755 text 主题分类
+				756 combo box (collapsed) *主题分类, Value: 请选择, Secondary Actions: Expand
+					757 text 请选择
+				758 text *
+				759 text 上传时间
+				760 combo box (collapsed) *上传时间, Value: 年 / 月 / 日, Secondary Actions: Expand
+					761 text 年 / 月 / 日
+				762 text 内容摘要
+				763 text entry area (settable) 内容摘要
+			764 button 取消
+			765 button (disabled) 保存
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 298 button 报告上传

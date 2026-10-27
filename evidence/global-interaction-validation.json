@@ -1,0 +1,81 @@
+{
+  "toolbarAlignmentResults": [
+    {
+      "directory": "TR报告",
+      "delta": 0,
+      "marginTop": "0px"
+    },
+    {
+      "directory": "战略咨询报告",
+      "delta": 0,
+      "marginTop": "0px"
+    },
+    {
+      "directory": "洞察分析报告",
+      "delta": 0,
+      "marginTop": "0px"
+    },
+    {
+      "directory": "未来产业报告",
+      "delta": 0,
+      "marginTop": "0px"
+    },
+    {
+      "directory": "趋势分析报告",
+      "delta": 0,
+      "marginTop": "0px"
+    },
+    {
+      "directory": "智库论文资源",
+      "delta": 0,
+      "marginTop": "0px"
+    },
+    {
+      "directory": "智库期刊资源",
+      "delta": 0,
+      "marginTop": "0px"
+    },
+    {
+      "directory": "智库专利资源",
+      "delta": 0,
+      "marginTop": "0px"
+    }
+  ],
+  "checks": {
+    "authorCheckboxes": true,
+    "authorRadioCount": 0,
+    "selectedAcrossPages": 3,
+    "selectedAcrossSearch": true,
+    "currentPageSelectAll": true,
+    "clearDisablesConfirm": true,
+    "batchAuthorCount": 4,
+    "authorOrder": [
+      "林知远",
+      "陈思敏",
+      "沈星禾",
+      "周望舒"
+    ],
+    "otherAuthorsPreserved": true,
+    "duplicateAuthorIdsPrevented": true,
+    "manualNamePreserved": true,
+    "cancelDidNotChangeAuthors": true,
+    "resetRestoredAuthorCount": 2,
+    "unwantedDemoNotesRemoved": true,
+    "institutionFullText": true,
+    "commonTableManualTruncationFullText": true,
+    "customVersionKeyboardFullText": true,
+    "shortClippedTextFullText": true,
+    "unclippedTextNoTooltip": true,
+    "oneTooltipOnly": true,
+    "tooltipHoverableAndSelectable": true,
+    "escapeClosesTooltipBeforeDialog": true,
+    "routeChangeClosesTooltip": true,
+    "tokenTabStopsAdded": 0,
+    "tokenFulltextMetadataAdded": 0,
+    "httpCurrentFiles": 34
+  },
+  "limitations": {
+    "mobileBrowserNotVerified": true,
+    "paperIdPersistenceNotChanged": true
+  }
+}

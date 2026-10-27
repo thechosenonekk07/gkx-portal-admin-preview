@@ -1,0 +1,6 @@
+/* A first-child toolbar already starts its content area: no extra top margin.
+   Toolbars following summaries or headings retain their existing spacing.
+   Keep bottom margins and stacked-layout padding unchanged. */
+.table-toolbar:first-child {
+  margin-top: 0;
+}

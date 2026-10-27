@@ -1,0 +1,178 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 系统管理
+			298 button 埋点管理
+			40 text 埋点数据统计
+		299 container
+			300 heading 埋点数据统计, Value: 2
+				301 text 埋点数据统计
+			302 text 日期范围
+			303 date field (settable) Description: 开始日期, Value: 2026-07-13
+				304 container
+					305 stepper
+					306 stepper
+					307 stepper
+				308 pop up button 显示日期选择器 显示日期选择器
+			309 image
+			310 text —
+			311 date field (settable) Description: 结束日期, Value: 2026-07-13
+				312 container
+					313 stepper
+					314 stepper
+					315 stepper
+				316 pop up button 显示日期选择器 显示日期选择器
+			317 image
+			318 container 日期范围快捷筛选
+				319 checkbox 年, Value: 0
+				320 checkbox 月, Value: 0
+				321 checkbox 日, Value: 1
+			322 text 事件总量
+			323 text 1,286
+			324 container +8.6% 较昨日
+				325 image
+				326 text +8.6%
+			327 text 活跃用户数
+			328 text 438
+			329 container DAU/MAU 18.6%
+				330 image
+				331 text 18.6%
+			332 text 按钮点击率
+			333 text 41.8%
+			334 container +1.6% 环比
+				335 image
+				336 text +1.6%
+			337 text 事件转化率
+			338 text 28.4%
+			339 container -0.8% 较昨日
+				340 image
+				341 text -0.8%
+			342 heading 事件增长趋势, Value: 3
+				343 text 事件增长趋势
+			344 text 事件增长趋势 活跃用户数
+			345 container 事件增长趋势
+			346 heading 事件转化率, Value: 3
+				347 text 事件转化率
+			348 container 事件转化率
+				349 container 页面访问：986，转化率 100%
+					350 text 页面访问
+					351 text 986
+					352 container
+						353 text 100 %
+				354 container 按钮点击：412，转化率 72%
+					355 text 按钮点击
+					356 text 412
+					357 container
+						358 text 72 %
+				359 container 业务提交：268，转化率 50%
+					360 text 业务提交
+					361 text 268
+					362 container
+						363 text 50 %
+				364 container 完成转化：186，转化率 28.4%
+					365 text 完成转化
+					366 text 186
+					367 container
+						368 text 28.4 %
+			369 heading 事件排行, Value: 3
+				370 text 事件排行
+			371 table
+				372 row
+					373 cell
+						374 text 排名
+					375 cell
+						376 text 事件ID
+					377 cell
+						378 text 埋点标签
+					379 cell
+						380 text 触发次数
+					381 cell
+						382 text 页面停留均时
+				383 row
+					384 cell
+						385 text 1
+					386 cell
+						387 text EVT_REPORT_VIEW
+					388 cell
+						389 text 报告查看
+					390 cell
+						391 text 362
+					392 cell
+						393 text 3分12秒
+				394 row
+					395 cell
+						396 text 2
+					397 cell
+						398 text EVT_USER_REGISTER
+					399 cell
+						400 text 用户注册
+					401 cell
+						402 text 216
+					403 cell
+						404 text 2分28秒
+				405 row
+					406 cell
+						407 text 3
+					408 cell
+						409 text EVT_ROLE_CONFIG
+					410 cell
+						411 text 权限配置
+					412 cell
+						413 text 148
+					414 cell
+						415 text 4分16秒
+				416 row
+					417 cell
+						418 text 4
+					419 cell
+						420 text EVT_FORM_PRINT
+					421 cell
+						422 text 表单打印
+					423 cell
+						424 text 96
+					425 cell
+						426 text 1分18秒
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 18 button 埋点数据统计

@@ -1,0 +1,163 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			297 text 权限管理
+			40 text 资源管理
+		298 container
+			299 tab group 资源管理类型
+				300 tab (selected, settable, boolean) 接口资源管理, Value: 1
+				301 tab (selectable, settable, boolean) 人才库资源, Value: 0
+				302 tab (selectable, settable, boolean) 报告资源, Value: 0
+				303 tab (selectable, settable, boolean) 智库资源, Value: 0
+			304 tab group 接口资源管理功能
+				305 tab (selected, settable, boolean) 令牌管理, Value: 1
+				306 tab (selectable, settable, boolean) 接口调用文档展示, Value: 0
+				307 tab (selectable, settable, boolean) 接口调用日志, Value: 0
+			308 button 创建令牌
+			309 table
+				310 row
+					311 cell
+						312 text 令牌名称
+					313 cell
+						314 text Token字符串
+					315 cell
+						316 text RefreshToken
+					317 cell
+						318 text 创建时间
+					319 cell
+						320 text 过期时间
+					321 cell
+						322 text 状态
+					323 cell
+						324 text 操作
+				325 row
+					326 cell
+						327 text 门户访问令牌
+					328 cell
+						329 text ey...****...2026
+						330 button 显示Token
+							331 image
+						332 button 复制Token
+							333 image
+					334 cell
+						335 text rt...****....gkx
+						336 button 显示RefreshToken
+							337 image
+						338 button 复制RefreshToken
+							339 image
+					340 cell
+						341 text 2026-07-01 09:30
+					342 cell
+						343 text 2027-07-01 09:30
+					344 cell
+						345 text 在线
+					346 cell
+						347 button 编辑
+						348 button 注销
+						349 button 删除
+				350 row
+					351 cell
+						352 text 报告同步令牌
+					353 cell
+						354 text ey...****...2026
+						355 button 显示Token
+							356 image
+						357 button 复制Token
+							358 image
+					359 cell
+						360 text rt...****....gkx
+						361 button 显示RefreshToken
+							362 image
+						363 button 复制RefreshToken
+							364 image
+					365 cell
+						366 text 2026-06-18 14:20
+					367 cell
+						368 text 2026-09-18 14:20
+					369 cell
+						370 text 已过期
+					371 cell
+						372 button 编辑
+						373 button 注销
+						374 button 删除
+				375 row
+					376 cell
+						377 text 人才库同步令牌
+					378 cell
+						379 text ey...****...2026
+						380 button 显示Token
+							381 image
+						382 button 复制Token
+							383 image
+					384 cell
+						385 text rt...****....gkx
+						386 button 显示RefreshToken
+							387 image
+						388 button 复制RefreshToken
+							389 image
+					390 cell
+						391 text 2026-05-09 11:08
+					392 cell
+						393 text 2026-11-09 11:08
+					394 cell
+						395 text 已注销
+					396 cell
+						397 button 编辑
+						398 button (disabled) 注销
+						399 button 删除
+			400 container 分页
+				401 text 共 3 条
+				402 button (disabled) 上一页
+					403 image
+				404 button 1
+				405 button (disabled) 下一页
+					406 image
+				407 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					408 menu
+						409 (selected) 10 条/页
+						410 20 条/页
+						411 50 条/页
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 22 button 资源管理

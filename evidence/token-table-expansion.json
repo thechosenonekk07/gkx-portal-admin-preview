@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-27",
+  "interaction": "Full token text expands the column; scroll the entire table, never the token cell.",
+  "compact": {
+    "cells": [
+      {
+        "columnWidth": 220,
+        "contentWidth": 189.2265625,
+        "contentWithinColumn": true,
+        "noInnerScroll": true,
+        "shown": false,
+        "textFullyLaidOut": true
+      },
+      {
+        "columnWidth": 240,
+        "contentWidth": 189.2265625,
+        "contentWithinColumn": true,
+        "noInnerScroll": true,
+        "shown": false,
+        "textFullyLaidOut": true
+      }
+    ],
+    "tableCanScroll": true,
+    "tableWidth": 1194,
+    "viewportWidth": 1084
+  },
+  "tokenExpanded": {
+    "cells": [
+      {
+        "columnWidth": 378,
+        "contentWidth": 345.765625,
+        "contentWithinColumn": true,
+        "noInnerScroll": true,
+        "shown": true,
+        "textFullyLaidOut": true
+      },
+      {
+        "columnWidth": 240,
+        "contentWidth": 189.2265625,
+        "contentWithinColumn": true,
+        "noInnerScroll": true,
+        "shown": false,
+        "textFullyLaidOut": true
+      }
+    ],
+    "tableCanScroll": true,
+    "tableWidth": 1352,
+    "viewportWidth": 1084
+  },
+  "bothExpanded": {
+    "cells": [
+      {
+        "columnWidth": 378,
+        "contentWidth": 345.765625,
+        "contentWithinColumn": true,
+        "noInnerScroll": true,
+        "shown": true,
+        "textFullyLaidOut": true
+      },
+      {
+        "columnWidth": 300,
+        "contentWidth": 267.5,
+        "contentWithinColumn": true,
+        "noInnerScroll": true,
+        "shown": true,
+        "textFullyLaidOut": true
+      }
+    ],
+    "tableCanScroll": true,
+    "tableWidth": 1412,
+    "viewportWidth": 1084
+  },
+  "scroll": {
+    "actionsVisible": true,
+    "cellScrollLeft": 0,
+    "statusVisible": true,
+    "tableMax": 328,
+    "tableScrollLeft": 328
+  },
+  "copy": {
+    "token": true,
+    "refresh": true
+  },
+  "multipleRowsKeepMaxWidth": true,
+  "collapseRestoresWidth": true
+}

@@ -1,0 +1,42 @@
+/* Expanded tokens grow their table columns; horizontal scrolling stays on the table. */
+.table-wrap .token-value-cell {
+  width: max-content;
+  min-width: max-content;
+  max-width: none;
+}
+
+.table-wrap .token-value-cell > .masked-token {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  word-break: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.table-wrap td:has(.token-value-cell) {
+  text-overflow: clip;
+}
+
+.token-actions {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+/* Adjacent 20px buttons around 12px icons leave an 8px visible icon gap. */
+.table-wrap .token-actions {
+  gap: 0;
+}
+
+.table-wrap .token-actions > button {
+  width: 20px;
+  height: 24px;
+  flex: 0 0 20px;
+  padding: 0;
+}
+
+.table-wrap .token-actions > button svg {
+  width: 12px;
+  height: 12px;
+}

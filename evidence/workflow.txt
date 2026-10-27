@@ -1,0 +1,83 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 298-404
++			298 button 审核管理
+~			40 text 流程中心
++		299 container
++			300 button 新建流程
++			301 table
++				302 row
++					303 cell
++						304 container
++							305 checkbox (settable, integer) Description: 选择当前页全部数据, Value: 0
++					306 cell
++						307 text 流程ID
++					308 cell
++						309 text 流程名称
++					310 cell
++						311 text 发布时间
++					312 cell
++						313 text 发布状态
++					314 cell
++						315 text 操作
++				316 row
++					317 cell
++						318 container
++							319 checkbox (settable, integer) Description: 选择第 1 条数据, Value: 0
++					320 cell
++						321 text FLOW-202607-001
++					322 cell
++						323 text 报告审核流程
++					324 cell
++						325 text 2026-07-08
++					326 cell
++						327 text 已发布
++					328 cell
++						329 button 编辑
++						330 button 下架
++						331 button 删除
++				332 row
++					333 cell
++						334 container
++							335 checkbox (settable, integer) Description: 选择第 2 条数据, Value: 0
++					336 cell
++						337 text FLOW-202607-002
++					338 cell
++						339 text 认证学者审核流程
++					340 cell
++						341 text 2026-07-05
++					342 cell
++						343 text 未发布
++					344 cell
++						345 button 编辑
++						346 button 发布
++						347 button 删除
++				348 row
++					349 cell
++						350 container
++							351 checkbox (settable, integer) Description: 选择第 3 条数据, Value: 0
++					352 cell
++						353 text FLOW-202607-003
++					354 cell
++						355 text 评论审核流程
++					356 cell
++						357 text 2026-07-01
++					358 cell
++						359 text 已发布
++					360 cell
++						361 button 编辑
++						362 button 下架
++						363 button 删除
++			364 container 分页
++				365 text 共 3 条
++				366 button (disabled) 上一页
++					367 image
++				368 button 1
++				369 button (disabled) 下一页
++					370 image
++				371 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
++					372 menu
++						373 (selected) 10 条/页
++						374 20 条/页
++						375 50 条/页
+The focused UI element is 12 button 流程中心

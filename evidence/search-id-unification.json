@@ -1,0 +1,606 @@
+{
+  "date": "2026-10-27",
+  "sharedSearchGroups": 14,
+  "oldSearchMarkupRemaining": 0,
+  "before": {
+    "fontSize": "13px",
+    "gap": "16px",
+    "inputHeight": "32px",
+    "inputWidth": "260px",
+    "queryBackground": "rgb(255, 255, 255)"
+  },
+  "reference": {
+    "gap": "16px",
+    "input": {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(229, 230, 235)",
+      "fontSize": "14px",
+      "height": "32px",
+      "placeholder": "rgb(134, 144, 156)",
+      "radius": "4px",
+      "width": "280px"
+    },
+    "query": {
+      "background": "rgb(22, 93, 255)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "14px",
+      "height": "32px",
+      "radius": "4px"
+    },
+    "reset": {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(78, 89, 105)",
+      "fontSize": "14px",
+      "height": "32px",
+      "radius": "4px"
+    }
+  },
+  "finalPicker": {
+    "gap": "16px",
+    "input": {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(229, 230, 235)",
+      "fontSize": "14px",
+      "height": "32px",
+      "placeholder": "rgb(134, 144, 156)",
+      "radius": "4px",
+      "width": "432px"
+    },
+    "query": {
+      "background": "rgb(22, 93, 255)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "14px",
+      "height": "32px",
+      "radius": "4px"
+    },
+    "reset": {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(78, 89, 105)",
+      "fontSize": "14px",
+      "height": "32px",
+      "radius": "4px"
+    }
+  },
+  "visualTokensMatch": true,
+  "layout": {
+    "inputToQuery": 16,
+    "inputUsesAvailableWidth": true,
+    "insideBar": true,
+    "queryToReset": 16
+  },
+  "report": {
+    "enter": {
+      "found": true,
+      "rows": 1
+    },
+    "reset": {
+      "empty": true,
+      "rows": 7
+    }
+  },
+  "picker": {
+    "enter": {
+      "found": true,
+      "rows": 1,
+      "selectedPreserved": true
+    },
+    "reset": {
+      "empty": true,
+      "firstStillChecked": true,
+      "selectedPreserved": true,
+      "visibleRows": 10
+    },
+    "queryClick": {
+      "found": true,
+      "pageOne": true,
+      "rows": 1
+    },
+    "clear": {
+      "empty": true,
+      "firstStillChecked": true,
+      "focusReturned": true,
+      "rows": 10
+    }
+  },
+  "lists": [
+    {
+      "page": "公告管理",
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "280px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "baselineRows": 4,
+      "noMatchRows": 0,
+      "afterReset": {
+        "inputsCleared": true,
+        "rows": 4
+      },
+      "passed": true
+    },
+    {
+      "page": "埋点信息管理",
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "249.328px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "baselineRows": 4,
+      "noMatchRows": 0,
+      "afterReset": {
+        "inputsCleared": true,
+        "rows": 4
+      },
+      "passed": true
+    },
+    {
+      "page": "用户管理",
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "249.328px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "baselineRows": 5,
+      "noMatchRows": 0,
+      "afterReset": {
+        "inputsCleared": true,
+        "rows": 5
+      },
+      "passed": true
+    },
+    {
+      "page": "角色管理",
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "249.328px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "baselineRows": 3,
+      "noMatchRows": 0,
+      "afterReset": {
+        "inputsCleared": true,
+        "rows": 3
+      },
+      "passed": true
+    },
+    {
+      "page": "权限配置",
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "280px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "baselineRows": 5,
+      "noMatchRows": 0,
+      "afterReset": {
+        "inputsCleared": true,
+        "rows": 5
+      },
+      "passed": true
+    }
+  ],
+  "otherSearches": {
+    "operation": {
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "280px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "emptyQuery": true
+    },
+    "api": {
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "280px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "emptyQuery": true
+    },
+    "reportAudit": {
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "280px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "emptyQuery": true
+    },
+    "auditHistory": {
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "280px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "emptyQuery": true
+    },
+    "journal": {
+      "visual": {
+        "gap": "16px",
+        "input": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "fontSize": "14px",
+          "height": "32px",
+          "placeholder": "rgb(134, 144, 156)",
+          "radius": "4px",
+          "width": "593.227px"
+        },
+        "query": {
+          "background": "rgb(22, 93, 255)",
+          "color": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        },
+        "reset": {
+          "background": "rgb(255, 255, 255)",
+          "border": "rgb(229, 230, 235)",
+          "color": "rgb(78, 89, 105)",
+          "fontSize": "14px",
+          "height": "32px",
+          "radius": "4px"
+        }
+      },
+      "empty": {
+        "noEditableResults": true,
+        "placeholderRow": true,
+        "zeroTotal": true
+      },
+      "reset": {
+        "empty": true,
+        "modePreserved": true
+      }
+    }
+  },
+  "idBefore": {
+    "id": {
+      "color": "rgb(22, 93, 255)",
+      "font": "monospace, monospace",
+      "size": "14px",
+      "weight": "400"
+    },
+    "name": {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400"
+    }
+  },
+  "idAfterPage1": [
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    }
+  ],
+  "idAfterPage2": [
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "font": "Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "isLink": false,
+      "sameColor": true,
+      "sameFont": true,
+      "sameSize": true,
+      "sameWeight": true,
+      "size": "14px",
+      "tag": "SPAN"
+    }
+  ],
+  "all12IdsMatch": true,
+  "httpFilesVerified": 19
+}

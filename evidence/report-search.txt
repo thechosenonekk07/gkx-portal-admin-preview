@@ -1,0 +1,126 @@
+Browser tab: 2, Title: "门户后台管理系统", URL: "http://127.0.0.1:8773/".
+1 AXWebArea 门户后台管理系统, URL: 127.0.0.1:8773/
+	2 container
+		3 container
+			4 image 国科信
+			5 text 门户后台管理系统
+			6 button 收起侧栏
+			7 container 后台管理导航
+				8 button 报告管理
+				9 button 公告管理
+				10 button (expanded) 审核管理, Secondary Actions: Collapse
+				11 container sidebar-children-审核管理
+					12 button 流程中心
+					13 button 表单中心
+					14 button 评论审核
+				15 button (expanded) 埋点管理, Secondary Actions: Collapse
+				16 container sidebar-children-埋点管理
+					17 button 埋点信息管理
+					18 button 埋点数据统计
+				19 button 用户管理
+				20 button 角色管理
+				21 button 页面管理
+				22 button 资源管理
+				23 button 权限配置
+		24 button 搜索菜单 ⌘ K
+			25 text 搜索菜单
+			26 text ⌘ K
+		27 button 帮助
+			28 image
+			29 text 帮助
+		30 button 应用
+			31 image
+			32 text 应用
+		33 button
+			34 image
+		35 button 系统管理员 系统管理员
+			36 image 系统管理员
+			37 text 系统管理员
+			38 image
+		39 container 面包屑
+			40 text 报告管理
+		297 container
+			298 button 报告上传
+			299 button 查看操作记录
+			300 text field (settable) Description: 搜索报告标题, Value: 量子
+			301 button 查询
+			302 button 重置
+			303 table
+				304 row
+					305 cell
+						306 text 报告标题
+					307 cell
+						308 text 报告来源
+					309 cell
+						310 text 报告类型
+					311 cell
+						312 text 所属栏目
+					313 cell
+						314 text 署名信息
+					315 cell
+						316 text 行业分类
+					317 cell
+						318 text 发布机构
+					319 cell
+						320 text 发布时间
+					321 cell
+						322 text 主题分类
+					323 cell
+						324 text 状态
+					325 cell
+						326 text 版本
+					327 cell
+						328 text 上传时间
+						329 container 上传时间排序
+							330 checkbox Description: 排序规则设置：上传时间升序, Value: 0
+							331 checkbox Description: 排序规则设置：上传时间降序, Value: 1
+					332 cell
+						333 text 操作
+				450 row
+					451 cell
+						452 text 量子计算产业研究
+					453 cell
+						454 text 平台创作
+					455 cell
+						456 text 研究报告
+					457 cell
+						458 text 研究报告
+					459 cell
+						460 text 作者：平台创作
+					461 cell
+						462 text 信息电子
+					463 cell
+						464 text 国科信研究中心
+					465 cell
+						466 text 2026-09-20
+					467 cell
+						468 text 人工智能专题库
+					469 cell
+						470 text 已上架
+					471 cell
+						472 text 线上 V1.1 · 2026-09-20 09:50
+					473 cell
+						474 text 2026-09-20
+					475 cell
+						476 button 查看
+						477 button Description: 置顶, Help: 置顶后，该报告将在列表顶部优先展示
+						478 button 下架
+			536 container 分页
+				537 text 共 1 条
+				538 button (disabled) 上一页
+					539 image
+				540 button 1
+				541 button (disabled) 下一页
+					542 image
+				543 pop up button (collapsed, settable) Description: 每页条数, Value: 10 条/页, Secondary Actions: Expand
+					544 menu
+						545 (selected) 10 条/页
+						546 20 条/页
+						547 50 条/页
+	292 container Description: Powered by Netlify, ID: nl-badge-frame
+		293 AXWebArea about:srcdoc
+			294 button (collapsed) Description: Powered by Netlify — build your own site, ID: nl-badge, Secondary Actions: Expand
+				295 text Powered by
+				296 text Netlify
+
+The focused UI element is 301 button 查询

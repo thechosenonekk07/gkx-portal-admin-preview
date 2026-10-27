@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-27",
+  "before": {
+    "columnGap": "16px",
+    "columns": "525.906px 230.086px",
+    "groups": [
+      {
+        "labelTop": 201,
+        "leftFromPanel": 16,
+        "leftInset": 0,
+        "width": 525.90625
+      },
+      {
+        "labelTop": 201,
+        "leftFromPanel": 557.90625,
+        "leftInset": 0,
+        "width": 230.0859375
+      }
+    ],
+    "panelWidth": 804
+  },
+  "after": {
+    "columnGap": "0px",
+    "columns": "402px 402px",
+    "groups": [
+      {
+        "labelTop": 201,
+        "leftFromPanel": 0,
+        "leftInset": 16,
+        "width": 402
+      },
+      {
+        "labelTop": 201,
+        "leftFromPanel": 402,
+        "leftInset": 16,
+        "width": 402
+      }
+    ],
+    "panelWidth": 804
+  },
+  "columnsEqual": true,
+  "leftInsetsEqual": true,
+  "wrap": {
+    "noHorizontalOverflow": true,
+    "overflowWrap": "anywhere",
+    "whiteSpace": "normal"
+  }
+}

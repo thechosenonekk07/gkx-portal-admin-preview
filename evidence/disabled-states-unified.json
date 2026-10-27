@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-27",
+  "visualReference": {
+    "background": "#f7f8fa",
+    "text": "#4e5969",
+    "border": "#e5e6eb"
+  },
+  "before": [
+    {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(29, 33, 41)",
+      "cursor": "default",
+      "disabled": true,
+      "opacity": "1",
+      "readOnly": false
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(29, 33, 41)",
+      "cursor": "default",
+      "disabled": true,
+      "opacity": "1",
+      "readOnly": false
+    }
+  ],
+  "after": [
+    {
+      "background": "rgb(247, 248, 250)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(78, 89, 105)",
+      "cursor": "not-allowed",
+      "disabled": true,
+      "focused": false,
+      "outline": "none",
+      "shadow": "none",
+      "textFill": ""
+    },
+    {
+      "background": "rgb(247, 248, 250)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(78, 89, 105)",
+      "cursor": "not-allowed",
+      "disabled": true,
+      "focused": false,
+      "outline": "none",
+      "shadow": "none",
+      "textFill": ""
+    }
+  ],
+  "afterClick": [
+    {
+      "background": "rgb(247, 248, 250)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(78, 89, 105)",
+      "cursor": "not-allowed",
+      "disabled": true,
+      "focused": false,
+      "outline": "none",
+      "shadow": "none",
+      "textFill": ""
+    },
+    {
+      "background": "rgb(247, 248, 250)",
+      "border": "rgb(229, 230, 235)",
+      "color": "rgb(78, 89, 105)",
+      "cursor": "not-allowed",
+      "disabled": true,
+      "focused": false,
+      "outline": "none",
+      "shadow": "none",
+      "textFill": ""
+    }
+  ],
+  "keyboard": {
+    "enabledInputBackground": "rgb(255, 255, 255)",
+    "focusName": "关闭对话框",
+    "lockedInputFocused": false
+  },
+  "idUnchanged": true,
+  "ariaDisabledBlocked": true,
+  "primaryButton": {
+    "background": "rgb(148, 191, 255)",
+    "color": "rgb(255, 255, 255)",
+    "cursor": "not-allowed",
+    "disabled": true,
+    "shadow": "none",
+    "stillEmptyForm": true,
+    "transform": "none"
+  },
+  "enabledAfterValid": true,
+  "disabledSelect": {
+    "background": "rgb(247, 248, 250)",
+    "color": "rgb(78, 89, 105)",
+    "cursor": "not-allowed",
+    "disabled": true,
+    "expanded": "false",
+    "focused": false,
+    "menus": 0
+  },
+  "readonly": {
+    "background": "rgb(247, 248, 250)",
+    "canSelectAll": true,
+    "color": "rgb(78, 89, 105)",
+    "cursor": "text",
+    "disabled": false,
+    "focused": true,
+    "outlineColor": "rgb(134, 144, 156)",
+    "outlineStyle": "solid",
+    "pointerEvents": "auto",
+    "readOnly": true,
+    "textUnchanged": true
+  },
+  "designer": {
+    "background": "rgb(247, 248, 250)",
+    "disabled": false,
+    "pointerEvents": "auto",
+    "readOnly": true,
+    "selectedField": "多行文本3"
+  },
+  "toolbar": {
+    "background": "rgb(247, 248, 250)",
+    "color": "rgb(201, 205, 212)",
+    "cursor": "not-allowed",
+    "disabled": true,
+    "label": "缩小画布",
+    "shadow": "none",
+    "transform": "none",
+    "zoom": "60%",
+    "restoredZoom": "100%"
+  },
+  "httpFilesVerified": 16
+}

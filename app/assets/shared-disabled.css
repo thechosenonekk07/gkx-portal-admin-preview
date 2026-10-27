@@ -1,0 +1,107 @@
+/* Locked-field visual reference: gray surface with readable text.
+   disabled controls keep native blocking; readonly fields keep selection/copy.
+   Do not target .is-disabled: resource trees use it as an editable business state. */
+:root {
+  --gkx-disabled-field-bg: #f7f8fa;
+  --gkx-disabled-field-text: var(--gkx-text-secondary, #4e5969);
+  --gkx-disabled-border: var(--gkx-border, #e5e6eb);
+  --gkx-disabled-action-text: var(--gkx-text-disabled, #c9cdd4);
+  --gkx-disabled-action-bg: var(--color-fill-1, #f7f8fa);
+  --gkx-disabled-primary-bg: var(--color-primary-light-3, #94bfff);
+}
+
+/* Keep disabled buttons neutral on hover, press and focus. */
+button:disabled,
+button:disabled:is(:hover, :active, :focus, :focus-visible),
+.btn.arco-btn:disabled,
+.btn.arco-btn:disabled:is(:hover, :active, :focus, :focus-visible) {
+  color: var(--gkx-disabled-action-text);
+  background-color: var(--gkx-disabled-action-bg);
+  border-color: var(--gkx-disabled-border);
+  cursor: not-allowed;
+  pointer-events: auto;
+  opacity: 1;
+  box-shadow: none;
+  outline: none;
+  transform: none;
+  text-decoration: none;
+}
+
+.btn.primary.arco-btn:disabled,
+.btn.primary.arco-btn:disabled:is(:hover, :active, :focus, :focus-visible) {
+  color: #fff;
+  background-color: var(--gkx-disabled-primary-bg);
+  border-color: var(--gkx-disabled-primary-bg);
+}
+
+/* Exclude non-text inputs; the state specificity also beats legacy hover rules. */
+:is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="color"]), textarea, select):disabled,
+:is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="color"]), textarea)[readonly],
+.gkx-select .gkx-select-trigger:disabled,
+.gkx-select .gkx-select-trigger:disabled:is(:hover, :active, :focus, :focus-visible) {
+  color: var(--gkx-disabled-field-text);
+  -webkit-text-fill-color: var(--gkx-disabled-field-text);
+  background-color: var(--gkx-disabled-field-bg);
+  border-color: var(--gkx-disabled-border);
+  opacity: 1;
+  box-shadow: none;
+  outline: none;
+  text-shadow: none;
+}
+
+:is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="color"]), textarea, select):disabled,
+.gkx-select .gkx-select-trigger:disabled {
+  cursor: not-allowed;
+}
+
+:is(input, textarea)[readonly]:not(:disabled) {
+  cursor: text;
+}
+
+/* Readonly is still keyboard-readable and copyable; show a neutral focus cue. */
+:is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):not([type="color"]), textarea)[readonly]:not(:disabled):focus-visible {
+  outline: 2px solid var(--gkx-text-tertiary, #86909c);
+  outline-offset: 1px;
+}
+
+:is(input, textarea):disabled::placeholder,
+:is(input, textarea)[readonly]::placeholder {
+  color: var(--gkx-text-tertiary, #86909c);
+  -webkit-text-fill-color: var(--gkx-text-tertiary, #86909c);
+  opacity: 1;
+}
+
+.gkx-select-trigger:disabled > span,
+.gkx-select-trigger:disabled > svg {
+  color: var(--gkx-disabled-field-text);
+  -webkit-text-fill-color: var(--gkx-disabled-field-text);
+}
+
+/* Preserve text-action explanations and transparent pagination/menu surfaces. */
+.inline-actions button[aria-disabled="true"],
+.inline-actions button[aria-disabled="true"]:is(:hover, :active, :focus, :focus-visible),
+.pagination button:disabled,
+.pagination button:disabled:is(:hover, :active, :focus, :focus-visible),
+.gkx-select-menu button:disabled,
+.gkx-select-menu button:disabled:is(:hover, :active, :focus, :focus-visible) {
+  color: var(--gkx-disabled-action-text);
+  background-color: transparent;
+  border-color: transparent;
+  cursor: not-allowed;
+  pointer-events: auto;
+  box-shadow: none;
+  outline: none;
+  transform: none;
+  text-decoration: none;
+}
+
+input:is([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"]):disabled,
+label:has(> input:is([type="checkbox"], [type="radio"]):disabled) {
+  cursor: not-allowed;
+}
+
+.arco-checkbox:has(input:disabled) .arco-checkbox-mask,
+.arco-checkbox:has(input:disabled):hover .arco-checkbox-mask {
+  background-color: var(--gkx-disabled-field-bg);
+  border-color: var(--gkx-disabled-border);
+}

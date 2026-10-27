@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-27",
+  "migratedNativeCallSites": 13,
+  "nativeCallsRemaining": 0,
+  "referenceDropdownVisual": {
+    "arrowCount": 1,
+    "arrowTransform": "matrix(-1, 0, 0, -1, 0, 0)",
+    "borderColor": "rgb(64, 128, 255)",
+    "borderRadius": "4px",
+    "controlHeight": "32px",
+    "fontSize": "14px",
+    "menuBackground": "rgb(255, 255, 255)",
+    "menuRadius": "4px",
+    "selectedBackground": "rgb(232, 243, 255)",
+    "selectedColor": "rgb(22, 93, 255)",
+    "viewport": {
+      "height": 1004,
+      "width": 1366
+    },
+    "withinViewport": true
+  },
+  "resourceDropdownVisual": {
+    "arrowCount": 1,
+    "arrowTransform": "matrix(-1, 0, 0, -1, 0, 0)",
+    "borderColor": "rgb(64, 128, 255)",
+    "borderRadius": "4px",
+    "controlHeight": "32px",
+    "fontSize": "14px",
+    "menuBackground": "rgb(255, 255, 255)",
+    "menuRadius": "4px",
+    "selectedBackground": "rgb(232, 243, 255)",
+    "selectedColor": "rgb(22, 93, 255)",
+    "viewport": {
+      "height": 1004,
+      "width": 1366
+    },
+    "withinViewport": true
+  },
+  "visualsMatch": true,
+  "keyboard": {
+    "arrowKeySelectsNext": true,
+    "endScroll": 266,
+    "emptyOptionSelectable": true,
+    "escapeKeepsModal": true,
+    "outsideClickCloses": true
+  },
+  "pagination": {
+    "arrowCount": 1,
+    "opensAbove": true,
+    "withinViewport": true,
+    "numericValuePreserved": true
+  },
+  "directoryEmptyValue": "无（一级目录）",
+  "organizationCascade": {
+    "initiallyDisabled": true,
+    "enabledAfterParent": true,
+    "childLabel": "人工智能研究部",
+    "resetChildLabel": "可选"
+  },
+  "pageHierarchy": {
+    "rootParentsDisabled": true,
+    "primaryPageLabel": "系统管理",
+    "childOptionsUseBusinessLabels": true
+  },
+  "formPreview": {
+    "placeholderDisabled": true,
+    "multiselect": "true",
+    "selected": 2,
+    "multiCanDeselect": true,
+    "singleModeProof": "选项二"
+  },
+  "paperLanguageOptions": "中文\n英文\n其他",
+  "journalProof": [
+    {
+      "field": "开放获取",
+      "options": "请选择\nOA\n非OA"
+    },
+    {
+      "field": "预警期刊",
+      "options": "请选择\n是\n否"
+    },
+    {
+      "field": "出版周期",
+      "options": "请选择\n周刊\n半月刊\n月刊\n双月刊\n季刊\n半年刊\n年刊\n不定期"
+    }
+  ],
+  "patentSelectProof": [
+    {
+      "arrows": 1,
+      "disabled": false,
+      "label": "中国 (CN)"
+    },
+    {
+      "arrows": 1,
+      "disabled": false,
+      "label": "发明"
+    },
+    {
+      "arrows": 1,
+      "disabled": false,
+      "label": "A"
+    },
+    {
+      "arrows": 1,
+      "disabled": false,
+      "label": "中文"
+    },
+    {
+      "arrows": 1,
+      "disabled": false,
+      "label": "美国 (US)"
+    },
+    {
+      "arrows": 1,
+      "disabled": false,
+      "label": "中国 (CN)"
+    }
+  ],
+  "patentListWithinViewport": true,
+  "httpFilesVerified": 15
+}

@@ -1,0 +1,28 @@
+.resource-picker-search-bar { display: flex; flex-wrap: wrap; gap: 16px; }
+.resource-picker-search-bar > .gkx-search-field { flex: 0 1 360px; width: 360px; max-width: 100%; }
+.resource-candidate-modal .tk-picker-table { font-size: 14px; }
+.resource-candidate-modal .tk-picker-table tbody tr:not(.tk-picker-empty) { transition: background-color 160ms ease; }
+.resource-candidate-modal .tk-picker-table tbody td { height: 44px; padding: 10px 12px; }
+.resource-candidate-modal .tk-picker-table tbody td:not(:first-child) { max-width: 240px; }
+.resource-candidate-modal .resource-picker-select-col { width: 56px; text-align: center; }
+.resource-picker-choice { display: inline-block; width: 16px; height: 16px; margin: 0; vertical-align: middle; accent-color: var(--gkx-brand); cursor: pointer; }
+.resource-picker-choice:focus-visible { outline: 2px solid var(--gkx-brand); outline-offset: 3px; }
+.resource-picker-choice:disabled,
+.resource-candidate-modal .tk-picker-table tbody tr.is-unavailable { cursor: not-allowed; }
+.resource-picker-empty { color: var(--gkx-text-secondary); text-align: center; font-size: 14px; }
+.resource-picker-footer { justify-content: space-between; }
+.resource-picker-selection { display: flex; align-items: center; gap: 12px; min-width: 0; color: var(--gkx-text-secondary); font-size: 14px; }
+.resource-picker-selection > span { overflow-wrap: anywhere; }
+.resource-picker-clear-selection { flex: 0 0 auto; padding: 4px; color: var(--gkx-brand); background: transparent; border: 0; font: inherit; }
+.resource-picker-clear-selection:hover { background: var(--gkx-brand-light); border-radius: 4px; }
+.resource-picker-footer-actions { display: flex; flex: 0 0 auto; gap: 16px; }
+.resource-candidate-modal button:focus-visible { outline: 2px solid var(--gkx-brand); outline-offset: 2px; }
+
+@media (max-width: 600px) {
+  .resource-picker-search-bar > .gkx-search-field { flex-basis: 100%; width: 100%; }
+  .resource-picker-footer { flex-wrap: wrap; flex-basis: auto; gap: 12px; }
+  .resource-picker-footer-actions { margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resource-candidate-modal .tk-picker-table tbody tr { transition: none; }
+}
