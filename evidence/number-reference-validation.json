@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-28",
+  "reference": "User supplied number-input default, hover, focus, pressed and locked state image",
+  "sharedComponent": {
+    "nativeType": "number",
+    "stepperSize": [18, 24],
+    "clearIconSize": [16, 16],
+    "clearClickTarget": [24, 24],
+    "suffixOrder": ["clear", "up/down stepper"],
+    "stepCalculation": "Detached native input stepUp/stepDown with original min/max/step and value base"
+  },
+  "observedDefault": {"border": "rgb(229, 230, 235)", "stepperVisibility": "hidden", "stepperOpacity": "0"},
+  "observedPaper": {
+    "increase": [12, 13], "decrease": [13, 12],
+    "keyboardIncrease": [12, 13],
+    "clearValue": "", "clearRefocus": true, "clearRemovedWhenEmpty": true,
+    "stepperRemainsUsableWhenEmpty": true,
+    "emptyIncrease": "1", "emptyDecrease": "-1",
+    "reactControlledValueAttributeUpdated": true
+  },
+  "observedFormDesigner": {
+    "minimumLengthAt1": {"decreaseDisabled": true, "increaseDisabled": false},
+    "minimumLengthAt2": {"decreaseDisabled": false},
+    "previewRange": {"min": "1", "max": "2.5"},
+    "previewAt2": {"increaseDisabled": true, "decreaseDisabled": false},
+    "previewAt1": {"decreaseDisabled": true},
+    "typedDecimalRetained": "1.5", "increaseFromDecimal": "2",
+    "readonlyCanvasHasNoStepper": true,
+    "originalComponentCountAfterDiscard": 3
+  },
+  "mobile390x844": {
+    "bodyWidth": 390, "inputWidth": 326,
+    "clearBeforeStepper": true, "stepperInsideInput": true, "clearWorks": true
+  },
+  "sourceReviewedOnly": ["pressed color CSS", "hover color CSS", "disabled native spinner suppression", "touch device visibility", "native form reset limit refresh", "step any fallback"],
+  "consoleErrors": [],
+  "persistence": "Cancelled resource editing and discarded temporary designer changes; no persistent record update."
+}

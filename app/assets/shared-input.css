@@ -67,16 +67,52 @@ input[type="radio"]:focus-visible { outline: 2px solid var(--gkx-brand); outline
 .gkx-text-input.is-native-date > input::-webkit-calendar-picker-indicator { position: absolute; right: 12px; margin: 0; }
 .gkx-text-input.is-native-date > input::-webkit-clear-button { display: none; }
 
-/* Number suffix order: clear first, native stepper at the far right. */
-.gkx-text-input.is-number > input { position: relative; }
+/* Number states match the supplied reference; native semantics stay on input. */
+.gkx-text-input.is-number > input { appearance: textfield; font-variant-numeric: tabular-nums; padding-right: 32px; }
 .gkx-text-input.is-number.has-clear > input { padding-right: 68px; }
 :is(.form-field, .form-component-preview, .workflow-name-field, .tk-sub) .gkx-text-input.is-number.has-clear > input { padding-right: 68px; }
 .gkx-text-input.is-number > .gkx-clear-button { right: 36px; }
-.gkx-text-input.is-number > input::-webkit-inner-spin-button {
-  position: absolute; right: 12px; top: 0; bottom: 0; margin: 0;
+.gkx-text-input.is-number > input::-webkit-inner-spin-button,
+.gkx-text-input.is-number > input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+input[type="number"]:is(:disabled, [readonly]) { appearance: textfield; }
+input[type="number"]:is(:disabled, [readonly])::-webkit-inner-spin-button,
+input[type="number"]:is(:disabled, [readonly])::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.gkx-text-input.is-number:is(:hover, :focus-within) > input {
+  border-color: var(--gkx-brand, #165dff); outline: 0; box-shadow: none;
+}
+.gkx-number-stepper {
+  position: absolute; right: 4px; top: 4px; bottom: 4px; width: 18px;
+  display: grid; grid-template-rows: repeat(2, minmax(0, 1fr));
+  overflow: hidden; border-radius: 2px; background: #f2f3f5;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 160ms ease;
+}
+.gkx-text-input.is-number:is(:hover, :focus-within) > .gkx-number-stepper {
+  opacity: 1; visibility: visible; pointer-events: auto;
+}
+.gkx-number-step {
+  display: grid; place-items: center; min-width: 0; min-height: 0;
+  width: 100%; height: 100%; margin: 0; padding: 0; border: 0;
+  color: #4e5969; background: transparent; cursor: pointer;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+.gkx-number-chevron {
+  display: block; width: 12px; height: 12px; background-color: currentColor;
+  mask: url("./paper-editor/chevron.svg") center / contain no-repeat;
+}
+.gkx-number-step.is-up .gkx-number-chevron { transform: rotate(180deg); }
+.gkx-number-step:hover { color: var(--gkx-brand, #165dff); }
+.gkx-number-step:active { color: var(--gkx-brand, #165dff); background: #e8f3ff; }
+.gkx-number-step:focus-visible { outline: 1px solid var(--gkx-brand, #165dff); outline-offset: -1px; }
+.gkx-number-stepper > .gkx-number-step:disabled,
+.gkx-number-stepper > .gkx-number-step:disabled:is(:hover, :active, :focus-visible) {
+  color: #c9cdd4; background: transparent; outline: 0; cursor: not-allowed;
 }
 
 @media (hover: none) {
   .gkx-clear-button { opacity: 1; visibility: visible; pointer-events: auto; }
+  .gkx-number-stepper { opacity: 1; visibility: visible; pointer-events: auto; }
 }
-@media (prefers-reduced-motion: reduce) { .gkx-clear-button { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .gkx-clear-button, .gkx-number-stepper, .gkx-number-step { transition: none; }
+}

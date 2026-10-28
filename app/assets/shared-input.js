@@ -6,6 +6,17 @@ export function createInputComponents({ React, jsx, jsxs }) {
   const sensitiveName = /token|refresh|password|credential|密码|密钥|秘钥|凭证|api[\s_-]*key|access[\s_-]*key/i;
   const nonempty = value => value !== undefined && value !== null && String(value).length > 0;
   const cleanLabel = text => String(text ?? '').replace(/^[\s*＊]+/, '').replace(/[：:]\s*$/, '').trim();
+  const steppedValue = (node, direction) => {
+    // A detached native input preserves the browser's step grid and decimal
+    // precision, without changing the real field before its React input event.
+    const probe = node.cloneNode(false);
+    probe.value = node.value;
+    if (probe.step === 'any') probe.step = '1';
+    try {
+      if (direction > 0) probe.stepUp(); else probe.stepDown();
+      return probe.value;
+    } catch { return null; }
+  };
 
   function ClearButton({ className = '', ariaLabel = '清空', title = '清空', disabled = false,
     onMouseDown, onClick, children, ...buttonProps }) {
@@ -26,6 +37,7 @@ export function createInputComponents({ React, jsx, jsxs }) {
     const [hasUncontrolledValue, setHasUncontrolledValue] = React.useState(() => nonempty(inputProps.defaultValue));
     const [domLabel, setDomLabel] = React.useState('');
     const [domLocked, setDomLocked] = React.useState(false);
+    const [numberLimits, setNumberLimits] = React.useState({ up: false, down: false });
     const nativeProps = { ...inputProps };
     if (nativeProps['aria-label'] === undefined && ariaLabel !== undefined) nativeProps['aria-label'] = ariaLabel;
     const propsIdentity = [label, nativeProps['aria-label'], nativeProps.name, nativeProps.id,
@@ -35,8 +47,18 @@ export function createInputComponents({ React, jsx, jsxs }) {
       && !inputProps.disabled && !inputProps.readOnly && !domLocked && !sensitiveName.test(propsIdentity)
       && (!controlled || !!onChange || !!onInput || !!onClear);
     const hasClear = supportedType && allowed && (controlled ? nonempty(inputProps.value) : hasUncontrolledValue);
+    const hasStepper = type === 'number' && !inputProps.disabled && !inputProps.readOnly && !domLocked
+      && (!controlled || !!onChange || !!onInput);
     const inputLabel = cleanLabel(label || nativeProps['aria-label'] || domLabel
       || nativeProps.placeholder || nativeProps.name || nativeProps.id || '输入内容');
+
+    const updateNumberLimits = node => {
+      if (type !== 'number' || !node) return;
+      const locked = node.matches(':disabled') || node.readOnly;
+      const up = steppedValue(node, 1), down = steppedValue(node, -1);
+      const next = { up: locked || up === null || up === node.value, down: locked || down === null || down === node.value };
+      setNumberLimits(previous => previous.up === next.up && previous.down === next.down ? previous : next);
+    };
 
     const attachRef = React.useCallback(node => {
       inputRef.current = node;
@@ -58,12 +80,13 @@ export function createInputComponents({ React, jsx, jsxs }) {
         .map(id => cleanLabel(node.ownerDocument.getElementById(id)?.textContent)).filter(Boolean);
       // Some legacy form labels point to a validation wrapper, not the input.
       const fieldLabel = !labels.length && !labelledBy.length
-        ? cleanLabel(node.closest('.form-field')?.querySelector(':scope > .form-field-label')?.textContent)
+        ? cleanLabel(node.closest('.form-field, .form-component-preview')?.querySelector(':scope > .form-field-label, :scope > label')?.textContent)
         : '';
       const associatedLabel = [...labels, ...labelledBy, fieldLabel].filter(Boolean).join(' ');
       setDomLabel(previous => previous === associatedLabel ? previous : associatedLabel);
       const locked = node.matches(':disabled') || node.readOnly || sensitiveName.test(associatedLabel);
       setDomLocked(previous => previous === locked ? previous : locked);
+      updateNumberLimits(node);
       if (!controlled && !locked && !sensitiveName.test(propsIdentity)) {
         const next = nonempty(node.value);
         setHasUncontrolledValue(previous => previous === next ? previous : next);
@@ -76,7 +99,10 @@ export function createInputComponents({ React, jsx, jsxs }) {
       let disposed = false;
       const reset = () => queueMicrotask(() => {
         // The native reset default action runs after the reset event.
-        if (!disposed && inputRef.current === node) setHasUncontrolledValue(nonempty(node.value));
+        if (!disposed && inputRef.current === node) {
+          setHasUncontrolledValue(nonempty(node.value));
+          updateNumberLimits(node);
+        }
       });
       form.addEventListener('reset', reset);
       return () => { disposed = true; form.removeEventListener('reset', reset); };
@@ -85,8 +111,22 @@ export function createInputComponents({ React, jsx, jsxs }) {
     const updatePresence = node => {
       if (!controlled && allowed) setHasUncontrolledValue(nonempty(node.value));
     };
-    const change = event => { updatePresence(event.currentTarget); onChange?.(event); };
-    const input = event => { updatePresence(event.currentTarget); onInput?.(event); };
+    const change = event => { updatePresence(event.currentTarget); updateNumberLimits(event.currentTarget); onChange?.(event); };
+    const input = event => { updatePresence(event.currentTarget); updateNumberLimits(event.currentTarget); onInput?.(event); };
+
+    const stepNumber = direction => {
+      const node = inputRef.current;
+      if (!node || !hasStepper || node.matches(':disabled') || node.readOnly) return;
+      const before = node.value;
+      const next = steppedValue(node, direction);
+      if (next !== null && next !== before) {
+        const setter = Object.getOwnPropertyDescriptor(node.ownerDocument.defaultView.HTMLInputElement.prototype, 'value')?.set;
+        setter?.call(node, next);
+        node.dispatchEvent(new node.ownerDocument.defaultView.Event('input', { bubbles: true, composed: true }));
+      }
+      updateNumberLimits(node);
+      node.focus({ preventScroll: true });
+    };
 
     const clear = event => {
       const node = inputRef.current;
@@ -106,11 +146,23 @@ export function createInputComponents({ React, jsx, jsxs }) {
     const element = jsx('input', { ...nativeProps, ref: attachRef, onChange: change, onInput: input });
     // Keep special native input types native; ordinary field layout stays stable
     // when disabled, readonly or clearable props change.
-    if (!supportedType || (type === 'number' && clearable !== true) || clearable === false || inputProps.disabled || inputProps.readOnly) return element;
+    if (!supportedType || inputProps.disabled || inputProps.readOnly
+      || (!hasStepper && ((type === 'number' && clearable !== true) || clearable === false))) return element;
     return jsxs('span', {
-      className: `gkx-text-input${nativeDateTypes.has(type) ? ' is-native-date' : ''}${type === 'number' ? ' is-number' : ''}${hasClear ? ' has-clear' : ''}`,
+      className: `gkx-text-input${nativeDateTypes.has(type) ? ' is-native-date' : ''}${hasStepper ? ' is-number' : ''}${hasClear ? ' has-clear' : ''}`,
       children: [element, hasClear && jsx(ClearButton, {
         ariaLabel: `清空${inputLabel}`, title: `清空${inputLabel}`, onClick: clear,
+      }), hasStepper && jsxs('span', {
+        className: 'gkx-number-stepper', children: [
+          jsx('button', { type: 'button', tabIndex: -1, className: 'gkx-number-step is-up',
+            'aria-label': `增加${inputLabel}`, title: '增加', disabled: numberLimits.up,
+            onMouseDown: event => event.preventDefault(), onClick: () => stepNumber(1),
+            children: jsx('span', { className: 'gkx-number-chevron', 'aria-hidden': true }) }),
+          jsx('button', { type: 'button', tabIndex: -1, className: 'gkx-number-step is-down',
+            'aria-label': `减少${inputLabel}`, title: '减少', disabled: numberLimits.down,
+            onMouseDown: event => event.preventDefault(), onClick: () => stepNumber(-1),
+            children: jsx('span', { className: 'gkx-number-chevron', 'aria-hidden': true }) }),
+        ],
       })],
     });
   }
