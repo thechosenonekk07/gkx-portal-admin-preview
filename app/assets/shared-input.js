@@ -13,7 +13,8 @@ export function createInputComponents({ React, jsx, jsxs }) {
       ...buttonProps, type: 'button', className: `gkx-clear-button ${className}`.trim(),
       'aria-label': buttonProps['aria-label'] ?? ariaLabel, title, disabled,
       onMouseDown: event => { event.preventDefault(); onMouseDown?.(event); }, onClick,
-      children: jsx('img', { src: clearImage, width: 24, height: 24, alt: '', 'aria-hidden': true }),
+      // The Figma input uses a 16px instance of the 24px master icon.
+      children: jsx('img', { src: clearImage, width: 16, height: 16, alt: '', 'aria-hidden': true }),
     });
   }
 
@@ -107,7 +108,7 @@ export function createInputComponents({ React, jsx, jsxs }) {
     // when disabled, readonly or clearable props change.
     if (!supportedType || (type === 'number' && clearable !== true) || clearable === false || inputProps.disabled || inputProps.readOnly) return element;
     return jsxs('span', {
-      className: `gkx-text-input${nativeDateTypes.has(type) ? ' is-native-date' : ''}${hasClear ? ' has-clear' : ''}`,
+      className: `gkx-text-input${nativeDateTypes.has(type) ? ' is-native-date' : ''}${type === 'number' ? ' is-number' : ''}${hasClear ? ' has-clear' : ''}`,
       children: [element, hasClear && jsx(ClearButton, {
         ariaLabel: `清空${inputLabel}`, title: `清空${inputLabel}`, onClick: clear,
       })],

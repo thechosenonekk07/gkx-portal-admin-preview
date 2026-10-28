@@ -12,7 +12,7 @@
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 160ms ease, background-color 160ms ease;
 }
-.gkx-clear-button > img { display: block; flex: 0 0 24px; max-width: none; }
+.gkx-clear-button > img { display: block; flex: 0 0 16px; width: 16px; height: 16px; max-width: none; }
 .gkx-text-input > .gkx-clear-button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
 :is(.gkx-text-input, .date-field-control, .filter-search-control):is(:hover, :focus-within) > .gkx-clear-button,
 .date-field-control.is-open > .gkx-clear-button,
@@ -66,6 +66,15 @@ input[type="radio"]:focus-visible { outline: 2px solid var(--gkx-brand); outline
 .gkx-text-input.is-native-date > .gkx-clear-button { right: 36px; }
 .gkx-text-input.is-native-date > input::-webkit-calendar-picker-indicator { position: absolute; right: 12px; margin: 0; }
 .gkx-text-input.is-native-date > input::-webkit-clear-button { display: none; }
+
+/* Number suffix order: clear first, native stepper at the far right. */
+.gkx-text-input.is-number > input { position: relative; }
+.gkx-text-input.is-number.has-clear > input { padding-right: 68px; }
+:is(.form-field, .form-component-preview, .workflow-name-field, .tk-sub) .gkx-text-input.is-number.has-clear > input { padding-right: 68px; }
+.gkx-text-input.is-number > .gkx-clear-button { right: 36px; }
+.gkx-text-input.is-number > input::-webkit-inner-spin-button {
+  position: absolute; right: 12px; top: 0; bottom: 0; margin: 0;
+}
 
 @media (hover: none) {
   .gkx-clear-button { opacity: 1; visibility: visible; pointer-events: auto; }

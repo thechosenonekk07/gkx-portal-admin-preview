@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-28",
+  "figma": {
+    "inputNode": "751:26258",
+    "clearInstance": "I751:26258;908:4",
+    "instanceSize": [16, 16],
+    "masterNode": "108:1344",
+    "masterSize": [24, 24]
+  },
+  "sharedClear": {
+    "renderedIconSize": [16, 16],
+    "clickTargetSize": [24, 24],
+    "verifiedFamilies": ["number", "patent text", "application date", "talent search"]
+  },
+  "number": {
+    "fields": ["所在期刊起始页码", "所在期刊截止页码"],
+    "suffixOrder": ["clear", "native number stepper"],
+    "clearRightOffset": 36,
+    "textRightPadding": 68,
+    "keyboardIncrement": [12, 13],
+    "mouseIncrement": [12, 13],
+    "afterClear": "",
+    "refocused": true,
+    "clearRemovedWhenEmpty": true,
+    "nativeInputType": "number"
+  },
+  "mobile390x844": {
+    "bodyWidth": 390,
+    "inputWidth": 326,
+    "clearInsideInput": true,
+    "iconWidth": 16,
+    "clickTargetWidth": 24
+  },
+  "search": {"emptyAfterClear": true, "restoredRows": 3},
+  "consoleErrors": [],
+  "dataBoundary": "Cancelled resource editing; no backend or persistent record changes."
+}
