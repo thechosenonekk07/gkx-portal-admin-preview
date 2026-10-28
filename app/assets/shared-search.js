@@ -1,5 +1,5 @@
 // The existing GKX input/button styles are shared by list and picker searches.
-export function createSearchComponents({ React, jsx, jsxs, ClearIcon }) {
+export function createSearchComponents({ React, jsx, jsxs, ClearIcon, ClearButton }) {
   function SearchField({ label, ariaLabel = label, placeholder = label, value,
     onChange, onEnter, onClear, clearable = false, className = '', disabled = false }) {
     const inputRef = React.useRef(null);
@@ -20,14 +20,13 @@ export function createSearchComponents({ React, jsx, jsxs, ClearIcon }) {
                 onEnter();
               }
             },
-          }), hasClear && jsx('button', {
+          }), hasClear && jsx(ClearButton, {
             type: 'button', className: 'gkx-search-clear', 'aria-label': '清空搜索关键词', title: '清空搜索关键词',
             onMouseDown: event => event.preventDefault(),
             onClick: () => {
               if (onClear) onClear(); else onChange?.('');
               inputRef.current?.focus();
             },
-            children: jsx(ClearIcon, { size: 14, 'aria-hidden': 'true' }),
           })],
         })],
     });

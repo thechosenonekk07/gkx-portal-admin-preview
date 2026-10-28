@@ -1,5 +1,5 @@
 // The captured app supplies its existing React runtime, portal and icons.
-export function createDatePicker({ React, jsx, jsxs, createPortal, ChevronLeft, ChevronRight, Calendar }) {
+export function createDatePicker({ React, jsx, jsxs, createPortal, ChevronLeft, ChevronRight, Calendar, ClearButton }) {
   const fromParts = (year, month, day = 1) => {
     const date = new Date(0);
     date.setHours(12, 0, 0, 0);
@@ -45,7 +45,7 @@ export function createDatePicker({ React, jsx, jsxs, createPortal, ChevronLeft, 
     return left === right ? a.order - b.order : left - right;
   }).map(item => item.node);
 
-  return function DatePicker({ id, value = '', onChange, ariaLabel, disabled = false, clearable = false }) {
+  return function DatePicker({ id, value = '', onChange, ariaLabel, disabled = false, clearable = true }) {
     const initial = parse(value) || today();
     const [open, setOpen] = React.useState(false);
     const [month, setMonth] = React.useState(() => monthStart(initial));
@@ -283,7 +283,7 @@ export function createDatePicker({ React, jsx, jsxs, createPortal, ChevronLeft, 
     }
 
     return jsxs('span', {
-      className: `date-field-control ${isOpen ? 'is-open' : ''} ${clearable && value ? 'has-clear' : ''}`.trim(),
+      className: `date-field-control ${isOpen ? 'is-open' : ''} ${clearable && !disabled && value ? 'has-clear' : ''}`.trim(),
       children: [
         jsxs('button', {
           ref: triggerRef, id, type: 'button', role: 'combobox', className: 'date-field-trigger', disabled,
@@ -293,9 +293,10 @@ export function createDatePicker({ React, jsx, jsxs, createPortal, ChevronLeft, 
           children: [jsx('span', { className: value ? '' : 'is-placeholder', children: value || '年 / 月 / 日' }),
             jsx(Calendar, { 'aria-hidden': 'true', size: 16 })],
         }),
-        clearable && value && jsx('button', {
+        clearable && !disabled && value && jsx(ClearButton, {
           type: 'button', className: 'date-field-clear', disabled,
           'aria-label': `清空${ariaLabel || '日期'}`,
+          title: `清空${ariaLabel || '日期'}`,
           onMouseDown: event => event.preventDefault(),
           onClick: event => {
             event.stopPropagation();
@@ -303,7 +304,6 @@ export function createDatePicker({ React, jsx, jsxs, createPortal, ChevronLeft, 
             onChange?.('');
             closePicker(true);
           },
-          children: jsx('span', { 'aria-hidden': true, children: '×' }),
         }),
         isOpen && position && createPortal(jsxs('div', {
           ref: panelRef, id: panelId, className: 'arco-date-picker-panel', role: 'dialog',

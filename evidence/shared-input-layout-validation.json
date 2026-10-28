@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-28",
+  "figma": {
+    "file": "hzL6avnHyttiEroV2hs8oi",
+    "page": "304:172",
+    "clearComponent": "108:1344",
+    "radioInstances": ["1387:45541", "1387:45544"],
+    "exportMethod": "Native SVG_STRING exports, preserved verbatim"
+  },
+  "desktop": {
+    "singleDirectoryInputWidth": 592,
+    "twoDirectoryFieldWidths": [288, 288],
+    "singlePatentDocTypeWidth": 592,
+    "textClearUpdatesFormAndRefocuses": true,
+    "emptyValueHidesClear": true,
+    "lockedPaperIdHasNoClear": true,
+    "requiredApplicationDateClearVerified": true,
+    "radioSize": 16,
+    "radioOptionGap": 32,
+    "radioChoiceChangesExclusively": true,
+    "journalInfluenceSavedAndReopened": "4.25",
+    "searchClearRestoresRowCount": 3
+  },
+  "nativeDatetime": {
+    "keyboardEditedValueRetainsTime": "2026-11-29T10:30",
+    "afterClearValue": "",
+    "refocused": true,
+    "clearRemoved": true,
+    "rightPadding": 68,
+    "clearRightOffset": 36
+  },
+  "mobile390x844": {
+    "bodyWidth": 390,
+    "directoryDialogWidth": 366,
+    "directoryInputWidth": 318,
+    "textRightPadding": 40,
+    "directoryClearVerified": true,
+    "emptyDirectorySaveDisabled": true,
+    "patentDialogWidth": 358,
+    "applicationDateClearVisibleAndInsideViewport": true,
+    "radioSizes": [[16, 16], [16, 16], [16, 16]],
+    "allRadioOptionsInsideViewport": true,
+    "patentFooterBottom": 828
+  },
+  "persistenceBoundary": "Frontend session save/reopen only; reload restores sample data. No backend persistence claimed."
+}
