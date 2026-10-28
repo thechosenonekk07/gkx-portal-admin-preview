@@ -166,3 +166,13 @@
 - 浏览器验证报告“物理学”正确显示、箭头展开、End/Enter 选择“应用经济学”、保存后列表与重新打开一致；人才库与报告的 17 个选项（含“请选择”）逐项相同，Escape 可关闭菜单。
 - 证据：`evidence/directory-and-subject-validation.json`、`evidence/directory-disabled-inherited.png`、`evidence/report-subject-select.png`。仅验证前端当前会话行为，不代表服务端持久化。
 
+# 2026-10-28 期刊与专利当前行直接编辑、删除
+
+- 期刊列表行“编辑”直接将该行数据转换后打开完整编辑弹窗，移除按期刊 ID/名称再次搜索选择的中间弹窗及其状态和死代码。
+- 期刊列表行“删除”直接显示该行名称、期刊 ID、ISSN、分类与确认按钮；关闭/取消只退出确认，不删除记录。
+- 专利列表已使用当前行直接打开编辑与删除详情弹窗，本次保留该路径；共用行匹配同时规范化 ID 并阻止找不到目标行时打开空表单。
+- 浏览器验证 JOURNAL-001、JOURNAL-002 的编辑预填互不串行；期刊名称修改、提交、重新打开一致。删除 JOURNAL-002 后仅剩 JOURNAL-001，取消删除时仍为两行。
+- 浏览器验证 PATENT-002 编辑预填与标题保存/重新打开，PATENT-001 删除详情与目标一致；取消保留两行，确认删除后仅剩 PATENT-002。
+- 两类路径均不再要求输入名称/编号选择目标。验证后刷新恢复静态样例数据；仅验证前端会话行为，不代表服务端持久化。
+- 证据：`evidence/direct-resource-action-validation.json`、`evidence/journal-edit-direct.png`、`evidence/journal-delete-direct.png`、`evidence/patent-edit-direct.png`、`evidence/patent-delete-direct.png`。
+
