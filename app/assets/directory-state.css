@@ -1,0 +1,23 @@
+/* A directory is unavailable when it or any ancestor is disabled.
+   Rows stay selectable so administrators can inspect and manage the state. */
+.business-tree-list .business-directory-row.is-disabled :is(
+  .business-directory-item,
+  .business-directory-item > span,
+  .business-directory-item > b,
+  .business-directory-item > svg,
+  .business-directory-toggle,
+  .business-directory-toggle > svg
+) {
+  color: var(--gkx-text-disabled, #c9cdd4);
+}
+
+/* The page management tree follows the same ancestor rule for its tree title.
+   Its status column continues to show each page's own configured state. */
+.page-tree-grid .page-tree-title.is-disabled :is(
+  .page-tree-label-text,
+  .page-tree-label-text > span,
+  .page-tree-toggle,
+  .page-tree-toggle > svg
+) {
+  color: var(--gkx-text-disabled, #c9cdd4);
+}

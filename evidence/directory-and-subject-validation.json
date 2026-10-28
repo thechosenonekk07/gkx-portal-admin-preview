@@ -1,0 +1,225 @@
+{
+  "date": "2026-10-28",
+  "directoryChecks": [
+    {
+      "countColor": "rgb(201, 205, 212)",
+      "iconColor": "rgb(201, 205, 212)",
+      "itemColor": "rgb(201, 205, 212)",
+      "name": "人工智能人才库",
+      "source": "self",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "countColor": "rgb(201, 205, 212)",
+      "iconColor": "rgb(201, 205, 212)",
+      "itemColor": "rgb(201, 205, 212)",
+      "name": "机器学习",
+      "source": "ancestor",
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(201, 205, 212)",
+      "iconColor": "rgb(201, 205, 212)",
+      "itemColor": "rgb(201, 205, 212)",
+      "name": "计算机视觉",
+      "source": "ancestor",
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(201, 205, 212)",
+      "iconColor": "rgb(201, 205, 212)",
+      "itemColor": "rgb(201, 205, 212)",
+      "name": "自然语言处理",
+      "source": "ancestor",
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "新材料人才库",
+      "source": null,
+      "toggleColor": "rgb(134, 144, 156)"
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "先进材料",
+      "source": null,
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "纳米材料",
+      "source": null,
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "能源材料",
+      "source": null,
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "生命科学人才库",
+      "source": null,
+      "toggleColor": "rgb(134, 144, 156)"
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "生物医药",
+      "source": null,
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "基因工程",
+      "source": null,
+      "toggleColor": null
+    },
+    {
+      "countColor": "rgb(134, 144, 156)",
+      "iconColor": "rgb(78, 89, 105)",
+      "itemColor": "rgb(78, 89, 105)",
+      "name": "神经科学",
+      "source": null,
+      "toggleColor": null
+    }
+  ],
+  "restoredDirectoryChecks": [
+    {
+      "color": "rgb(22, 93, 255)",
+      "name": "人工智能人才库",
+      "source": null
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "name": "机器学习",
+      "source": "self"
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "name": "计算机视觉",
+      "source": null
+    },
+    {
+      "color": "rgb(78, 89, 105)",
+      "name": "自然语言处理",
+      "source": null
+    }
+  ],
+  "pageTreeDisabledChecks": [
+    {
+      "color": "rgb(29, 33, 41)",
+      "disabled": false,
+      "name": "权限管理",
+      "toggleColor": "rgb(134, 144, 156)"
+    },
+    {
+      "color": "rgb(29, 33, 41)",
+      "disabled": false,
+      "name": "用户管理",
+      "toggleColor": "rgb(134, 144, 156)"
+    },
+    {
+      "color": "rgb(29, 33, 41)",
+      "disabled": false,
+      "name": "角色管理",
+      "toggleColor": "rgb(134, 144, 156)"
+    },
+    {
+      "color": "rgb(29, 33, 41)",
+      "disabled": false,
+      "name": "页面管理",
+      "toggleColor": "rgb(134, 144, 156)"
+    },
+    {
+      "color": "rgb(29, 33, 41)",
+      "disabled": false,
+      "name": "资源管理",
+      "toggleColor": "rgb(134, 144, 156)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "权限配置",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "系统管理",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "报告管理",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "审核管理",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "流程中心",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "表单中心",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "评论审核",
+      "toggleColor": "rgb(201, 205, 212)"
+    },
+    {
+      "color": "rgb(201, 205, 212)",
+      "disabled": true,
+      "name": "埋点管理",
+      "toggleColor": "rgb(201, 205, 212)"
+    }
+  ],
+  "reopenedDisabled": true,
+  "subjectOptions": [
+    "请选择",
+    "计算机科学",
+    "人工智能",
+    "数据科学",
+    "数据挖掘",
+    "自动化",
+    "电子工程",
+    "材料科学",
+    "高分子化学",
+    "能源工程",
+    "航空航天",
+    "生物医学工程",
+    "生物医药",
+    "基因工程",
+    "神经科学",
+    "物理学",
+    "应用经济学"
+  ],
+  "sameOptions": true,
+  "reopenedSubject": "应用经济学"
+}

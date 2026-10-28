@@ -157,3 +157,12 @@
 
 记录：`evidence/global-interaction-validation.json`。效果：`report-toolbar-global-aligned.png`、`author-multiselect-unified.png`、`institution-fulltext-tooltip.png`、`common-table-fulltext-tooltip.png`、`custom-cell-keyboard-tooltip.png`（均在 evidence/）。
 
+# 2026-10-28 目录禁用继承与学科枚举统一
+
+- 共用资源目录树按“自身禁用或祖先禁用”计算视觉状态；名称、文件夹图标、数量、展开箭头及 hover/选中态同步置灰。仍可选择目录进行管理，不改写子目录自己的禁用配置。
+- 验证父目录禁用→子目录置灰→父目录启用恢复；子目录先独立禁用后，父级禁用/启用不会解除该子目录的独立禁用。折叠再展开保留继承状态，其他分支不受影响；修正原折叠操作丢失展开集合的问题。
+- 同类页面管理树标题与展开箭头也继承祖先禁用视觉，验证到三级；各页面“启用状态”列仍表示自身配置，操作入口保持可用。组织与权限勾选树没有目录禁用状态，不将未勾选误判为禁用。
+- 共用资源表单按字段定义统一“所属学科”下拉，人才库与报告新增/编辑/详情复用同一枚举和选择组件。原 14 项与已有“物理学”“应用经济学”合为 16 项；未知历史值原样保留为当前字段选项，其他分类不混用学科枚举。
+- 浏览器验证报告“物理学”正确显示、箭头展开、End/Enter 选择“应用经济学”、保存后列表与重新打开一致；人才库与报告的 17 个选项（含“请选择”）逐项相同，Escape 可关闭菜单。
+- 证据：`evidence/directory-and-subject-validation.json`、`evidence/directory-disabled-inherited.png`、`evidence/report-subject-select.png`。仅验证前端当前会话行为，不代表服务端持久化。
+
