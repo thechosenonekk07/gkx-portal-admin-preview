@@ -176,3 +176,14 @@
 - 两类路径均不再要求输入名称/编号选择目标。验证后刷新恢复静态样例数据；仅验证前端会话行为，不代表服务端持久化。
 - 证据：`evidence/direct-resource-action-validation.json`、`evidence/journal-edit-direct.png`、`evidence/journal-delete-direct.png`、`evidence/patent-edit-direct.png`、`evidence/patent-delete-direct.png`。
 
+# 2026-10-28 结构化资源弹窗的 Figma 规范统一
+
+- 已读取专利节点 `1387:45518` 及其余属性、优先权/正文状态，期刊节点 `1187:48763`、`1187:49777` 的高保真设计代码与截图。延用已实现的论文规范：640px 壳、24px 内距、上方标签、8px 标签间距、16px 字段/组间距、32px 控件和细分隔线。
+- 论文、专利、期刊编辑共用 `resource-editor.css` 与 `resource-dialog.js`；专利/论文删除详情同步字体、分组和宽度。专利类型使用单选，语种选择置于卡片标题栏，重复项使用灰色卡片、本地垃圾桶图标与虚线新增按钮。保留已有数据结构和全部字段。
+- 日期统一复用 `shared-date.js`：已验证 ArrowRight/Enter 选择、Esc 只关日期层并回焦、Tab 从日期层返回对应表单位置、可选日期清空。枚举 Esc 只关菜单，主弹窗 Tab/Shift+Tab 首尾循环。
+- 新的保存行保留带类型/版本的 `_resourceDraft`，解决原列表投影导致的重开丢字段。专利已验证多语种/摘要、人员 ID、IPCR、PCT、优先权、正文、日期和分类勾选保存重开；期刊已验证双语、简称、封面预览、官网、多分类/分区、别名保存重开，重复别名不重复添加。
+- 已验证新申请人增删、期刊/专利现有控件清空后回焦、论文作者多选弹窗打开/取消返回原按钮、专利删除详情显示完整数据。
+- 390×844 下两列/三列转单列，无弹窗正文横向溢出，底部操作可见；日期层左右/上下均在视口内。修正 Netlify 标识盖住手机弹窗底部按钮的问题：打开任意弹窗时标识位于遮罩下，关闭后恢复原层级，不移除脚本或资源。
+- 日历、单选和标签关闭等 SVG 来自 Figma，根尺寸为 16px（标签关闭14px）；关闭/箭头/删除/新建与已有本地资产逐字节相同，直接复用。运行代码无临时 Figma 资源 URL。
+- 证据：`evidence/structured-dialog-figma-validation.json`、`patent-figma-unified.png`、`journal-figma-unified.png`、`resource-dialog-mobile.png`。上述为桌面浏览器及窄视口验证；不表示真机或后端持久化验收。验证用会话独立于用户原标签页，最终刷新恢复样例。
+

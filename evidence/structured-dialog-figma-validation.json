@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-28",
+  "modalDesktopGeometry": {
+    "bodyOverflows": false,
+    "footerVisible": true,
+    "groupBorder": "0px",
+    "headerPadding": "24px 24px 16px",
+    "inputHeight": 32,
+    "titleAlign": "flex-start",
+    "width": 640
+  },
+  "mobileJournalGeometry": {
+    "bodyOverflows": false,
+    "columns": "326px",
+    "footerVisible": true,
+    "left": 16,
+    "right": 374,
+    "viewport": 390,
+    "width": 358
+  },
+  "mobileLayoutResults": {
+    "patent": {
+      "width": 358,
+      "columns": "326px",
+      "bodyOverflows": false,
+      "footerVisible": true,
+      "submitUncovered": true,
+      "badgeLayer": "0"
+    },
+    "calendar": {
+      "left": 32,
+      "right": 358,
+      "top": 340,
+      "bottom": 682,
+      "viewportWidth": 390,
+      "viewportHeight": 844
+    },
+    "dateTabExit": {
+      "calendarClosed": true,
+      "focus": "清空申请日",
+      "modalOpen": true
+    },
+    "mobileCancelClosed": true
+  },
+  "dateFocusAfterArrow": "2025-03-13",
+  "selectedAppDate": "2025-03-13",
+  "calendarEscape": {
+    "calendarClosed": true,
+    "editorOpen": true,
+    "focus": "申请日"
+  },
+  "clearJournalControl": {
+    "focus": "期刊影响因子",
+    "value": ""
+  },
+  "sharedSelectEscape": {
+    "menuClosed": true,
+    "modalOpen": true
+  },
+  "focusAtLast": "提 交",
+  "focusAtFirst": "关闭对话框",
+  "patentRoundTrip": {
+    "classSystems": [
+      {
+        "checked": false,
+        "name": "CPC"
+      },
+      {
+        "checked": true,
+        "name": "IPC"
+      },
+      {
+        "checked": true,
+        "name": "IPCR"
+      }
+    ],
+    "dates": [
+      [
+        "申请日",
+        "2025-03-13"
+      ],
+      [
+        "公开日",
+        "年 / 月 / 日"
+      ],
+      [
+        "优先权 1 日期",
+        "2024-06-15"
+      ],
+      [
+        "优先权 2 日期",
+        "2024-02-20"
+      ]
+    ],
+    "values": {
+      "IPC 分类号 1": "G06F16/36",
+      "IPCR 分类号 1": "H04L29/06",
+      "优先权 1 申请号": "202610000001",
+      "优先权 2 申请号": "202410123456.7",
+      "公开号": "CN116789012A",
+      "发明人 1 ID": "abcdef123456abcdef123456",
+      "发明人 1 名称": "王建国",
+      "发明人 2 ID": "",
+      "发明人 2 名称": "孙倩",
+      "受让人 1 ID": "",
+      "受让人 1 名称": "国科信研究中心",
+      "国际公布号": "WO2025/089012A1",
+      "国际申请号": "PCT/CN2026/010001",
+      "权利要求": "用于验证完整草稿的权利要求。",
+      "申请人 1 ID": "",
+      "申请人 1 名称": "国科信研究中心",
+      "申请号": "ZL202510123456.7",
+      "语种 1 摘要": "",
+      "语种 1 标题": "一种基于知识图谱的专利价值评估方法",
+      "语种 2 摘要": "The complete structured draft is preserved.",
+      "语种 2 标题": "Patent interaction preview",
+      "说明书": "用于验证保存后重新打开的说明书。"
+    }
+  },
+  "journalRoundTrip": {
+    "aliases": [
+      "期刊预览别名"
+    ],
+    "coverLoaded": true,
+    "values": {
+      "期刊 EISSN": "2096-2019",
+      "期刊 ISSN": "1000-0135",
+      "期刊中文名称": "情报学报",
+      "期刊分类 1 分区": "q3",
+      "期刊分类 1 名称": "情报学",
+      "期刊分类 1 数据源": "SJR",
+      "期刊分类 2 分区": "Q1",
+      "期刊分类 2 名称": "计算机科学",
+      "期刊分类 2 数据源": "WOS",
+      "期刊别名": "",
+      "期刊官网链接": "https://example.org/journal",
+      "期刊封面图 URL": "http://127.0.0.1:8773/assets/gkx-logo.png",
+      "期刊影响因子": "3.86",
+      "期刊简称": "JPE",
+      "期刊英文名称": "Journal preview English"
+    }
+  },
+  "paperRegression": {
+    "bodyOverflows": false,
+    "inputHeight": 32,
+    "title": "大模型驱动的科技情报分析框架研究-编辑",
+    "width": 640
+  },
+  "nestedPickerChecks": {
+    "checkboxes": 11,
+    "focusInside": true,
+    "title": "选择作者"
+  },
+  "returnedToPaper": {
+    "focus": "选择作者（作者 1）",
+    "open": true,
+    "pickerClosed": true
+  },
+  "detailRegression": {
+    "bodyOverflows": false,
+    "groupBorder": "0px",
+    "textFont": "14px",
+    "width": 640
+  }
+}

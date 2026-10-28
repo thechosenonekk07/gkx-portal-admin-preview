@@ -3,46 +3,7 @@ export function createPaperEditor({ React, jsx, jsxs, Group, Row, Field, Card, A
   const field = (label, props) => jsx(Field, { ...props, ariaLabel: label });
   const row = (label, children, props = {}) => jsx(Row, { label, ...props, children });
   const pair = (children) => jsxs('div', { className: 'paper-field-pair', children });
-  const keepFocus = (modal, event) => {
-    if (event.key !== 'Tab') return;
-    const controls = Array.from(modal.querySelectorAll('button:not(:disabled), input:not(:disabled), textarea:not(:disabled), [tabindex="0"]'))
-      .filter((node) => node.getClientRects().length && node.getAttribute('aria-hidden') !== 'true');
-    const first = controls[0], last = controls[controls.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last?.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first?.focus();
-    }
-  };
-
   return function PaperEditorFields({ draft, onChange, onChoose, onClose, languages, activePicker }) {
-    const contentRef = React.useRef(null);
-    React.useEffect(() => {
-      const modal = contentRef.current.closest('.paper-editor-modal');
-      const previousFocus = document.activeElement;
-      modal.querySelector('input:not(:disabled)')?.focus({ preventScroll: true });
-      const onKeyDown = (event) => {
-        if (event.isComposing || event.keyCode === 229) return;
-        // A portal picker is a separate dialog and owns focus while it is open.
-        if (document.querySelector('.tk-picker-modal')) return;
-        // The shared select owns its popup keyboard actions.
-        if (modal.querySelector('[role="combobox"][aria-expanded="true"]')) return;
-        if (event.key === 'Escape') {
-          event.preventDefault();
-          event.stopPropagation();
-          onClose();
-        }
-        keepFocus(modal, event);
-      };
-      modal.addEventListener('keydown', onKeyDown);
-      return () => {
-        modal.removeEventListener('keydown', onKeyDown);
-        if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
-      };
-    }, []);
-
     const change = (key) => (value) => onChange(key, value);
     const updateAuthor = (index, changes) => onChange('authors', draft.authors.map((author, i) => i === index ? { ...author, ...changes } : author));
     const bilingual = (label, zhKey, enKey, placeholders, textarea = false) => row(label, [
@@ -61,7 +22,7 @@ export function createPaperEditor({ React, jsx, jsxs, Group, Row, Field, Card, A
     const journal = (key) => (value) => onChange('journal', { ...draft.journal, [key]: value });
     const divider = () => jsx('div', { className: 'paper-section-divider', 'aria-hidden': true });
 
-    return jsxs('div', { ref: contentRef, className: 'paper-editor-fields', children: [
+    return jsxs('div', { className: 'paper-editor-fields', children: [
       jsxs(Group, { title: '基础信息', children: [
         row('论文ID', field('论文ID', { value: draft.id, onChange: () => {}, disabled: true })),
         bilingual('论文标题', 'titleZh', 'titleEn', ['请输入中文标题', 'Please enter English title']),
