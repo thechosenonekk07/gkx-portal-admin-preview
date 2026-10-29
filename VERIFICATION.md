@@ -215,3 +215,12 @@
 - 390×844窄视口正文宽390px，数字框宽326px，清空在调节区左侧，两者无重叠且完整处于框内；清空可用。无浏览器控制台错误。触摸设备常显状态及disabled属性的裸输入箭头隐藏为代码检查，未做真机验证。
 - 证据：`evidence/number-reference-validation.json`、`number-reference-default.png`、`number-reference-focused.png`、`number-reference-bounds.png`、`number-reference-mobile.png`。
 
+# 2026-10-29 智库新增目录类型
+
+- 智库新增目录按参考截图显示两项必填字段：目录名称、目录类型；默认论文，下拉仅论文/期刊/专利三项。桌面两列各288px，名称为空时保存禁用。下拉复用现有组件，已验证鼠标选择、End/Enter选择专利及Esc仅收起下拉。
+- 新目录保存显式resourceKind，复制对应列定义与必填字段，初始rows为空；原三个目录使用旧ID兼容映射。添加选择器、候选数据、结构化编辑及删除详情均按类型分流，资源状态按目录ID隔离。
+- 实际创建三种目录，分别添加PAPER-003、JOURNAL-003、PATENT-003并打开相应完整编辑表单；期刊与专利删除入口显示对应详情并取消。另建期刊B保持空列表，切回期刊A仍含原记录，未串数据。专利目录改名保留专利列与记录；同名新增保留弹窗且不新增。
+- 报告新增目录仍为报告类型ID/目录名称，人才仍为目录名称/上级目录，均无智库类型字段。390×844窄视口中弹窗366px、字段各318px并转单列，三项下拉完整位于视口内。
+- 测试结束刷新恢复原三个目录、论文原两行；未触碰用户原标签页或改变持久化数据。无控制台错误。本轮为前端会话行为验证，不代表后端持久化。
+- 证据：`evidence/thinktank-directory-type-validation.json`、`thinktank-directory-type-form.png`、`thinktank-directory-type-select.png`、`thinktank-directory-type-mobile.png`。
+

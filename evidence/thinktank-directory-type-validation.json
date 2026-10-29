@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "createForm": {
+    "requiredFields": ["目录名称", "目录类型"],
+    "defaultType": "论文",
+    "options": ["论文", "期刊", "专利"],
+    "desktopFieldWidths": [288, 288],
+    "emptyNameSaveDisabled": true,
+    "keyboardEndEnterSelectsPatent": true,
+    "escapeClosesDropdownOnly": true,
+    "defaultAfterSelectingJournalDirectory": "论文"
+  },
+  "createdKinds": {
+    "paper": {"initialRows": 0, "firstColumns": ["ID", "论文标题", "关键词", "作者"], "addedId": "PAPER-003", "structuredEditor": true},
+    "journal": {"initialRows": 0, "firstColumn": "期刊ID", "addedId": "JOURNAL-003", "structuredEditor": true, "journalDeleteDetails": true},
+    "patent": {"initialRows": 0, "firstColumns": ["专利ID", "授权专利号", "标题", "公开号"], "addedId": "PATENT-003", "structuredEditor": true, "patentDeleteDetails": true}
+  },
+  "isolation": {
+    "secondJournalDirectoryEmpty": true,
+    "firstJournalDirectoryRetainsRecord": true,
+    "renameRetainsPatentKindAndRecord": true,
+    "duplicateNameCreationRejected": true
+  },
+  "regression": {
+    "reportFields": ["报告类型ID", "目录名称"],
+    "talentFields": ["目录名称", "上级目录"],
+    "typeFieldAbsentFromReportAndTalent": true
+  },
+  "mobile390x844": {
+    "bodyWidth": 390, "dialogWidth": 366, "fieldWidths": [318, 318],
+    "gridColumns": "318px", "dropdownInsideViewport": true, "optionCount": 3
+  },
+  "cleanup": {"originalDirectoriesAfterReload": 3, "originalPaperRows": 2},
+  "consoleErrors": [],
+  "dataBoundary": "Temporary test state was reset by reload; frontend session only; no backend persistence claimed."
+}
