@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-03",
+  "scope": "Original requirement row132; user-authorized assessment of optional comparison and funnel presentation",
+  "decision": {
+    "comparison": "Removed from UI and model as optional enhancement",
+    "funnel": "Retained as presentation choice for required conversion analysis; not claimed as mandatory chart type in original requirement"
+  },
+  "states": [
+    {
+      "state": "default-current-only",
+      "applied": "统计区间（按日）：2026-10-05 至 2026-11-03",
+      "flow": "首页搜索转化",
+      "hasComparisonText": false,
+      "metrics": [
+        "114,711",
+        "1,194"
+      ],
+      "overall": "整体转化率 19.5%",
+      "ranking": 10,
+      "removedComparisonNodes": 0,
+      "steps": [
+        {
+          "count": "20,525 次",
+          "path": "首页/全文检索"
+        },
+        {
+          "count": "13,245 次",
+          "path": "首页/AI搜索"
+        },
+        {
+          "count": "7,658 次",
+          "path": "首页/智能推荐-查看更多"
+        },
+        {
+          "count": "3,995 次",
+          "path": "目录/AI战略咨询/超大规模智算引擎"
+        }
+      ]
+    },
+    {
+      "state": "month-current-only",
+      "applied": "统计区间（按月）：2026-01 至 2026-11有效数据：2026-01-01 至 2026-11-03",
+      "flow": "首页搜索转化",
+      "hasComparisonText": false,
+      "metrics": [
+        "1,151,904",
+        "4,093"
+      ],
+      "overall": "整体转化率 19.2%",
+      "ranking": 10,
+      "removedComparisonNodes": 0,
+      "steps": [
+        {
+          "count": "205,083 次",
+          "path": "首页/全文检索"
+        },
+        {
+          "count": "131,333 次",
+          "path": "首页/AI搜索"
+        },
+        {
+          "count": "75,780 次",
+          "path": "首页/智能推荐-查看更多"
+        },
+        {
+          "count": "39,281 次",
+          "path": "目录/AI战略咨询/超大规模智算引擎"
+        }
+      ]
+    },
+    {
+      "state": "workbench-retained",
+      "applied": "统计区间（按月）：2026-01 至 2026-11有效数据：2026-01-01 至 2026-11-03",
+      "flow": "工作台使用转化",
+      "hasComparisonText": false,
+      "metrics": [
+        "1,151,904",
+        "4,093"
+      ],
+      "overall": "整体转化率 37.0%",
+      "ranking": 10,
+      "removedComparisonNodes": 0,
+      "steps": [
+        {
+          "count": "141,843 次",
+          "path": "工作台/智能科研"
+        },
+        {
+          "count": "90,696 次",
+          "path": "目录/AI科研/论文辅助生成"
+        },
+        {
+          "count": "52,447 次",
+          "path": "工作台/智能阅读"
+        }
+      ]
+    },
+    {
+      "state": "reset-current-only",
+      "applied": "统计区间（按日）：2026-10-05 至 2026-11-03",
+      "flow": "首页搜索转化",
+      "hasComparisonText": false,
+      "metrics": [
+        "114,711",
+        "1,194"
+      ],
+      "overall": "整体转化率 19.5%",
+      "ranking": 10,
+      "removedComparisonNodes": 0,
+      "steps": [
+        {
+          "count": "20,525 次",
+          "path": "首页/全文检索"
+        },
+        {
+          "count": "13,245 次",
+          "path": "首页/AI搜索"
+        },
+        {
+          "count": "7,658 次",
+          "path": "首页/智能推荐-查看更多"
+        },
+        {
+          "count": "3,995 次",
+          "path": "目录/AI战略咨询/超大规模智算引擎"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "model": 16,
+    "queryLifecycle": 10,
+    "prePostCurrentWindowParityCases": 5,
+    "comparisonNodesRemaining": 0
+  },
+  "consoleErrors": [],
+  "boundary": "Current statistics still use deterministic preview records; original dwell time and button CTR scenarios require separate collection and denominator definitions."
+}

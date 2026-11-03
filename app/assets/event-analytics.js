@@ -39,17 +39,12 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
         h('span', { className: 'analytics-spinner' }), h('span', null, '加载中')));
   }
 
-  function Metric({ label, value, previous, delta, comparable, description, image, empty }) {
-    const deltaLabel = !comparable ? '暂无可比数据'
-      : previous === 0 && value > 0 ? '新增'
-        : delta == null ? '—' : `${delta > 0 ? '+' : ''}${(delta * 100).toFixed(1)}%`;
+  function Metric({ label, value, description, image, empty }) {
     return h('article', { className: 'analytics-metric' },
       h('img', { src: `./assets/${image}`, alt: '', 'aria-hidden': true }),
       h('div', { className: 'analytics-metric-main' },
         h('h3', null, label), h('strong', { className: 'analytics-metric-value' }, empty ? '—' : number(value)),
-        empty ? h('div', { className: 'analytics-metric-comparison' }, '所选时间区间暂无数据') : h('div', { className: 'analytics-metric-comparison' },
-          h('span', { className: `analytics-delta ${comparable && delta > 0 ? 'up' : comparable && delta < 0 ? 'down' : ''}` }, deltaLabel),
-          comparable && h('span', null, `较上一周期 ${number(previous)}`)),
+        empty && h('div', { className: 'analytics-metric-empty' }, '所选时间区间暂无数据'),
         h('p', null, description)),
     );
   }
@@ -243,8 +238,7 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
       controller.run(initialRange);
       return () => { controller.dispose(); controllerRef.current = null; };
     }, [initialRange]);
-    const result = request.display?.result || { events: 0, users: 0, comparisonAvailable: false,
-      previousEvents: 0, previousUsers: 0, previousLabel: '—', trend: [], ranking: [], flows: {} };
+    const result = request.display?.result || { events: 0, users: 0, trend: [], ranking: [], flows: {} };
     const applied = request.display?.query || request.query;
     const asOf = result.dataThrough || today();
     const pending = JSON.stringify(draft) !== JSON.stringify(applied);
@@ -307,11 +301,10 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
       request.status === 'error' && !request.display ? h('div', { className: 'analytics-load-failure' }, '统计数据加载失败，请重新查询')
         : h(React.Fragment, null,
           h('section', { className: 'analytics-metrics', 'aria-label': '统计概览' },
-            module('事件总量', h(Metric, { label: '事件总量', value: result.events, previous: result.previousEvents, delta: result.eventDelta,
-              comparable: result.comparisonAvailable, empty, description: '统计周期内全部埋点事件的触发总次数，包含未登录用户', image: 'dashboard-event-total-3d.png' })),
-            module('活跃用户数', h(Metric, { label: '活跃用户数', value: result.users, previous: result.previousUsers, delta: result.userDelta,
-              comparable: result.comparisonAvailable, empty, description: '统计周期内触发过任一埋点事件的已登录去重用户数', image: 'dashboard-active-users-3d.png' }))),
-          h('div', { className: `analytics-previous${loading ? ' is-loading' : ''}` }, `上一周期：${result.previousLabel}`),
+            module('事件总量', h(Metric, { label: '事件总量', value: result.events,
+              empty, description: '统计周期内全部埋点事件的触发总次数，包含未登录用户', image: 'dashboard-event-total-3d.png' })),
+            module('活跃用户数', h(Metric, { label: '活跃用户数', value: result.users,
+              empty, description: '统计周期内触发过任一埋点事件的已登录去重用户数', image: 'dashboard-active-users-3d.png' }))),
           h('div', { className: 'analytics-data-grid' },
             module('事件增长趋势', h(Trend, { data: result.trend, rangeLabel: result.rangeLabel, loading })),
             module('事件排行', h(Ranking, { rows: result.ranking }))),

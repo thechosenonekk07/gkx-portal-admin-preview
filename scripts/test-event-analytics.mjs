@@ -102,48 +102,33 @@ check('Actual trigger counts preserve nonmonotonic >100% conversion and zero den
   assert.equal(firstZero.flows.search[0].count, 0);
   assert.equal(firstZero.flows.search[1].count, 3);
 });
-check('Previous daily periods are contiguous with identical length and correct previous values', () => {
-  const result = report(query('2026-10-28', '2026-11-03')), prior = report(query('2026-10-21', '2026-10-27'));
-  assert.equal(result.previousLabel, '2026-10-21 至 2026-10-27');
-  assert.equal(result.previousEvents, prior.events);
-  assert.equal(result.previousUsers, prior.users);
-  assert.equal(result.eventDelta, (result.events - prior.events) / prior.events);
-  assert.equal(result.userDelta, (result.users - prior.users) / prior.users);
+check('Calendar binning includes February, leap day and all days of a leap year', () => {
+  assert.equal(report(query('2026-02-01', '2026-02-28')).trend.length, 28);
+  const leap = report(query('2024-02-01', '2024-02-29'));
+  assert.equal(leap.trend.length, 29);
+  assert.equal(leap.trend.at(-1).date, '2024-02-29');
+  assert.equal(report(query('2024-01-01', '2024-12-31')).trend.length, 366);
+  assert.deepEqual(report(defaultRange('year', asOf)).trend.map(item => item.label), ['2024', '2025', '2026']);
 });
-check('Partial month compares preceding equal days rather than prior-month elapsed progress', () => {
-  const result = report(query('2026-11', '2026-11', 'month'));
-  assert.equal(result.effectiveRangeLabel, '2026-11-01 至 2026-11-03');
-  assert.equal(result.previousLabel, '2026-10-29 至 2026-10-31');
-  assert.equal(result.previousEvents, report(query('2026-10-29', '2026-10-31')).events);
-  assert.equal(report(query('2026-11-01', '2026-11-15')).previousLabel, result.previousLabel);
-});
-check('February and leap-year comparisons use equal DAY counts, not calendar month/year', () => {
-  const february = report(query('2026-02', '2026-02', 'month'));
-  assert.equal(february.previousLabel, '2026-01-04 至 2026-01-31');
-  const leap = summarizeAnalytics(query('2024-02', '2024-02', 'month'), '2024-03-31');
-  assert.equal(leap.previousLabel, '2024-01-03 至 2024-01-31');
-  const year = report(query('2024', '2024', 'year'));
-  assert.equal(year.previousLabel, '2022-12-31 至 2023-12-31');
-  for (const result of [february, leap, year]) {
-    const [start, end] = result.effectiveRangeLabel.split(' 至 ');
-    assert.equal(Date.parse(end) - Date.parse(start), Date.parse(result.previousEnd) - Date.parse(result.previousStart));
-  }
-});
-check('Default recent-three-year comparison has sufficient simulated source history', () => {
-  const result = report(defaultRange('year', asOf));
-  assert.equal(result.comparisonAvailable, true);
-  assert.ok(result.previousEvents > 0);
-  assert.ok(result.previousUsers > 0);
-});
-check('Unavailable or partial source history does not invent a previous comparison', () => {
+check('Effective coverage clips unavailable history and future tails without changing selected labels', () => {
+  const currentMonth = report(query('2026-11', '2026-11', 'month'));
+  assert.equal(currentMonth.rangeLabel, '2026-11');
+  assert.equal(currentMonth.effectiveRangeLabel, '2026-11-01 至 2026-11-03');
+  assert.equal(currentMonth.partialCoverage, true);
   const rows = [record('2026-11-01', { 'MD-8': 2 }, ['a'])];
-  const unknownPrior = aggregateAnalyticsRecords(query('2026-11-01'), { records: rows, asOf });
-  assert.equal(unknownPrior.comparisonAvailable, false);
   const partial = aggregate(query('2026-10-25', '2026-11-02'), rows, { sourceStart: '2026-11-01' });
   assert.equal(partial.partialCoverage, true);
-  assert.equal(partial.comparisonAvailable, false);
-  assert.equal(partial.eventDelta, null);
-  assert.equal(partial.userDelta, null);
+  assert.equal(partial.rangeLabel, '2026-10-25 至 2026-11-02');
+  assert.equal(partial.effectiveRangeLabel, '2026-11-01 至 2026-11-02');
+  assert.equal(partial.events, 2);
+  assert.equal(partial.users, 1);
+  assert.deepEqual(partial.trend.map(item => item.events), [2, 0]);
+});
+check('Records outside the selected current window never affect any statistic', () => {
+  const selected = record('2026-11-01', { 'MD-8': 10, 'MD-10': 4 }, ['a', 'b'], 3);
+  const expected = aggregate(query('2026-11-01'), [selected]);
+  const extra = aggregate(query('2026-11-01'), [record('2026-10-31', { 'MD-8': 999 }, ['old']), selected, record('2026-11-02', { 'MD-8': 888 }, ['later'])]);
+  assert.deepEqual(extra, expected);
 });
 check('Pure future and no-event windows have no phantom trend/ranking/conversions', () => {
   for (const result of [report(query('2027', '2027', 'year')), aggregate(query('2026-11-01'), []), aggregate(query('2026-11-01'), [record('2026-11-01', {}, [])])]) {
@@ -153,15 +138,6 @@ check('Pure future and no-event windows have no phantom trend/ranking/conversion
     assert.deepEqual(result.ranking, []);
     assert.ok(Object.values(result.flows).flat().every(step => step.count === 0));
   }
-  assert.equal(report(query('2027', '2027', 'year')).previousLabel, '—');
-});
-check('Zero previous denominator is explicit and never Infinity/NaN', () => {
-  const result = aggregate(query('2026-11-01'), [record('2026-11-01', { 'MD-8': 2 }, ['a'])]);
-  assert.equal(result.previousEvents, 0);
-  assert.equal(result.eventDelta, null);
-  const zero = aggregate(query('2026-11-01'), []);
-  assert.equal(zero.eventDelta, 0);
-  assert.equal(zero.userDelta, 0);
 });
 check('Data cutoff preserves historical values and excludes future source records', () => {
   const earlier = summarizeAnalytics(query('2026-10-28', '2026-11-03'), '2026-11-01'), exact = report(query('2026-10-28', '2026-11-01'));
@@ -171,4 +147,4 @@ check('Data cutoff preserves historical values and excludes future source record
   assert.equal(future.events, 2);
   assert.equal(future.trend.at(-1).date, asOf);
 });
-console.log(`Analytics V1.5 model: ${checks} meaningful checks passed.`);
+console.log(`Analytics current-window model: ${checks} meaningful checks passed.`);

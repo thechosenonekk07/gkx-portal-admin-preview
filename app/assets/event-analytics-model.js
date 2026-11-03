@@ -125,13 +125,8 @@ function aggregate(records) {
   const events = [...counts.values()].reduce((sum, count) => sum + count, 0);
   return { counts, users: users.size, events, anonymousEvents, loggedInEvents: events - anonymousEvents };
 }
-const delta = (current, previous, available) => !available || previous === 0
-  ? (available && current === 0 && previous === 0 ? 0 : null) : (current - previous) / previous;
-
-// The preceding period is the immediately preceding, equally long inclusive DAY
-// window. Month/year only choose chart bins: Nov 1–3 compares Oct 29–31;
-// February 2026 compares Jan 4–31. Known missing dates count as zero, whereas
-// source history preceding sourceStart is unavailable and cannot be compared.
+// Only the selected current window is aggregated. Known missing dates within
+// source availability count as zero; unavailable dates remain outside coverage.
 export function aggregateAnalyticsRecords(query, { records = [], asOf = localToday(), sourceStart, flowDefinitions = FLOWS } = {}) {
   const error = validateRange(query, asOf);
   if (error) throw new RangeError(error);
@@ -141,12 +136,8 @@ export function aggregateAnalyticsRecords(query, { records = [], asOf = localTod
   if (!Number.isFinite(availability)) throw new RangeError('统计数据起始日期无效');
   const effectiveStart = Math.max(range.start, availability), effectiveEnd = Math.min(range.end, cutoff);
   const hasWindow = effectiveStart <= effectiveEnd;
-  const duration = hasWindow ? effectiveEnd - effectiveStart + DAY : 0;
-  const previousStart = hasWindow ? effectiveStart - duration : null, previousEnd = hasWindow ? effectiveStart - DAY : null;
-  const comparisonAvailable = hasWindow && range.start >= availability && previousStart >= availability;
-  const select = (start, end) => normalized.filter(record => record.stamp >= start && record.stamp <= end);
-  const currentRecords = hasWindow ? select(effectiveStart, effectiveEnd) : [], current = aggregate(currentRecords);
-  const prior = comparisonAvailable ? aggregate(select(previousStart, previousEnd)) : { events: 0, users: 0 };
+  const currentRecords = hasWindow ? normalized.filter(record => record.stamp >= effectiveStart && record.stamp <= effectiveEnd) : [];
+  const current = aggregate(currentRecords);
   const buckets = new Map();
   if (current.events > 0) {
     for (let stamp = effectiveStart; stamp <= effectiveEnd; stamp += DAY) {
@@ -167,12 +158,8 @@ export function aggregateAnalyticsRecords(query, { records = [], asOf = localTod
     rangeLabel: labelRange(query.start, query.end),
     effectiveRangeLabel: hasWindow ? labelRange(iso(effectiveStart), iso(effectiveEnd)) : '',
     partialCoverage: hasWindow && (range.start < availability || range.end > cutoff),
-    previousLabel: hasWindow ? labelRange(iso(previousStart), iso(previousEnd)) : '—',
-    previousStart: previousStart === null ? null : iso(previousStart), previousEnd: previousEnd === null ? null : iso(previousEnd),
-    comparisonAvailable, events: current.events, users: current.users,
+    events: current.events, users: current.users,
     anonymousEvents: current.anonymousEvents, loggedInEvents: current.loggedInEvents,
-    previousEvents: prior.events, previousUsers: prior.users,
-    eventDelta: delta(current.events, prior.events, comparisonAvailable), userDelta: delta(current.users, prior.users, comparisonAvailable),
     trend: [...buckets.values()].map(bucket => ({ ...bucket, users: bucket.users.size })), ranking,
     flows: Object.fromEntries(flowDefinitions.map(flow => [flow.value, flow.steps.map(step => ({
       id: step.id, label: step.label, eventIds: [...step.eventIds],
@@ -214,7 +201,6 @@ export function summarizeAnalytics(query, asOf = localToday()) {
   if (error) throw new RangeError(error);
   const range = resolveRange(query), cutoff = time(asOf), effectiveStart = Math.max(range.start, time(DATA_START));
   const effectiveEnd = Math.min(range.end, cutoff), records = [];
-  const duration = Math.max(0, effectiveEnd - effectiveStart + DAY), start = Math.max(time(DATA_START), effectiveStart - duration);
-  for (let stamp = start; stamp <= effectiveEnd; stamp += DAY) records.push(mockDailyRecord(stamp));
+  for (let stamp = effectiveStart; stamp <= effectiveEnd; stamp += DAY) records.push(mockDailyRecord(stamp));
   return aggregateAnalyticsRecords(query, { records, asOf, sourceStart: DATA_START });
 }
