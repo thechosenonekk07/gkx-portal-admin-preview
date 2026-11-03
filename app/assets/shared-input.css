@@ -22,6 +22,9 @@
 .gkx-clear-button:focus-visible { outline: 2px solid var(--gkx-brand, #165dff); outline-offset: 1px; }
 .date-field-control > .date-field-clear { position: absolute; right: 36px; top: 50%; transform: translateY(-50%); }
 .date-field-control.has-clear > .date-field-trigger { padding-right: 68px; }
+.date-field-trigger { position: relative; }
+.date-field-trigger > span { white-space: nowrap; }
+.date-field-trigger > svg { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
 .filter-search-control > .gkx-clear-button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
 .modal .gkx-text-input { font-weight: 400; }
 
