@@ -1,16 +1,49 @@
-// One deterministic daily fixture powers every analytics view. This is preview
-// data, not an event collector or a claim that production analytics is connected.
-export const DATA_START = '2023-01-01';
-export const GRANULARITIES = Object.freeze([
-  Object.freeze({ value: 'day', label: '按日' }),
-  Object.freeze({ value: 'month', label: '按月' }),
-  Object.freeze({ value: 'year', label: '按年' }),
-]);
+// V1.5 deterministic preview fixtures share aggregation with injected records.
+export const DATA_START = '2020-01-01';
+export const GRANULARITIES = Object.freeze(['day', 'month', 'year'].map((value, index) => Object.freeze({ value, label: ['按日', '按月', '按年'][index] })));
+
+export function createFlowDefinition({ value, label, steps }) {
+  if (!value || !label || !Array.isArray(steps) || steps.length < 2) throw new TypeError('业务流程需要标识、名称和至少两个步骤');
+  const ids = new Set();
+  const normalized = steps.map(step => {
+    if (!step.id || !step.label || ids.has(step.id) || !Array.isArray(step.eventIds) || !step.eventIds.length) throw new TypeError('业务流程步骤需要唯一标识、名称和事件');
+    ids.add(step.id);
+    const eventIds = [...new Set(step.eventIds.map(String).filter(Boolean))];
+    if (!eventIds.length) throw new TypeError('业务流程步骤需要事件');
+    return Object.freeze({ id: String(step.id), label: String(step.label), eventIds: Object.freeze(eventIds) });
+  });
+  return Object.freeze({ value: String(value), label: String(label), steps: Object.freeze(normalized) });
+}
 export const FLOWS = Object.freeze([
-  Object.freeze({ value: 'search', label: '首页搜索转化' }),
-  Object.freeze({ value: 'workbench', label: '工作台使用转化' }),
-  Object.freeze({ value: 'edu', label: '学练赛转化' }),
+  createFlowDefinition({ value: 'search', label: '首页搜索转化', steps: [
+    { id: 'fulltext', label: '首页/全文检索', eventIds: ['MD-8'] },
+    { id: 'ai-search', label: '首页/AI搜索', eventIds: ['MD-10'] },
+    { id: 'recommendations', label: '首页/智能推荐-查看更多', eventIds: ['MD-12'] },
+    { id: 'strategy-directory', label: '目录/AI战略咨询/超大规模智算引擎', eventIds: ['MD-5'] },
+  ] }),
+  createFlowDefinition({ value: 'workbench', label: '工作台使用转化', steps: [
+    { id: 'research', label: '工作台/智能科研', eventIds: ['MD-18'] },
+    { id: 'paper-generation', label: '目录/AI科研/论文辅助生成', eventIds: ['MD-2'] },
+    { id: 'reading', label: '工作台/智能阅读', eventIds: ['MD-19'] },
+  ] }),
+  createFlowDefinition({ value: 'edu', label: '学练赛转化', steps: [
+    { id: 'learn', label: '首页/学', eventIds: ['MD-13'] },
+    { id: 'practice', label: '首页/练', eventIds: ['MD-15'] },
+    { id: 'compete', label: '首页/赛', eventIds: ['MD-16'] },
+  ] }),
 ]);
+export const EVENT_DEFINITIONS = Object.freeze([
+  ['MD-1', '目录', '目录/AI科研/智算资源调度'], ['MD-2', '目录', '目录/AI科研/论文辅助生成'],
+  ['MD-3', '目录', '目录/AI教育/智能备课'], ['MD-4', '目录', '目录/AI战略咨询/系统对接'],
+  ['MD-5', '目录', '目录/AI战略咨询/超大规模智算引擎'], ['MD-6', '首页', '首页/智能关联检索'],
+  ['MD-7', '首页', '首页/关键词搜索'], ['MD-8', '首页', '首页/全文检索'],
+  ['MD-9', '首页', '首页/练仿真'], ['MD-10', '首页', '首页/AI搜索'],
+  ['MD-11', '首页', '首页/搜论文'], ['MD-12', '首页', '首页/智能推荐-查看更多'],
+  ['MD-13', '首页', '首页/学'], ['MD-14', '首页', '首页/玩'],
+  ['MD-15', '首页', '首页/练'], ['MD-16', '首页', '首页/赛'],
+  ['MD-17', '首页', '首页/人才图谱'], ['MD-18', '工作台', '工作台/智能科研'],
+  ['MD-19', '工作台', '工作台/智能阅读'],
+].map(([id, module, path]) => Object.freeze({ id, module, path })));
 
 const DAY = 86400000;
 const pad = value => String(value).padStart(2, '0');
@@ -18,48 +51,24 @@ const localToday = () => {
   const now = new Date();
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 };
-const iso = time => new Date(time).toISOString().slice(0, 10);
+const iso = stamp => new Date(stamp).toISOString().slice(0, 10);
 const time = text => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(text))) return NaN;
-  const value = Date.parse(`${text}T00:00:00Z`);
-  return Number.isFinite(value) && iso(value) === text ? value : NaN;
+  const stamp = Date.parse(`${text}T00:00:00Z`);
+  return Number.isFinite(stamp) && iso(stamp) === text ? stamp : NaN;
 };
-const monthEnd = (year, month) => Date.UTC(year, month + 1, 0);
 const labelRange = (start, end) => start === end ? start : `${start} 至 ${end}`;
 const hash = text => {
   let value = 2166136261;
   for (const character of text) value = Math.imul(value ^ character.charCodeAt(0), 16777619);
   return value >>> 0;
 };
-
-const DEFINITIONS = [
-  { id: 'EVT_HOME_VIEW', module: '首页', path: '/', label: '访问首页' },
-  { id: 'EVT_SEARCH_SUBMIT', module: '首页', path: '/search', label: '发起搜索' },
-  { id: 'EVT_SEARCH_RESULT_CLICK', module: '首页', path: '/search/result', label: '点击搜索结果' },
-  { id: 'EVT_REPORT_VIEW', module: '报告管理', path: '/report/detail', label: '查看报告' },
-  { id: 'EVT_WORKBENCH_VIEW', module: '工作台', path: '/workbench', label: '进入工作台' },
-  { id: 'EVT_TOOL_OPEN', module: '工作台', path: '/workbench/tool', label: '打开工具' },
-  { id: 'EVT_TOOL_SUBMIT', module: '工作台', path: '/workbench/tool/submit', label: '提交任务' },
-  { id: 'EVT_TOOL_COMPLETE', module: '工作台', path: '/workbench/tool/result', label: '查看任务结果' },
-  { id: 'EVT_EDU_VIEW', module: '学练赛', path: '/edu', label: '进入学练赛' },
-  { id: 'EVT_COURSE_VIEW', module: '学练赛', path: '/edu/course', label: '查看课程' },
-  { id: 'EVT_PRACTICE_SUBMIT', module: '学练赛', path: '/edu/practice/submit', label: '提交练习' },
-  { id: 'EVT_CONTEST_JOIN', module: '学练赛', path: '/edu/contest/join', label: '参与竞赛' },
-  { id: 'EVT_USER_REGISTER', module: '用户管理', path: '/user/register', label: '用户注册' },
-  { id: 'EVT_ROLE_CONFIG', module: '权限配置', path: '/permission/role', label: '权限配置' },
-  { id: 'EVT_FORM_PRINT', module: '审核管理', path: '/audit/form/print', label: '表单打印' },
-  { id: 'EVT_LOGIN', module: '用户管理', path: '/login', label: '用户登录' },
-];
-const FLOW_INDICES = { search: [0, 1, 2, 3], workbench: [4, 5, 6, 7], edu: [8, 9, 10, 11] };
-const DAILY_CACHE = new Map();
-
-function resolveRange(query) {
-  const { granularity, start, end } = query;
+function resolveRange({ granularity, start, end }) {
   if (granularity === 'day') return { start: time(start), end: time(end) };
   if (granularity === 'month') {
     if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(String(start)) || !/^\d{4}-(0[1-9]|1[0-2])$/.test(String(end))) return {};
     const [year, month] = end.split('-').map(Number);
-    return { start: time(`${start}-01`), end: monthEnd(year, month - 1) };
+    return { start: time(`${start}-01`), end: Date.UTC(year, month, 0) };
   }
   if (granularity === 'year') {
     if (!/^\d{4}$/.test(String(start)) || !/^\d{4}$/.test(String(end))) return {};
@@ -67,7 +76,6 @@ function resolveRange(query) {
   }
   return {};
 }
-
 export function defaultRange(granularity = 'day', asOf = localToday()) {
   const cutoff = time(asOf);
   if (!Number.isFinite(cutoff)) throw new RangeError('统计截止日期无效');
@@ -75,131 +83,138 @@ export function defaultRange(granularity = 'day', asOf = localToday()) {
   if (granularity === 'month') return { granularity, start: `${year}-01`, end: asOf.slice(0, 7) };
   if (granularity === 'year') return { granularity, start: String(year - 2), end: String(year) };
   if (granularity !== 'day') throw new RangeError('请选择有效的统计粒度');
-  return { granularity, start: iso(cutoff - 6 * DAY), end: asOf };
+  return { granularity, start: iso(cutoff - 29 * DAY), end: asOf };
 }
-
 export function validateRange(query, asOf = localToday()) {
   if (!GRANULARITIES.some(item => item.value === query?.granularity)) return '请选择有效的统计粒度';
   if (!query.start || !query.end) return '请选择完整的时间区间';
   if (!Number.isFinite(time(asOf))) return '统计截止日期无效';
-  const resolved = resolveRange(query);
-  if (!Number.isFinite(resolved.start) || !Number.isFinite(resolved.end)) return '请输入有效的时间区间';
-  if (resolved.start > resolved.end) return '开始时间不能晚于结束时间';
+  const range = resolveRange(query);
+  if (!Number.isFinite(range.start) || !Number.isFinite(range.end)) return '请输入有效的时间区间';
+  if (range.start > range.end) return '开始时间不能晚于结束时间';
   const cutoffYear = Number(asOf.slice(0, 4));
   if (Number(String(query.start).slice(0, 4)) < 2020 || Number(String(query.end).slice(0, 4)) > cutoffYear + 1) return `时间区间请选择 2020 年至 ${cutoffYear + 1} 年`;
-  if (resolved.end - resolved.start >= 366 * 12 * DAY) return '单次统计区间不能超过 12 年';
+  if (range.end - range.start >= 366 * 12 * DAY) return '单次统计区间不能超过 12 年';
   return '';
 }
-
-function dailyRecord(stamp) {
-  if (DAILY_CACHE.has(stamp)) return DAILY_CACHE.get(stamp);
-  const date = iso(stamp), noise = hash(date), dayIndex = Math.floor((stamp - time(DATA_START)) / DAY);
-  const week = new Date(stamp).getUTCDay();
-  const weekdayFactor = week === 0 || week === 6 ? 0.74 : 1;
-  // A bounded long-term factor allows genuine period comparisons without
-  // changing past records when asOf or the selected aggregation changes.
-  const growth = 1 + Math.min(Math.max(0, dayIndex), 3650) / 10000;
-  const counts = Array(DEFINITIONS.length).fill(0);
-  for (const [flowIndex, indices] of Object.values(FLOW_INDICES).entries()) {
-    const base = [520, 340, 260][flowIndex] + hash(`${date}:${flowIndex}`) % 130;
-    counts[indices[0]] = Math.round(base * weekdayFactor * growth);
-    for (let step = 1; step < indices.length; step++) {
-      const rate = [0, 0.66, 0.58, 0.53][step] + (hash(`${date}:${flowIndex}:${step}`) % 11 - 5) / 100;
-      counts[indices[step]] = Math.floor(counts[indices[step - 1]] * rate);
+function normalizeRecords(records, cutoff) {
+  return records.map(record => {
+    const stamp = time(record.date);
+    if (!Number.isFinite(stamp)) throw new RangeError('统计记录的日期无效');
+    const counts = {};
+    for (const [id, count] of Object.entries(record.counts || {})) {
+      if (!Number.isSafeInteger(count) || count < 0) throw new RangeError('事件触发次数必须为非负整数');
+      counts[id] = count;
     }
-  }
-  for (let index = 12; index < counts.length; index++) {
-    counts[index] = Math.round((25 + hash(`${date}:${index}`) % 70) * weekdayFactor * growth);
-  }
-  const events = counts.reduce((sum, count) => sum + count, 0);
-  const users = [];
-  const activeCount = Math.min(events, Math.round((135 + noise % 100) * weekdayFactor * growth));
-  const offset = (dayIndex * 31 + noise % 19) % 4093;
-  // Overlapping stable user IDs make range UV a true union rather than a sum
-  // of daily UV. Every generated active user can have at least one event.
-  for (let index = 0; index < activeCount; index++) users.push((offset + index) % 4093);
-  const record = { stamp, date, events, users, counts };
-  DAILY_CACHE.set(stamp, record);
-  return record;
+    const events = Object.values(counts).reduce((sum, count) => sum + count, 0);
+    const anonymousEvents = record.anonymousEvents ?? 0;
+    if (!Number.isSafeInteger(anonymousEvents) || anonymousEvents < 0 || anonymousEvents > events) throw new RangeError('匿名事件次数必须包含在事件总量中');
+    const users = new Set((record.loggedInUserIds || []).filter(id => id !== null && id !== undefined && String(id).trim()).map(String));
+    if (users.size > events - anonymousEvents) throw new RangeError('登录活跃用户数不能超过登录事件次数');
+    return { stamp, date: record.date, counts, events, anonymousEvents, users };
+  }).filter(record => record.stamp <= cutoff);
 }
-
-function collect(start, end, cutoff) {
-  const result = [], lower = Math.max(time(DATA_START), start), upper = Math.min(cutoff, end);
-  for (let stamp = lower; stamp <= upper; stamp += DAY) result.push(dailyRecord(stamp));
-  return result;
-}
-
 function aggregate(records) {
-  const counts = Array(DEFINITIONS.length).fill(0), users = new Set();
+  const counts = new Map(), users = new Set();
+  let anonymousEvents = 0;
   for (const record of records) {
-    record.counts.forEach((count, index) => { counts[index] += count; });
+    for (const [id, count] of Object.entries(record.counts)) counts.set(id, (counts.get(id) || 0) + count);
     record.users.forEach(user => users.add(user));
+    anonymousEvents += record.anonymousEvents;
   }
-  return { events: counts.reduce((sum, count) => sum + count, 0), users: users.size, counts };
+  const events = [...counts.values()].reduce((sum, count) => sum + count, 0);
+  return { counts, users: users.size, events, anonymousEvents, loggedInEvents: events - anonymousEvents };
 }
-
-function shiftMonth(stamp, amount) {
-  const source = new Date(stamp), target = new Date(Date.UTC(source.getUTCFullYear(), source.getUTCMonth() + amount, 1));
-  return Date.UTC(target.getUTCFullYear(), target.getUTCMonth(), Math.min(source.getUTCDate(), new Date(monthEnd(target.getUTCFullYear(), target.getUTCMonth())).getUTCDate()));
-}
-
-function previousRange(query, range, cutoff) {
-  const effectiveEnd = cutoff < range.start ? range.end : Math.min(cutoff, range.end);
-  if (query.granularity === 'day') {
-    const duration = range.end - range.start + DAY;
-    return { start: range.start - duration, end: effectiveEnd - duration };
-  }
-  const start = new Date(range.start), end = new Date(range.end);
-  const months = query.granularity === 'year'
-    ? (end.getUTCFullYear() - start.getUTCFullYear() + 1) * 12
-    : (end.getUTCFullYear() - start.getUTCFullYear()) * 12 + end.getUTCMonth() - start.getUTCMonth() + 1;
-  // In-progress periods compare the same elapsed month/year portion, rather
-  // than comparing a few current days against an entire previous month/year.
-  return {
-    start: shiftMonth(range.start, -months),
-    end: effectiveEnd === range.end ? range.start - DAY : shiftMonth(effectiveEnd, -months),
-  };
-}
-
 const delta = (current, previous, available) => !available || previous === 0
-  ? (available && current === 0 && previous === 0 ? 0 : null)
-  : (current - previous) / previous;
+  ? (available && current === 0 && previous === 0 ? 0 : null) : (current - previous) / previous;
 
-export function summarizeAnalytics(query, asOf = localToday()) {
+// The preceding period is the immediately preceding, equally long inclusive DAY
+// window. Month/year only choose chart bins: Nov 1–3 compares Oct 29–31;
+// February 2026 compares Jan 4–31. Known missing dates count as zero, whereas
+// source history preceding sourceStart is unavailable and cannot be compared.
+export function aggregateAnalyticsRecords(query, { records = [], asOf = localToday(), sourceStart, flowDefinitions = FLOWS } = {}) {
   const error = validateRange(query, asOf);
   if (error) throw new RangeError(error);
-  const range = resolveRange(query), cutoff = time(asOf);
-  const records = collect(range.start, range.end, cutoff), current = aggregate(records);
-  const previous = previousRange(query, range, cutoff);
-  const comparisonAvailable = records.length > 0 && range.start >= time(DATA_START)
-    && previous.start >= time(DATA_START) && previous.end >= previous.start && previous.end <= cutoff;
-  const prior = comparisonAvailable ? aggregate(collect(previous.start, previous.end, cutoff)) : { events: 0, users: 0 };
+  const range = resolveRange(query), cutoff = time(asOf), normalized = normalizeRecords(records, cutoff);
+  const availability = sourceStart === undefined
+    ? (normalized.length ? Math.min(...normalized.map(record => record.stamp)) : cutoff + DAY) : time(sourceStart);
+  if (!Number.isFinite(availability)) throw new RangeError('统计数据起始日期无效');
+  const effectiveStart = Math.max(range.start, availability), effectiveEnd = Math.min(range.end, cutoff);
+  const hasWindow = effectiveStart <= effectiveEnd;
+  const duration = hasWindow ? effectiveEnd - effectiveStart + DAY : 0;
+  const previousStart = hasWindow ? effectiveStart - duration : null, previousEnd = hasWindow ? effectiveStart - DAY : null;
+  const comparisonAvailable = hasWindow && range.start >= availability && previousStart >= availability;
+  const select = (start, end) => normalized.filter(record => record.stamp >= start && record.stamp <= end);
+  const currentRecords = hasWindow ? select(effectiveStart, effectiveEnd) : [], current = aggregate(currentRecords);
+  const prior = comparisonAvailable ? aggregate(select(previousStart, previousEnd)) : { events: 0, users: 0 };
   const buckets = new Map();
-  for (const record of records) {
-    const key = query.granularity === 'day' ? record.date : query.granularity === 'month' ? record.date.slice(0, 7) : record.date.slice(0, 4);
-    if (!buckets.has(key)) buckets.set(key, { label: key, date: query.granularity === 'day' ? key : query.granularity === 'month' ? `${key}-01` : `${key}-01-01`, events: 0, users: new Set() });
-    const bucket = buckets.get(key);
-    bucket.events += record.events;
-    record.users.forEach(user => bucket.users.add(user));
+  if (current.events > 0) {
+    for (let stamp = effectiveStart; stamp <= effectiveEnd; stamp += DAY) {
+      const date = iso(stamp), key = query.granularity === 'day' ? date : query.granularity === 'month' ? date.slice(0, 7) : date.slice(0, 4);
+      if (!buckets.has(key)) buckets.set(key, { label: key, date: query.granularity === 'day' ? key : query.granularity === 'month' ? `${key}-01` : `${key}-01-01`, events: 0, users: new Set() });
+    }
+    for (const record of currentRecords) {
+      const key = query.granularity === 'day' ? record.date : query.granularity === 'month' ? record.date.slice(0, 7) : record.date.slice(0, 4);
+      const bucket = buckets.get(key);
+      bucket.events += record.events;
+      record.users.forEach(user => bucket.users.add(user));
+    }
   }
-  const ranking = DEFINITIONS.map((definition, index) => ({ ...definition, count: current.counts[index], share: current.events ? current.counts[index] / current.events : 0 }))
+  const definitions = new Map(EVENT_DEFINITIONS.map(definition => [definition.id, definition]));
+  const ranking = [...current.counts].map(([id, count]) => ({ ...(definitions.get(id) || { id, module: '其他', path: id }), count, share: current.events ? count / current.events : 0 }))
     .filter(item => item.count > 0).sort((left, right) => right.count - left.count || left.id.localeCompare(right.id)).slice(0, 10);
   return {
     rangeLabel: labelRange(query.start, query.end),
-    effectiveRangeLabel: records.length ? labelRange(records[0].date, records.at(-1).date) : '',
-    partialCoverage: records.length > 0 && (range.start < time(DATA_START) || range.end > cutoff),
-    previousLabel: labelRange(iso(previous.start), iso(previous.end)),
-    comparisonAvailable,
-    events: current.events,
-    users: current.users,
-    previousEvents: prior.events,
-    previousUsers: prior.users,
-    eventDelta: delta(current.events, prior.events, comparisonAvailable),
-    userDelta: delta(current.users, prior.users, comparisonAvailable),
-    trend: [...buckets.values()].map(bucket => ({ ...bucket, users: bucket.users.size })),
-    ranking,
-    flows: Object.fromEntries(Object.entries(FLOW_INDICES).map(([key, indices]) => [key, indices.map(index => ({ id: DEFINITIONS[index].id, label: DEFINITIONS[index].label, count: current.counts[index] }))])),
-    dataStart: DATA_START,
-    dataThrough: asOf,
+    effectiveRangeLabel: hasWindow ? labelRange(iso(effectiveStart), iso(effectiveEnd)) : '',
+    partialCoverage: hasWindow && (range.start < availability || range.end > cutoff),
+    previousLabel: hasWindow ? labelRange(iso(previousStart), iso(previousEnd)) : '—',
+    previousStart: previousStart === null ? null : iso(previousStart), previousEnd: previousEnd === null ? null : iso(previousEnd),
+    comparisonAvailable, events: current.events, users: current.users,
+    anonymousEvents: current.anonymousEvents, loggedInEvents: current.loggedInEvents,
+    previousEvents: prior.events, previousUsers: prior.users,
+    eventDelta: delta(current.events, prior.events, comparisonAvailable), userDelta: delta(current.users, prior.users, comparisonAvailable),
+    trend: [...buckets.values()].map(bucket => ({ ...bucket, users: bucket.users.size })), ranking,
+    flows: Object.fromEntries(flowDefinitions.map(flow => [flow.value, flow.steps.map(step => ({
+      id: step.id, label: step.label, eventIds: [...step.eventIds],
+      count: [...new Set(step.eventIds)].reduce((sum, id) => sum + (current.counts.get(id) || 0), 0),
+    }))])),
+    dataStart: iso(availability), dataThrough: asOf,
   };
+}
+const DAILY_CACHE = new Map();
+function mockDailyRecord(stamp) {
+  if (DAILY_CACHE.has(stamp)) return DAILY_CACHE.get(stamp);
+  const date = iso(stamp), noise = hash(date), dayIndex = Math.floor((stamp - time(DATA_START)) / DAY);
+  const weekday = new Date(stamp).getUTCDay(), weekdayFactor = weekday === 0 || weekday === 6 ? .74 : 1;
+  const growth = 1 + Math.min(Math.max(0, dayIndex), 3650) / 10000;
+  const counts = {}, assigned = new Set();
+  for (const [flowIndex, flow] of FLOWS.entries()) {
+    let count = Math.round(([520, 340, 260][flowIndex] + hash(`${date}:${flowIndex}`) % 130) * weekdayFactor * growth);
+    flow.steps.forEach((step, index) => {
+      if (index) count = Math.floor(count * (.7 - index * .06 + (hash(`${date}:${flowIndex}:${index}`) % 11 - 5) / 100));
+      step.eventIds.forEach((id, eventIndex) => {
+        const part = Math.floor(count / step.eventIds.length) + (eventIndex < count % step.eventIds.length ? 1 : 0);
+        counts[id] = (counts[id] || 0) + part;
+        assigned.add(id);
+      });
+    });
+  }
+  for (const definition of EVENT_DEFINITIONS) if (!assigned.has(definition.id)) counts[definition.id] = Math.round((25 + hash(`${date}:${definition.id}`) % 70) * weekdayFactor * growth);
+  const events = Object.values(counts).reduce((sum, count) => sum + count, 0);
+  const anonymousEvents = Math.floor(events * (.2 + noise % 16 / 100));
+  const activeCount = Math.min(events - anonymousEvents, Math.round((135 + noise % 100) * weekdayFactor * growth));
+  const offset = (dayIndex * 31 + noise % 19) % 4093;
+  const loggedInUserIds = Array.from({ length: activeCount }, (_, index) => `user-${(offset + index) % 4093}`);
+  const record = { date, counts, anonymousEvents, loggedInUserIds };
+  DAILY_CACHE.set(stamp, record);
+  return record;
+}
+export function summarizeAnalytics(query, asOf = localToday()) {
+  const error = validateRange(query, asOf);
+  if (error) throw new RangeError(error);
+  const range = resolveRange(query), cutoff = time(asOf), effectiveStart = Math.max(range.start, time(DATA_START));
+  const effectiveEnd = Math.min(range.end, cutoff), records = [];
+  const duration = Math.max(0, effectiveEnd - effectiveStart + DAY), start = Math.max(time(DATA_START), effectiveStart - duration);
+  for (let stamp = start; stamp <= effectiveEnd; stamp += DAY) records.push(mockDailyRecord(stamp));
+  return aggregateAnalyticsRecords(query, { records, asOf, sourceStart: DATA_START });
 }

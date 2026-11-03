@@ -7,7 +7,7 @@ export function installTableOverflowTooltips() {
   const controls = 'button,input,select,textarea,[role="button"],[role="checkbox"],[role="radio"],[contenteditable="true"]';
   const excludedCells = '.table-action-cell,.table-select-cell,.resource-picker-select-col,.inline-actions';
   const decoration = 'img,picture,svg,canvas,video,audio,iframe,[role="img"],[class*="avatar" i],[class*="logo" i]';
-  const hidden = '[hidden],[aria-hidden="true"],.sr-only,.visually-hidden,script,style,template';
+  const hidden = '[hidden],[inert],[aria-hidden="true"],.sr-only,.visually-hidden,script,style,template';
   const knownText = '[data-overflow-text],.table-cell-text,.report-version-cell,.page-tree-label-text,.page-route-text,.arco-table-th-item-title,.sortable-table-header>span:first-child';
   const secretHeading = /token|密钥|秘钥|密码|认证凭证|令牌(?:字符串|值)/i;
   let candidates = new Map();
@@ -254,7 +254,7 @@ export function installTableOverflowTooltips() {
     if (relevant) scheduleScan();
   });
   observer.observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true,
-    attributeFilter: ['class', 'style', 'hidden', 'aria-hidden', 'data-overflow-text', 'colspan', 'rowspan'] });
+    attributeFilter: ['class', 'style', 'hidden', 'inert', 'aria-hidden', 'data-overflow-text', 'colspan', 'rowspan'] });
   document.addEventListener('pointerover', onPointerOver, true);
   document.addEventListener('pointerout', onPointerOut, true);
   document.addEventListener('pointerdown', onPointerDown, true);
