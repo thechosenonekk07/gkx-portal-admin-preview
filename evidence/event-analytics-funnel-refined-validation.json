@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-03",
+  "scope": "事件转化率视觉与交互",
+  "viewports": [
+    1280,
+    1800,
+    900,
+    390
+  ],
+  "flows": {
+    "search": {
+      "counts": [
+        20525,
+        13245,
+        7658,
+        3995
+      ],
+      "overall": "19.5%",
+      "rates": [
+        "起始步骤",
+        "64.5%",
+        "57.8%",
+        "52.2%"
+      ]
+    },
+    "workbench": {
+      "counts": [
+        14078,
+        8914,
+        5212
+      ],
+      "overall": "37.0%",
+      "rates": [
+        "起始步骤",
+        "63.3%",
+        "58.5%"
+      ]
+    },
+    "edu": {
+      "counts": [
+        11336,
+        7259,
+        4173
+      ],
+      "overall": "36.8%",
+      "rates": [
+        "起始步骤",
+        "64.0%",
+        "57.5%"
+      ]
+    }
+  },
+  "loading": {
+    "busy": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ],
+    "flowDisabled": true,
+    "help": false,
+    "inert": true
+  },
+  "empty": "事件转化率\n业务流程\n首页搜索转化\n所选时间区间暂无转化数据",
+  "keyboard": [
+    {
+      "active": false,
+      "focused": false,
+      "index": 1,
+      "outline": "none"
+    },
+    {
+      "active": true,
+      "focused": true,
+      "index": 2,
+      "outline": "solid"
+    },
+    {
+      "active": false,
+      "focused": false,
+      "index": 3,
+      "outline": "none"
+    },
+    {
+      "active": false,
+      "focused": false,
+      "index": 4,
+      "outline": "none"
+    }
+  ],
+  "mobile": {
+    "chart": {
+      "bottom": 528.5,
+      "height": 192,
+      "left": 62,
+      "right": 328,
+      "top": 336.5,
+      "width": 266,
+      "x": 62,
+      "y": 336.5
+    },
+    "documentWidth": 390,
+    "rows": [
+      {
+        "path": "首页/全文检索",
+        "scroll": 266,
+        "width": 266
+      },
+      {
+        "path": "首页/AI搜索",
+        "scroll": 266,
+        "width": 266
+      },
+      {
+        "path": "首页/智能推荐-查看更多",
+        "scroll": 266,
+        "width": 266
+      },
+      {
+        "path": "目录/AI战略咨询/超大规模智算引擎",
+        "scroll": 266,
+        "width": 266
+      }
+    ],
+    "titleDirection": "row",
+    "viewport": 390
+  },
+  "tooltip": {
+    "focusOpen": true,
+    "escapeClose": true,
+    "enterReopen": true,
+    "gapRemainsOpen": true,
+    "contentRemainsOpen": true
+  },
+  "consoleErrors": [],
+  "boundaries": [
+    "No real tracking/statistics API used",
+    "No physical mobile device test",
+    "Animation slow-motion panel not available; checked declared transitions and reduced-motion CSS",
+    "Original user tab untouched"
+  ]
+}

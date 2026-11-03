@@ -276,3 +276,14 @@
 
 证据：`evidence/event-analytics-current-only.png`、`event-analytics-current-only-validation.json`。此前关于保留环比的判断和截图记录为V1.5阶段历史，当前以本节和原文取舍记录为准。
 
+
+
+# 2026-11-03 参考图表资源优化事件转化率
+
+本轮先查看 TDesign 公开图表资源与本地现状，再针对信息层级和比例表达调整；未复制其资产或组件。详见 `evidence/event-analytics-funnel-refined-audit.md`。
+
+- 分离进度条替换为连续居中漏斗与对齐步骤明细，整体率在图形上方突出；三条流程共用。保留 GKX 颜色、字体、边框、下拉和焦点样式。窄屏改为上图下明细。
+- 各层上沿按次数共用比例，末层等宽；0值没有虚假面积，真实回升不强制缩窄。说明浮层与鼠标／键盘高亮逻辑补全，Esc后可Enter重开、跨间隙不消失。
+- 浏览器验证1280、1800、900、390px；搜索4步整体19.5%、工作台3步37.0%、学练赛3步36.8%，数值与口径未改变。加载禁用与2027年空态正常。390px无页面横向溢出，说明完整位于屏内。
+- 16项模型、10项查询状态、7项几何边界共33项通过；构建、原始12资源哈希、54当前文件HTTP/MIME与本地产物一致性检查通过。浏览器无控制台错误；用户原标签页未动，视口恢复。未做真机或动画面板慢放检查，未接入真实统计API。
+- 证据：`evidence/event-analytics-funnel-refined.png`、`event-analytics-funnel-refined-focus.png`、`event-analytics-funnel-refined-mobile.png`、`event-analytics-funnel-refined-mobile-details.png`与`event-analytics-funnel-refined-validation.json`。

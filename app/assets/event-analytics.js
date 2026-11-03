@@ -1,5 +1,6 @@
 import { GRANULARITIES, FLOWS, defaultRange, validateRange, summarizeAnalytics } from './event-analytics-model.js';
 import { createAnalyticsQueryController, createPreviewAnalyticsLoader } from './event-analytics-query.js';
+import { buildFunnelGeometry } from './event-analytics-funnel.js';
 
 // Inject the captured application's runtime and established controls.
 export function createEventAnalytics({ React, Button, Select, DatePicker }) {
@@ -172,29 +173,77 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
   function Funnel({ steps, flow, onFlowChange, loading }) {
     const first = steps[0]?.count || 0;
     const overall = first ? steps.at(-1).count / first : null;
-    const maximum = Math.max(1, ...steps.map(step => step.count));
+    const geometry = buildFunnelGeometry(steps);
+    const [help, setHelp] = React.useState({ hover: false, focus: false, dismissed: false });
+    const helpOpen = !help.dismissed && (help.hover || help.focus);
+    const [hovered, setHovered] = React.useState(null);
+    const [focused, setFocused] = React.useState(null);
+    const active = hovered ?? focused;
+    const helpId = React.useId();
+    React.useEffect(() => { setHelp({ hover: false, focus: false, dismissed: false }); setHovered(null); setFocused(null); }, [flow, loading]);
+    const hasData = steps.some(step => step.count > 0);
     return h('section', { className: 'analytics-panel analytics-funnel' },
-      h('div', { className: 'analytics-panel-head' },
-        h('div', null, h('h3', null, '事件转化率'), h('span', { className: 'analytics-panel-sub' }, '步骤转化率 = 本步骤触发次数 ÷ 上一步骤触发次数')),
+      h('div', { className: 'analytics-panel-head analytics-funnel-head' },
+        h('div', { className: 'analytics-funnel-title' }, h('h3', null, '事件转化率'),
+          h('div', { className: 'analytics-funnel-help',
+            onMouseEnter: () => setHelp(state => ({ ...state, hover: true, dismissed: false })),
+            onMouseLeave: () => setHelp(state => ({ ...state, hover: false })),
+            onFocus: () => setHelp(state => ({ ...state, focus: true, dismissed: false })),
+            onBlur: () => setHelp(state => ({ ...state, focus: false })),
+          }, h('button', { type: 'button', className: 'analytics-info-button',
+            'aria-label': '查看转化率计算口径', 'aria-expanded': helpOpen, 'aria-controls': helpId,
+            'aria-describedby': helpOpen ? helpId : undefined,
+            onClick: () => setHelp(state => ({ ...state, dismissed: false, focus: true })),
+            onKeyDown: event => { if (event.key === 'Escape') { event.preventDefault(); setHelp(state => ({ ...state, dismissed: true })); } },
+          }, h('svg', { viewBox: '0 0 16 16', fill: 'none', 'aria-hidden': true },
+            h('circle', { cx: 8, cy: 8, r: 6, stroke: 'currentColor', strokeWidth: 1.5 }),
+            h('path', { d: 'M8 7v4M8 4.5v.1', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round' }))),
+          helpOpen && h('div', { id: helpId, role: 'tooltip', className: 'analytics-funnel-help-content' },
+            h('strong', null, '计算口径'),
+            h('p', null, '步骤转化率 = 本步骤触发次数 ÷ 上一步骤触发次数'),
+            h('p', null, '整体转化率 = 末步骤触发次数 ÷ 首步骤触发次数'),
+            h('p', null, '各层上沿宽度表示该步骤触发次数；分母为 0 时显示“—”。')))),
         h('div', { className: 'analytics-funnel-tools' },
-          h('span', null, '业务流程'), h(Select, { ariaLabel: '业务流程', value: flow, options: FLOWS, onChange: onFlowChange, disabled: loading }),
-          h('span', { className: 'analytics-overall' }, '整体转化率 ', h('b', null, percentage(overall))))),
-      !steps.some(step => step.count > 0) ? h('div', { className: 'analytics-empty' }, '所选时间区间暂无转化数据')
-        : h('ol', { key: flow, className: 'analytics-funnel-steps', 'aria-label': `${FLOWS.find(item => item.value === flow)?.label || ''}漏斗` }, steps.map((step, index) => {
-          const previous = steps[index - 1]?.count;
-          const conversion = index ? previous ? step.count / previous : null : null;
-          return h('li', { key: step.id, className: 'analytics-funnel-step', tabIndex: 0,
-            'aria-label': `步骤${index + 1}，${step.label}，触发${number(step.count)}次${index ? `，步骤转化率${percentage(conversion)}${previous === 0 ? '，上一步触发次数为0' : ''}` : '，起始步骤'}`,
-          }, index > 0 && h('div', { className: 'analytics-funnel-transition', 'aria-hidden': true },
-            h('span', null, '↓ 步骤转化率 ', h('b', null, percentage(conversion)))),
-            h('div', { className: 'analytics-funnel-row' },
-              h('div', { className: 'analytics-funnel-label' },
-                h('h4', null, step.label),
-                h('span', null, `步骤 ${index + 1} · ${step.eventIds?.join('、') || step.id}`)),
-              h('div', { className: 'analytics-funnel-bar', 'aria-hidden': true },
-                h('i', { style: { width: `${step.count / maximum * 100}%` } })),
-              h('strong', { className: 'analytics-funnel-count' }, number(step.count), h('small', null, ' 次'))));
-        })),
+          h('span', null, '业务流程'), h(Select, { ariaLabel: '业务流程', value: flow, options: FLOWS, onChange: onFlowChange, disabled: loading }))),
+      !hasData ? h('div', { className: 'analytics-empty' }, '所选时间区间暂无转化数据')
+        : h('div', { className: 'analytics-funnel-body' },
+          h('div', { className: 'analytics-funnel-column-head', 'aria-hidden': true },
+            h('div', { className: 'analytics-funnel-summary' },
+              h('span', null, '整体转化率'), h('strong', null, percentage(overall))),
+            h('div', { className: 'analytics-funnel-detail-head' },
+              h('span', null, '流程步骤'), h('span', null, '触发次数'), h('span', null, '步骤转化率'))),
+          h('span', { className: 'analytics-sr-only' }, `整体转化率 ${percentage(overall)}`),
+          h('div', { className: 'analytics-funnel-mobile-chart', 'aria-hidden': true },
+            h('svg', { viewBox: `0 0 1000 ${68 * steps.length}`, preserveAspectRatio: 'none', style: { height: 48 * steps.length } },
+              geometry.map((shape, index) => h('g', { key: steps[index].id, transform: `translate(0 ${68 * index})`,
+                className: active === index ? 'is-active' : undefined,
+                onMouseEnter: () => setHovered(index), onMouseLeave: () => setHovered(null),
+              }, shape.points ? h('polygon', { points: shape.points }) : h('line', { x1: 490, x2: 510, y1: 34, y2: 34, className: 'analytics-funnel-connector' }))))),
+          h('ol', { key: flow, className: 'analytics-funnel-steps', 'aria-label': `${FLOWS.find(item => item.value === flow)?.label || ''}漏斗` }, steps.map((step, index) => {
+            const previous = steps[index - 1]?.count;
+            const conversion = index && previous ? step.count / previous : null;
+            const shape = geometry[index];
+            return h('li', { key: step.id, className: `analytics-funnel-step${active === index ? ' is-active' : ''}`, tabIndex: 0,
+              onMouseEnter: () => setHovered(index), onMouseLeave: () => setHovered(null),
+              onFocus: () => { setHovered(null); setFocused(index); }, onBlur: () => setFocused(null),
+              'aria-label': `步骤${index + 1}，${step.label}，${step.eventIds?.join('、') || step.id}，触发${number(step.count)}次${index ? `，步骤转化率${percentage(conversion)}${previous === 0 ? '，上一步触发次数为0' : ''}` : '，起始步骤'}`,
+            }, h('div', { className: 'analytics-funnel-shape', 'aria-hidden': true },
+                h('svg', { viewBox: '0 0 1000 68', preserveAspectRatio: 'none' },
+                  h('line', { x1: 500, x2: 500, y1: 0, y2: 68, className: 'analytics-funnel-axis' }),
+                  shape.points && h('polygon', { points: shape.points }),
+                  h('line', { x1: shape.connectorStart, x2: 1000, y1: 34, y2: 34, className: 'analytics-funnel-connector' }),
+                  !shape.points && h('circle', { cx: 500, cy: 34, r: 3, className: 'analytics-funnel-zero' }))),
+              h('div', { className: 'analytics-funnel-detail' },
+                h('div', { className: 'analytics-funnel-label' },
+                  h('span', { className: 'analytics-funnel-order', 'aria-hidden': true }, String(index + 1).padStart(2, '0')),
+                  h('div', null, h('h4', null, step.label), h('span', null, step.eventIds?.join('、') || step.id))),
+                h('div', { className: 'analytics-funnel-count' },
+                  h('span', { className: 'analytics-funnel-mobile-label', 'aria-hidden': true }, '触发次数'),
+                  h('strong', null, number(step.count)), h('small', null, '次')),
+                h('div', { className: 'analytics-funnel-rate' },
+                  h('span', { className: 'analytics-funnel-mobile-label', 'aria-hidden': true }, '步骤转化率'),
+                  index ? h('strong', null, percentage(conversion)) : h('span', { className: 'analytics-funnel-start' }, '起始步骤'))));
+          }))),
     );
   }
 
