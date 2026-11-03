@@ -185,18 +185,20 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
           h('span', null, '业务流程'), h(Select, { ariaLabel: '业务流程', value: flow, options: FLOWS, onChange: onFlowChange, disabled: loading }),
           h('span', { className: 'analytics-overall' }, '整体转化率 ', h('b', null, percentage(overall))))),
       !steps.some(step => step.count > 0) ? h('div', { className: 'analytics-empty' }, '所选时间区间暂无转化数据')
-        : h('div', { key: flow, className: 'analytics-funnel-steps', style: { '--analytics-flow-count': steps.length } }, steps.map((step, index) => {
+        : h('ol', { key: flow, className: 'analytics-funnel-steps', 'aria-label': `${FLOWS.find(item => item.value === flow)?.label || ''}漏斗` }, steps.map((step, index) => {
           const previous = steps[index - 1]?.count;
           const conversion = index ? previous ? step.count / previous : null : null;
-          return h('article', { key: step.id, className: 'analytics-funnel-step', tabIndex: 0,
-            'aria-label': `${step.label}，触发${number(step.count)}次${index ? `，步骤转化率${percentage(conversion)}` : ''}`,
-          }, h('div', { className: 'analytics-step-head' }, h('span', null, `步骤 ${index + 1}`), h('span', null, step.eventIds?.join('、') || step.id)),
-            h('h4', null, step.label),
-            h('strong', null, number(step.count), h('small', null, ' 次')),
-            h('div', { className: 'analytics-funnel-bar', 'aria-hidden': true }, h('i', { style: { width: `${step.count / maximum * 100}%` } })),
-            h('div', { className: 'analytics-step-rate' }, index ? h(React.Fragment, null, '步骤转化率', h('b', null, percentage(conversion))) : '起始步骤'),
-            index > 0 && h('div', { className: 'analytics-step-loss' }, step.count === previous ? '与上一步持平'
-              : `较上一步${step.count > previous ? '增加' : '减少'} ${number(Math.abs(previous - step.count))} 次`));
+          return h('li', { key: step.id, className: 'analytics-funnel-step', tabIndex: 0,
+            'aria-label': `步骤${index + 1}，${step.label}，触发${number(step.count)}次${index ? `，步骤转化率${percentage(conversion)}${previous === 0 ? '，上一步触发次数为0' : ''}` : '，起始步骤'}`,
+          }, index > 0 && h('div', { className: 'analytics-funnel-transition', 'aria-hidden': true },
+            h('span', null, '↓ 步骤转化率 ', h('b', null, percentage(conversion)))),
+            h('div', { className: 'analytics-funnel-row' },
+              h('div', { className: 'analytics-funnel-label' },
+                h('h4', null, step.label),
+                h('span', null, `步骤 ${index + 1} · ${step.eventIds?.join('、') || step.id}`)),
+              h('div', { className: 'analytics-funnel-bar', 'aria-hidden': true },
+                h('i', { style: { width: `${step.count / maximum * 100}%` } })),
+              h('strong', { className: 'analytics-funnel-count' }, number(step.count), h('small', null, ' 次'))));
         })),
     );
   }

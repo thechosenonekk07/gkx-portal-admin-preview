@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-03",
+  "decision": {
+    "comparison": "Retained: explicitly required for both KPIs in V1.5 1.3; complements absolute totals and current-range trend.",
+    "funnel": "Required: converted horizontal cards to the supplied vertical centered funnel presentation."
+  },
+  "states": [
+    {
+      "state": "search-desktop",
+      "comparisons": [
+        "+2.3%较上一周期 112,128",
+        "+8.8%较上一周期 1,097"
+      ],
+      "flow": "首页搜索转化",
+      "overall": "整体转化率 19.5%",
+      "steps": [
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 508.078125,
+          "count": "20,525 次",
+          "label": "首页/全文检索",
+          "rowTop": 294
+        },
+        {
+          "barCenter": 835.95703125,
+          "barWidth": 327.8671875,
+          "count": "13,245 次",
+          "label": "首页/AI搜索",
+          "rowTop": 390,
+          "transition": "↓ 步骤转化率 64.5%"
+        },
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 189.5625,
+          "count": "7,658 次",
+          "label": "首页/智能推荐-查看更多",
+          "rowTop": 486,
+          "transition": "↓ 步骤转化率 57.8%"
+        },
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 98.890625,
+          "count": "3,995 次",
+          "label": "目录/AI战略咨询/超大规模智算引擎",
+          "rowTop": 582,
+          "transition": "↓ 步骤转化率 52.2%"
+        }
+      ]
+    },
+    {
+      "state": "workbench-desktop",
+      "comparisons": [
+        "+2.3%较上一周期 112,128",
+        "+8.8%较上一周期 1,097"
+      ],
+      "flow": "工作台使用转化",
+      "overall": "整体转化率 37.0%",
+      "steps": [
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 508.078125,
+          "count": "14,078 次",
+          "label": "工作台/智能科研",
+          "rowTop": 442
+        },
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 321.703125,
+          "count": "8,914 次",
+          "label": "目录/AI科研/论文辅助生成",
+          "rowTop": 538,
+          "transition": "↓ 步骤转化率 63.3%"
+        },
+        {
+          "barCenter": 835.95703125,
+          "barWidth": 188.1015625,
+          "count": "5,212 次",
+          "label": "工作台/智能阅读",
+          "rowTop": 634,
+          "transition": "↓ 步骤转化率 58.5%"
+        }
+      ]
+    },
+    {
+      "state": "edu-desktop",
+      "comparisons": [
+        "+2.3%较上一周期 112,128",
+        "+8.8%较上一周期 1,097"
+      ],
+      "flow": "学练赛转化",
+      "overall": "整体转化率 36.8%",
+      "steps": [
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 508.078125,
+          "count": "11,336 次",
+          "label": "首页/学",
+          "rowTop": 442
+        },
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 325.34375,
+          "count": "7,259 次",
+          "label": "首页/练",
+          "rowTop": 538,
+          "transition": "↓ 步骤转化率 64.0%"
+        },
+        {
+          "barCenter": 835.9609375,
+          "barWidth": 187.03125,
+          "count": "4,173 次",
+          "label": "首页/赛",
+          "rowTop": 634,
+          "transition": "↓ 步骤转化率 57.5%"
+        }
+      ]
+    },
+    {
+      "state": "search-mobile",
+      "comparisons": [
+        "+2.3%较上一周期 112,128",
+        "+8.8%较上一周期 1,097"
+      ],
+      "flow": "首页搜索转化",
+      "overall": "整体转化率 19.5%",
+      "steps": [
+        {
+          "barCenter": 151,
+          "barWidth": 178,
+          "count": "20,525 次",
+          "label": "首页/全文检索",
+          "rowTop": 246
+        },
+        {
+          "barCenter": 151,
+          "barWidth": 114.859375,
+          "count": "13,245 次",
+          "label": "首页/AI搜索",
+          "rowTop": 386,
+          "transition": "↓ 步骤转化率 64.5%"
+        },
+        {
+          "barCenter": 151,
+          "barWidth": 66.40625,
+          "count": "7,658 次",
+          "label": "首页/智能推荐-查看更多",
+          "rowTop": 526,
+          "transition": "↓ 步骤转化率 57.8%"
+        },
+        {
+          "barCenter": 151,
+          "barWidth": 34.640625,
+          "count": "3,995 次",
+          "label": "目录/AI战略咨询/超大规模智算引擎",
+          "rowTop": 666,
+          "transition": "↓ 步骤转化率 52.2%"
+        }
+      ],
+      "layout": {
+        "bodyWidth": 390,
+        "overflow": [],
+        "width": 390
+      }
+    }
+  ],
+  "checks": {
+    "steps": [
+      4,
+      3,
+      3
+    ],
+    "sharedCountScale": true,
+    "centerAligned": true,
+    "viewportRestored": true,
+    "modelAndQueryTests": 29
+  },
+  "consoleErrors": [],
+  "boundary": "Visual update only; deterministic preview data and existing query lifecycle retained. Nonmonotonic/zero denominator cases covered by existing model tests and renderer code review."
+}
