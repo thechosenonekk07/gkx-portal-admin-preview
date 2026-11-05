@@ -76,6 +76,7 @@ function resolveRange({ granularity, start, end }) {
   }
   return {};
 }
+export { resolveRange as resolveAnalyticsRange };
 export function defaultRange(granularity = 'day', asOf = localToday()) {
   const cutoff = time(asOf);
   if (!Number.isFinite(cutoff)) throw new RangeError('统计截止日期无效');

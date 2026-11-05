@@ -1,10 +1,13 @@
 import { GRANULARITIES, FLOWS, defaultRange, validateRange, summarizeAnalytics } from './event-analytics-model.js';
 import { createAnalyticsQueryController, createPreviewAnalyticsLoader } from './event-analytics-query.js';
 import { buildFunnelGeometry } from './event-analytics-funnel.js';
+import { summarizeBehavior } from './event-behavior-model.js';
+import { createEventBehavior } from './event-behavior.js';
 
 // Inject the captured application's runtime and established controls.
 export function createEventAnalytics({ React, Button, Select, DatePicker }) {
   const h = React.createElement;
+  const BehaviorAnalysis = createEventBehavior({ React });
   const number = value => Number(value || 0).toLocaleString('zh-CN');
   const percentage = value => value == null ? '—' : `${(value * 100).toFixed(1)}%`;
   const today = () => new Intl.DateTimeFormat('en-CA', {
@@ -277,7 +280,10 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
     }, [loading]);
     React.useEffect(() => {
       const controller = createAnalyticsQueryController({
-        load: createPreviewAnalyticsLoader({ compute: query => summarizeAnalytics(query, today()) }),
+        load: createPreviewAnalyticsLoader({ compute: query => {
+          const asOf = today();
+          return { ...summarizeAnalytics(query, asOf), behavior: summarizeBehavior(query, asOf) };
+        } }),
         onState: update => setRequest(previous => update.status === 'success'
           ? { status: 'success', query: update.query, display: { query: update.query, result: update.result }, error: '' }
           : { ...previous, status: update.status, query: update.query,
@@ -357,7 +363,8 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
           h('div', { className: 'analytics-data-grid' },
             module('事件增长趋势', h(Trend, { data: result.trend, rangeLabel: result.rangeLabel, loading })),
             module('事件排行', h(Ranking, { rows: result.ranking }))),
-          module('事件转化率', h(Funnel, { steps: result.flows[flow] || [], flow, onFlowChange: setFlow, loading }))),
+          module('事件转化率', h(Funnel, { steps: result.flows[flow] || [], flow, onFlowChange: setFlow, loading })),
+          h(BehaviorAnalysis, { data: result.behavior, loading, renderModule: module })),
     );
   };
 }

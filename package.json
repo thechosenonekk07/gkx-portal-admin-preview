@@ -14,7 +14,7 @@
     "local:status": "node scripts/preview.mjs status",
     "local:stop": "node scripts/preview.mjs stop",
     "check": "node scripts/check.mjs",
-    "test:analytics": "node scripts/test-event-analytics.mjs && node scripts/test-event-analytics-query.mjs && node scripts/test-event-analytics-funnel.mjs",
+    "test:analytics": "node scripts/test-event-analytics.mjs && node scripts/test-event-analytics-query.mjs && node scripts/test-event-analytics-funnel.mjs && node scripts/test-event-behavior.mjs",
     "verify:origin": "node scripts/check.mjs --origin",
     "verify:http": "node scripts/check.mjs --http"
   }
