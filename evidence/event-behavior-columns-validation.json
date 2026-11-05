@@ -1,0 +1,121 @@
+{
+  "nonLow": {
+    "advice": false,
+    "candidates": 3,
+    "detail": "智能阅读工作台有效曝光2,879点击访问762点击率26.5%",
+    "selected": "MD-19"
+  },
+  "keyboardPreview": {
+    "focused": "MD-10",
+    "preview": "MD-10",
+    "selected": "MD-19"
+  },
+  "keyboardSelection": {
+    "detail": "MD-10",
+    "selected": "MD-10",
+    "tooltip": false
+  },
+  "edgeKeyboard": {
+    "detail": "MD-8",
+    "selected": "MD-10",
+    "tooltip": "全文检索首页首页/全文检索有效曝光访问数2,818 次点击访问数85 次点击率3.0%85 ÷ 2,818 × 100% = 3.0%"
+  },
+  "mobileLast": {
+    "detail": "MD-19",
+    "focused": "MD-19",
+    "pageOverflow": false,
+    "scrollport": [
+      {
+        "left": 312,
+        "scrollWidth": 588,
+        "width": 266
+      }
+    ],
+    "selected": "MD-10",
+    "tooltip": {
+      "bottom": 723,
+      "height": 183,
+      "left": 57,
+      "right": 333,
+      "top": 540,
+      "width": 276,
+      "x": 57,
+      "y": 540
+    }
+  },
+  "hoverPreview": {
+    "advice": true,
+    "detail": "MD-8",
+    "selected": "MD-19"
+  },
+  "hoverRestored": {
+    "advice": false,
+    "detail": "MD-19",
+    "selected": "MD-19"
+  },
+  "loading": {
+    "busy": [
+      "事件总量",
+      "活跃用户数",
+      "事件增长趋势",
+      "事件排行",
+      "事件转化率",
+      "页面停留时长",
+      "按钮点击率与优化建议"
+    ],
+    "engagementInert": true
+  },
+  "requery": {
+    "detail": "MD-19",
+    "selected": "MD-19"
+  },
+  "mobileAdviceHorizontalFinal": {
+    "detail": "MD-8",
+    "left": 0,
+    "selected": "MD-8"
+  },
+  "mobileKeyboardEnd": {
+    "detail": "MD-19",
+    "focus": "MD-19",
+    "selected": "MD-10",
+    "tooltip": "智能阅读工作台工作台/智能阅读有效曝光访问数2,879 次点击访问数762 次点击率26.5%762 ÷ 2,879 × 100% = 26.5%"
+  },
+  "mobileKeyboardHome": {
+    "detail": "MD-8",
+    "focus": "MD-8",
+    "selected": "MD-10",
+    "tooltip": "全文检索首页首页/全文检索有效曝光访问数2,818 次点击访问数85 次点击率3.0%85 ÷ 2,818 × 100% = 3.0%"
+  },
+  "help": {
+    "hidden": "false",
+    "rect": {
+      "bottom": 683,
+      "height": 198,
+      "left": 57,
+      "right": 333,
+      "top": 485,
+      "width": 276,
+      "x": 57,
+      "y": 485
+    },
+    "text": "计算口径点击率 = 点击访问数 ÷ 有效曝光访问数。同一次页面访问内，每个按钮的有效曝光和点击各计一次。没有有效曝光时显示“—”，不参与最低点击率排序。按访问开始日期归属，统计已结束的有效访问。"
+  },
+  "helpEscape": 0,
+  "console": [
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-11-05T09:31:38.209Z"
+    }
+  ],
+  "consoleAssessment": "初次开页一次MutationObserver启动错误，后续重载与交互未新增；来源尚未定位。",
+  "mobileAdviceInitialMeasurement": {
+    "adviceTop": 383,
+    "detail": "MD-8",
+    "hasAdvice": true,
+    "horizontal": 44,
+    "selected": "MD-8",
+    "topBefore": 433
+  },
+  "note": "mobileAdviceInitialMeasurement为水平定位边距修正前的中间记录；最终首项水平位置以mobileAdviceHorizontalFinal为准。"
+}

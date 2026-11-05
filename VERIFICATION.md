@@ -289,3 +289,6 @@
 - 浏览器验证1280、1800、900、390px；搜索4步整体19.5%、工作台3步37.0%、学练赛3步36.8%，数值与口径未改变。加载禁用与2027年空态正常。390px无页面横向溢出，说明完整位于屏内。
 - 16项模型、10项查询状态、7项几何边界共33项通过；构建、原始12资源哈希、54当前文件HTTP/MIME与本地产物一致性检查通过。浏览器无控制台错误；用户原标签页未动，视口恢复。未做真机或动画面板慢放检查，未接入真实统计API。
 - 证据：`evidence/event-analytics-funnel-refined.png`、`event-analytics-funnel-refined-focus.png`、`event-analytics-funnel-refined-mobile.png`、`event-analytics-funnel-refined-mobile-details.png`与`event-analytics-funnel-refined-validation.json`。
+
+
+后续视觉与联动升级（2026-11-05）：两图改为有零起点坐标、细网格及漂亮刻度的纵向柱图；点击率与最低三项/摘要/建议合成一个加载边界。固定选择与临时预览分开，非最低项不套建议；方向键/Enter/Esc、390px整图滚动、说明浮层与7模块查询联动已核查。53项测试、58文件HTTP及原12资源校验通过。证据与未验证边界见 evidence/event-behavior-audit.md 文末和 event-behavior-columns-validation.json。
