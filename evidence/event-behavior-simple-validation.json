@@ -1,0 +1,56 @@
+{
+  "colors": [
+    "rgb(64, 128, 255)"
+  ],
+  "helpIcons": 0,
+  "labels": [
+    "全文检索",
+    "AI搜索",
+    "智能推荐-查看更多",
+    "论文辅助生成",
+    "智能备课",
+    "超大规模智算引擎",
+    "智能科研",
+    "智能阅读"
+  ],
+  "legends": 0,
+  "secondaryLabels": 0,
+  "sortingNotes": false,
+  "summaryMetrics": 0,
+  "adviceClick": {
+    "advice": "位置调整将按钮移入首屏视觉热区，或随滚动悬浮常驻",
+    "detail": "MD-12",
+    "selected": "MD-12"
+  },
+  "mobile": {
+    "colors": [
+      "rgb(64, 128, 255)"
+    ],
+    "detail": "MD-19",
+    "detailHeight": 39,
+    "focused": "MD-19",
+    "labelColors": [
+      "rgb(29, 33, 41)"
+    ],
+    "labelFonts": [
+      "12px / 18px Inter, -apple-system, \"system-ui\", \"PingFang SC\", \"Hiragino Sans GB\", \"noto sans\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    ],
+    "pageOverflow": false,
+    "scrollports": [
+      {
+        "scrollWidth": 588,
+        "width": 266
+      },
+      {
+        "scrollWidth": 588,
+        "width": 266
+      }
+    ],
+    "secondaryLabels": 0
+  },
+  "mobileAdvice": {
+    "detail": "智能推荐-查看更多首页位置调整将按钮移入首屏视觉热区，或随滚动悬浮常驻",
+    "selected": "MD-12",
+    "summaryMetrics": 0
+  }
+}

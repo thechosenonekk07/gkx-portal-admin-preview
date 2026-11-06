@@ -92,3 +92,14 @@
 - 本地HTTP验证58文件与既有防护通过，原12资源哈希完整，app/dist一致；初次开页日志保留一条MutationObserver启动错误（09:31:38 UTC），后续重载及本轮交互未再产生错误；该条未定位来源，不将其归因或宣称已修复。真机触摸和真实采集/计时SDK/API仍未验证或接入。
 
 当前证据：event-behavior-columns-validation.json、event-behavior-columns-desktop.jpg、event-behavior-columns-duration.jpg、event-behavior-columns-mobile-chart.jpg、event-behavior-columns-mobile-advice.jpg。
+
+
+## 图表展示精简（2026-11-06）
+
+依据最新标注统一调整两个图表的共用组件：移除排序/“点击率分布”说明行、两枚说明图标及说明浮层、深浅分类图例；建议详情移除有效曝光、点击访问、点击率三个重复指标。点击率柱体不再按最低三项区分深浅，与停留图统一为GKX #4080ff；交互使用背景带、下划线和焦点框。柱体下方统一只显示名称，字体/字号/颜色一致，去掉所属页面副标签；完整名称、所属页面、计数与公式保留在数据浮层。模型、排序、最低三项与建议模板未更改。
+
+清理已不用的Info组件、说明文案和样式，同时去除指标移除后的固定最小高度；非最低项在390px下详情区实测39px，避免遗留160px空白。中屏仅有建议时使用标题/建议两列，没有建议时顺排。
+
+验证：53项既有统计/查询/漏斗/行为/量尺检查通过，原始资源与app/dist检查通过。浏览器桌面/390px检查：说明图标、图例、排序备注、重复计数、副标签节点均为0；两图所有柱体均rgb(64,128,255)，名称均12px/18px、rgb(29,33,41)。第三项建议选择同步MD-12及位置调整文案；手机End焦点与预览均MD-19，选择建议后同步MD-12；页面无横向溢出，两图仅整图滚动。
+
+证据：event-behavior-simple-validation.json、event-behavior-simple-desktop.jpg、event-behavior-simple-mobile.jpg。当前展示以上述精简规则为准，前文初版及联动升级记录保留追溯。

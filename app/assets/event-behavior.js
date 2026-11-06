@@ -50,7 +50,7 @@ export function createEventBehavior({ React }) {
     return bounds;
   }
 
-  function useFloatingPosition(open, getAnchor, floatingRef, sourceKey, align = 'end', help = false) {
+  function useFloatingPosition(open, getAnchor, floatingRef, sourceKey) {
     const anchorGetter = React.useRef(getAnchor);
     anchorGetter.current = getAnchor;
     const [position, setPosition] = React.useState({ top: 0, left: 0, maxWidth: 312, maxHeight: 600, placement: 'below', visible: false });
@@ -79,9 +79,7 @@ export function createEventBehavior({ React }) {
         const placement = below >= height ? 'below' : above >= height ? 'above' : below >= above ? 'below' : 'above';
         const preferredTop = placement === 'below' ? target.bottom + 8 : target.top - height - 8;
         const viewportTop = Math.max(bounds.top + 8, Math.min(preferredTop, bounds.bottom - height - 8));
-        const staticHelp = help && window.getComputedStyle(anchor.parentElement).position === 'static';
-        const preferredLeft = staticHelp && parentRect ? parentRect.left + (parent.clientLeft || 0) * scaleX
-          : align === 'start' ? target.left : target.right - width - (help ? 0 : 8);
+        const preferredLeft = target.right - width - 8;
         const viewportLeft = Math.max(bounds.left + 8, Math.min(preferredLeft, bounds.right - width - 8));
         const anchorBounds = clippingBounds(anchor);
         const visible = maxWidth > 0 && maxHeight > 0 && target.right > Math.max(bounds.left, anchorBounds.left)
@@ -116,56 +114,12 @@ export function createEventBehavior({ React }) {
         if (frame != null) window.cancelAnimationFrame(frame);
         observer?.disconnect();
       };
-    }, [open, sourceKey, align, help]);
+    }, [open, sourceKey]);
     return { ...position, style: {
       top: position.top, left: position.left, right: 'auto', maxWidth: position.maxWidth, maxHeight: position.maxHeight,
       overflowY: 'auto', overflowX: 'hidden', visibility: position.visible ? 'visible' : 'hidden',
     } };
   }
-
-  function Info({ label, lines, loading, align }) {
-    const [interaction, setInteraction] = React.useState({ hover: false, focus: false, dismissed: false });
-    const id = React.useId();
-    const anchorRef = React.useRef(null);
-    const floatingRef = React.useRef(null);
-    const open = !loading && !interaction.dismissed && (interaction.hover || interaction.focus);
-    const floating = useFloatingPosition(open, () => anchorRef.current, floatingRef, label, align, true);
-    const shown = open && floating.visible;
-    React.useEffect(() => {
-      if (loading) setInteraction({ hover: false, focus: false, dismissed: false });
-    }, [loading]);
-    return h('div', { className: `behavior-help${floating.placement === 'above' ? ' is-above' : ''}`,
-      onMouseEnter: () => setInteraction(state => ({ ...state, hover: true, dismissed: false })),
-      onMouseLeave: () => setInteraction(state => ({ ...state, hover: false })),
-      onFocus: () => setInteraction(state => ({ ...state, focus: true, dismissed: false })),
-      onBlur: () => setInteraction(state => ({ ...state, focus: false })),
-    }, h('button', { type: 'button', className: 'behavior-info-button', disabled: loading, ref: anchorRef,
-      'aria-label': `查看${label}计算口径`, 'aria-expanded': shown, 'aria-controls': shown ? id : undefined,
-      'aria-describedby': shown ? id : undefined,
-      onClick: () => setInteraction(state => ({ ...state, dismissed: false })),
-      onKeyDown: event => {
-        if (event.key !== 'Escape') return;
-        event.preventDefault();
-        setInteraction(state => ({ ...state, dismissed: true }));
-      },
-    }, h('svg', { viewBox: '0 0 16 16', fill: 'none', 'aria-hidden': true },
-      h('circle', { cx: 8, cy: 8, r: 6, stroke: 'currentColor', strokeWidth: 1.5 }),
-      h('path', { d: 'M8 7v4M8 4.5v.1', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round' }))),
-    open && h('div', { ref: floatingRef, className: 'behavior-help-tooltip', id, role: 'tooltip', style: floating.style, 'aria-hidden': !floating.visible },
-      h('strong', null, '计算口径'), lines.map((line, index) => h('p', { key: index }, line))));
-  }
-
-  const explanation = clicks => clicks ? [
-    '点击率 = 点击访问数 ÷ 有效曝光访问数。',
-    '同一次页面访问内，每个按钮的有效曝光和点击各计一次。',
-    '没有有效曝光时显示“—”，不参与最低点击率排序。',
-    '按访问开始日期归属，统计已结束的有效访问。',
-  ] : [
-    '平均有效停留时长 = 总有效停留时长 ÷ 有效访问次数。',
-    '累计页面处于前台且可见的时间，切换到后台期间不计入。',
-    '跨日、月、年按总时长与访问次数重新计算平均值。',
-    '按访问开始日期归属，统计已结束的有效访问。',
-  ];
 
   function Chart({ kind, rows, loading, lowIds, activeButtonId, selectedButtonId, onButtonHover, onButtonFocus, onButtonSelect, buttonRefs }) {
     const clicks = kind === 'clicks';
@@ -220,9 +174,7 @@ export function createEventBehavior({ React }) {
     const title = clicks ? '按钮点击率' : '页面停留时长';
     return h('section', { className: clicks ? 'behavior-plot-section behavior-clicks' : 'behavior-panel behavior-duration' },
       !clicks && h('div', { className: 'behavior-panel-head' },
-        h('div', { className: 'behavior-title' }, h('h3', null, title), h(Info, { label: title, lines: explanation(false), loading, align: 'start' })),
-        h('span', { className: 'behavior-panel-sub' }, '按平均时长从高到低')),
-      clicks && h('div', { className: 'behavior-plot-caption' }, h('span', null, '点击率分布'), h('span', null, '按点击率从低到高')),
+        h('div', { className: 'behavior-title' }, h('h3', null, title))),
       !rows.length ? h('div', { className: 'behavior-empty' }, loading ? '\u00a0' : `所选时间区间暂无${clicks ? '按钮点击' : '页面停留'}数据`)
         : h('div', { className: 'behavior-chart', onMouseEnter: cancelHoverClose, onMouseLeave: leaveChart },
         h('p', { className: 'behavior-sr-only', id: instructionsId }, `使用方向键查看相邻项目，Home、End 跳至首尾，Esc 关闭提示${clicks ? '，Enter 或空格选中按钮并查看建议' : ''}。`),
@@ -246,7 +198,7 @@ export function createEventBehavior({ React }) {
                       if (element) { rowRefs.current.set(row.id, element); if (clicks) buttonRefs.current.set(row.id, element); }
                       else { rowRefs.current.delete(row.id); if (clicks) buttonRefs.current.delete(row.id); }
                     },
-                    className: `behavior-column-target${active ? ' is-active' : ''}${selected ? ' is-selected' : ''}${lowRank >= 0 ? ' is-low' : ''}`,
+                    className: `behavior-column-target${active ? ' is-active' : ''}${selected ? ' is-selected' : ''}`,
                     tabIndex: tabIndex === index ? 0 : -1,
                     'data-button-id': clicks ? row.id : undefined,
                     'aria-pressed': clicks ? selected : undefined,
@@ -264,8 +216,7 @@ export function createEventBehavior({ React }) {
                     ratio > 0 ? h('i', { className: 'behavior-column-fill', 'aria-hidden': true, style: { height: `${ratio * 100}%` } })
                       : h('i', { className: `behavior-column-marker${ratio == null ? ' is-missing' : ''}`, 'aria-hidden': true })),
                   h('span', { className: 'behavior-column-label' },
-                    h('span', { className: 'behavior-label-name' }, row.label),
-                    clicks && h('small', { className: 'behavior-label-context' }, row.pageLabel))));
+                    h('span', { className: 'behavior-label-name' }, row.label))));
               }))))),
         tooltipOpen && h('div', { ref: tooltipRef, className: 'behavior-tooltip', role: 'tooltip', id: tooltipId, style: floating.style, 'aria-hidden': !floating.visible, onMouseEnter: cancelHoverClose },
           h('strong', { className: 'behavior-tooltip-title' }, activeRow.label),
@@ -353,11 +304,8 @@ export function createEventBehavior({ React }) {
         lowButtons.length > 0 && h('span', null, `最低 ${lowButtons.length} 项`)),
       !lowButtons.length ? h('div', { className: 'behavior-empty' }, loading ? '\u00a0' : '所选时间区间暂无可分析的按钮数据')
         : h('ol', { className: 'behavior-suggestion-list' }, suggestionItems),
-      activeRow && h('div', { className: 'behavior-button-detail', id: detailId, 'data-button-id': activeRow.id },
+      activeRow && h('div', { className: `behavior-button-detail${advice ? ' has-advice' : ''}`, id: detailId, 'data-button-id': activeRow.id },
         h('div', { className: 'behavior-detail-title' }, h('strong', null, activeRow.label), h('span', null, activeRow.pageLabel)),
-        h('dl', { className: 'behavior-detail-measures' },
-          [['有效曝光', number(activeRow.exposureVisits)], ['点击访问', number(activeRow.clickedVisits)], ['点击率', rateText(rate(activeRow))]].map(([label, value]) =>
-            h('div', { key: label }, h('dt', null, label), h('dd', null, value)))),
         advice && h('div', { className: 'behavior-suggestion-copy' }, h('strong', null, advice.title), h('p', null, advice.body))),
       h('span', { className: 'behavior-sr-only', role: 'status', 'aria-live': 'polite' },
         !loading && selectedButtonId ? `已选择${buttonRows.find(row => row.id === selectedButtonId)?.label}` : ''));
@@ -365,8 +313,7 @@ export function createEventBehavior({ React }) {
       renderModule('页面停留时长', h(Chart, { kind: 'duration', rows: pageRows, loading, lowIds: empty })),
       renderModule('按钮点击率与优化建议', h('section', { className: 'behavior-panel behavior-engagement' },
         h('div', { className: 'behavior-panel-head' },
-          h('div', { className: 'behavior-title' }, h('h3', null, '按钮点击率'), h(Info, { label: '按钮点击率', lines: explanation(true), loading, align: 'start' })),
-          h('div', { className: 'behavior-legend', 'aria-hidden': true }, h('span', null, h('i', null), '关键按钮'), h('span', null, h('i', { className: 'is-low' }), '最低点击率'))),
+          h('div', { className: 'behavior-title' }, h('h3', null, '按钮点击率'))),
         h('div', { className: 'behavior-engagement-layout' },
           h(Chart, { kind: 'clicks', rows: buttonRows, loading, lowIds, activeButtonId, selectedButtonId, onButtonHover, onButtonFocus, onButtonSelect, buttonRefs }),
           suggestions))));
