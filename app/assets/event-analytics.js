@@ -203,9 +203,7 @@ export function createEventAnalytics({ React, Button, Select, DatePicker }) {
             h('path', { d: 'M8 7v4M8 4.5v.1', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round' }))),
           helpOpen && h('div', { id: helpId, role: 'tooltip', className: 'analytics-funnel-help-content' },
             h('strong', null, '计算口径'),
-            h('p', null, '步骤转化率 = 本步骤触发次数 ÷ 上一步骤触发次数'),
-            h('p', null, '整体转化率 = 末步骤触发次数 ÷ 首步骤触发次数'),
-            h('p', null, '各层上沿宽度表示该步骤触发次数；分母为 0 时显示“—”。')))),
+            h('p', null, '步骤转化率 = 后一步骤触发次数 ÷ 前一步骤触发次数；整体转化率 = 末步骤触发次数 ÷ 首步骤触发次数')))),
         h('div', { className: 'analytics-funnel-tools' },
           h('span', null, '业务流程'), h(Select, { ariaLabel: '业务流程', value: flow, options: FLOWS, onChange: onFlowChange, disabled: loading }))),
       !hasData ? h('div', { className: 'analytics-empty' }, '所选时间区间暂无转化数据')

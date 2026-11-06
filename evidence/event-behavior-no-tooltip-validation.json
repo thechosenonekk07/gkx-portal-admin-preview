@@ -1,0 +1,43 @@
+{
+  "durationHover": {
+    "active": 1,
+    "titles": 0,
+    "tooltips": 0
+  },
+  "clickHover": {
+    "advice": "智能推荐-查看更多首页位置调整将按钮移入首屏视觉热区，或随滚动悬浮常驻",
+    "clickColors": [
+      "rgb(22, 93, 255)",
+      "rgb(22, 93, 255)",
+      "rgb(22, 93, 255)",
+      "rgb(148, 181, 255)",
+      "rgb(148, 181, 255)",
+      "rgb(148, 181, 255)",
+      "rgb(148, 181, 255)",
+      "rgb(148, 181, 255)"
+    ],
+    "durationColors": [
+      "rgb(64, 128, 255)"
+    ],
+    "missingAria": [],
+    "selected": "MD-12",
+    "tooltips": 0
+  },
+  "keyboardPreview": {
+    "preview": "MD-10",
+    "selected": "MD-8",
+    "tooltips": 0
+  },
+  "escape": {
+    "preview": "MD-8",
+    "selected": "MD-8"
+  },
+  "mobile": {
+    "clippedLabels": [],
+    "missingAria": [],
+    "pageOverflow": false,
+    "preview": "MD-19",
+    "selected": "MD-8",
+    "tooltips": 0
+  }
+}

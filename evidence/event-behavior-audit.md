@@ -103,3 +103,16 @@
 验证：53项既有统计/查询/漏斗/行为/量尺检查通过，原始资源与app/dist检查通过。浏览器桌面/390px检查：说明图标、图例、排序备注、重复计数、副标签节点均为0；两图所有柱体均rgb(64,128,255)，名称均12px/18px、rgb(29,33,41)。第三项建议选择同步MD-12及位置调整文案；手机End焦点与预览均MD-19，选择建议后同步MD-12；页面无横向溢出，两图仅整图滚动。
 
 证据：event-behavior-simple-validation.json、event-behavior-simple-desktop.jpg、event-behavior-simple-mobile.jpg。当前展示以上述精简规则为准，前文初版及联动升级记录保留追溯。
+
+
+## 移除解释浮层及恢复前三项深色（2026-11-06）
+
+按最新指示删除停留/点击率两图的数据解释框，包括路径、计数、计算公式、定位监听/ResizeObserver和未使用的格式化/样式代码。悬浮与焦点只触发高亮、建议预览，点击/Enter固定选择；Esc取消临时高亮。aria-describedby仅保留指向已存在的键盘指引，移除不存在的tooltip引用。
+
+点击率最低三项恢复深蓝#165dff，其余浅蓝#94b5ff，停留图保持#4080ff。不恢复图例、说明图标、备注及重复指标。取消柱下名称行数截断，允许自然换行；390px下所有名称均无裁切。原统计模型和模板未变化，53项既有检查通过。
+
+浏览器验证：两图鼠标进入/点击/键盘查阅时tooltip数量均0，title属性0；桌面颜色为前三项rgb(22,93,255)、后五项rgb(148,181,255)；第三项同步MD-12与位置调整文案。固定MD-8后方向键临时预览MD-10，Esc回到MD-8。手机End预览MD-19且固定仍MD-8，页面无横向溢出，aria引用无悬空。其他图表/表格的浮层不在本次修改范围。
+
+最新证据：event-behavior-no-tooltip-validation.json、event-behavior-no-tooltip-duration.jpg、event-behavior-no-tooltip-desktop.jpg、event-behavior-no-tooltip-mobile.jpg。前文浮层与统一柱色记录均为历史，以本条最新规则为准。
+
+另按随后指示，事件转化率说明正文精确替换为：步骤转化率 = 后一步骤触发次数 ÷ 前一步骤触发次数；整体转化率 = 末步骤触发次数 ÷ 首步骤触发次数。删除此前额外的宽度/零分母说明，保留说明图标及现有计算逻辑。浏览器已核对正文只有这一段，证据event-conversion-copy-validation.json及event-conversion-copy.jpg。

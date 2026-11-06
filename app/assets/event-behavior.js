@@ -8,154 +8,25 @@ export function createEventBehavior({ React }) {
   const rateText = value => value == null ? '—' : `${(value * 100).toFixed(1)}%`;
   const average = row => row.visits > 0 && Number.isFinite(row.averageVisibleMs) ? Math.max(0, row.averageVisibleMs) : null;
   const rate = row => row.exposureVisits > 0 && Number.isFinite(row.rate) ? row.rate : null;
-  const seconds = value => value == null ? '—' : `${number(value / 1000)} 秒`;
-  const duration = value => {
-    if (!Number.isFinite(value)) return '—';
-    const totalSeconds = Math.max(0, value / 1000);
-    if (totalSeconds < 60) return `${number(totalSeconds)} 秒`;
-    const minutes = Math.floor(totalSeconds / 60);
-    const remainder = Math.round((totalSeconds % 60) * 10) / 10;
-    return `${number(minutes)} 分${remainder ? ` ${number(remainder)} 秒` : ''}`;
-  };
   const byId = (left, right) => String(left.id).localeCompare(String(right.id), 'en', { numeric: true });
-
-  // Place absolute popovers in the actually visible scroll area, not inside
-  // the chart's height. This also allows a single-row chart to show a full tip.
-  function clippingBounds(element) {
-    const viewport = window.visualViewport;
-    const bounds = {
-      left: viewport?.offsetLeft || 0, top: viewport?.offsetTop || 0,
-      right: (viewport?.offsetLeft || 0) + (viewport?.width || window.innerWidth),
-      bottom: (viewport?.offsetTop || 0) + (viewport?.height || window.innerHeight),
-    };
-    const clips = value => /(?:auto|scroll|hidden|clip|overlay)/.test(value);
-    for (let parent = element.parentElement; parent; parent = parent.parentElement) {
-      const style = window.getComputedStyle(parent);
-      const paint = /(?:paint|strict|content)/.test(style.contain || '');
-      if (!paint && !clips(style.overflowX) && !clips(style.overflowY)) continue;
-      const rect = parent.getBoundingClientRect();
-      const scaleX = parent.offsetWidth ? rect.width / parent.offsetWidth : 1;
-      const scaleY = parent.offsetHeight ? rect.height / parent.offsetHeight : 1;
-      const left = rect.left + parent.clientLeft * scaleX;
-      const top = rect.top + parent.clientTop * scaleY;
-      if (paint || clips(style.overflowX)) {
-        bounds.left = Math.max(bounds.left, left);
-        bounds.right = Math.min(bounds.right, left + parent.clientWidth * scaleX);
-      }
-      if (paint || clips(style.overflowY)) {
-        bounds.top = Math.max(bounds.top, top);
-        bounds.bottom = Math.min(bounds.bottom, top + parent.clientHeight * scaleY);
-      }
-    }
-    return bounds;
-  }
-
-  function useFloatingPosition(open, getAnchor, floatingRef, sourceKey) {
-    const anchorGetter = React.useRef(getAnchor);
-    anchorGetter.current = getAnchor;
-    const [position, setPosition] = React.useState({ top: 0, left: 0, maxWidth: 312, maxHeight: 600, placement: 'below', visible: false });
-    React.useLayoutEffect(() => {
-      if (!open || !floatingRef.current) return;
-      const floating = floatingRef.current;
-      let frame = null;
-      const measure = () => {
-        const anchor = anchorGetter.current();
-        if (!anchor?.isConnected || !floating.isConnected) return;
-        const bounds = clippingBounds(floating);
-        const target = anchor.getBoundingClientRect();
-        const parent = floating.offsetParent;
-        const parentRect = parent?.getBoundingClientRect();
-        const scaleX = parent?.offsetWidth ? parentRect.width / parent.offsetWidth : 1;
-        const scaleY = parent?.offsetHeight ? parentRect.height / parent.offsetHeight : 1;
-        const maxWidth = Math.max(0, bounds.right - bounds.left - 16);
-        const maxHeight = Math.max(0, bounds.bottom - bounds.top - 16);
-        const rect = floating.getBoundingClientRect();
-        const style = window.getComputedStyle(floating);
-        const borderHeight = (parseFloat(style.borderTopWidth) || 0) + (parseFloat(style.borderBottomWidth) || 0);
-        const width = Math.min(rect.width, maxWidth);
-        const height = Math.min(Math.max(rect.height, (floating.scrollHeight + borderHeight) * scaleY), maxHeight);
-        const below = bounds.bottom - 8 - target.bottom - 8;
-        const above = target.top - 8 - bounds.top - 8;
-        const placement = below >= height ? 'below' : above >= height ? 'above' : below >= above ? 'below' : 'above';
-        const preferredTop = placement === 'below' ? target.bottom + 8 : target.top - height - 8;
-        const viewportTop = Math.max(bounds.top + 8, Math.min(preferredTop, bounds.bottom - height - 8));
-        const preferredLeft = target.right - width - 8;
-        const viewportLeft = Math.max(bounds.left + 8, Math.min(preferredLeft, bounds.right - width - 8));
-        const anchorBounds = clippingBounds(anchor);
-        const visible = maxWidth > 0 && maxHeight > 0 && target.right > Math.max(bounds.left, anchorBounds.left)
-          && target.left < Math.min(bounds.right, anchorBounds.right)
-          && target.bottom > Math.max(bounds.top, anchorBounds.top) && target.top < Math.min(bounds.bottom, anchorBounds.bottom);
-        const next = {
-          top: parentRect ? (viewportTop - parentRect.top - parent.clientTop * scaleY) / scaleY + parent.scrollTop : viewportTop + window.scrollY,
-          left: parentRect ? (viewportLeft - parentRect.left - parent.clientLeft * scaleX) / scaleX + parent.scrollLeft : viewportLeft + window.scrollX,
-          maxWidth: maxWidth / scaleX, maxHeight: maxHeight / scaleY, placement, visible,
-        };
-        setPosition(current => Object.keys(next).every(key => current[key] === next[key]) ? current : next);
-      };
-      const schedule = () => {
-        if (frame != null) return;
-        frame = window.requestAnimationFrame(() => { frame = null; measure(); });
-      };
-      measure();
-      window.addEventListener('scroll', schedule, true);
-      window.addEventListener('resize', schedule);
-      window.visualViewport?.addEventListener('scroll', schedule);
-      window.visualViewport?.addEventListener('resize', schedule);
-      const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(schedule);
-      observer?.observe(floating);
-      const anchor = anchorGetter.current();
-      if (anchor) observer?.observe(anchor);
-      if (floating.offsetParent) observer?.observe(floating.offsetParent);
-      return () => {
-        window.removeEventListener('scroll', schedule, true);
-        window.removeEventListener('resize', schedule);
-        window.visualViewport?.removeEventListener('scroll', schedule);
-        window.visualViewport?.removeEventListener('resize', schedule);
-        if (frame != null) window.cancelAnimationFrame(frame);
-        observer?.disconnect();
-      };
-    }, [open, sourceKey]);
-    return { ...position, style: {
-      top: position.top, left: position.left, right: 'auto', maxWidth: position.maxWidth, maxHeight: position.maxHeight,
-      overflowY: 'auto', overflowX: 'hidden', visibility: position.visible ? 'visible' : 'hidden',
-    } };
-  }
 
   function Chart({ kind, rows, loading, lowIds, activeButtonId, selectedButtonId, onButtonHover, onButtonFocus, onButtonSelect, buttonRefs }) {
     const clicks = kind === 'clicks';
     const [hovered, setHovered] = React.useState(null);
     const [focused, setFocused] = React.useState(null);
     const [tabIndex, setTabIndex] = React.useState(0);
-    const [dismissed, setDismissed] = React.useState(false);
-    const hoverCloseRef = React.useRef(null);
     const keyboardMode = React.useRef(false);
     const rowRefs = React.useRef(new Map());
-    const tooltipRef = React.useRef(null);
-    const tooltipId = React.useId();
     const instructionsId = React.useId();
     const activeIndex = hovered ?? focused;
-    const activeRow = activeIndex == null ? null : rows[activeIndex];
-    const tooltipOpen = !loading && !dismissed && !!activeRow;
     const values = rows.map(row => clicks ? rate(row) : average(row) == null ? null : average(row) / 1000);
     const scale = createColumnScale(values, { kind });
-    const floating = useFloatingPosition(tooltipOpen,
-      () => rowRefs.current.get(activeRow?.id)?.querySelector('.behavior-column-fill, .behavior-column-marker'),
-      tooltipRef, activeRow?.id);
-    const cancelHoverClose = () => { if (hoverCloseRef.current != null) clearTimeout(hoverCloseRef.current); hoverCloseRef.current = null; };
-    const leaveChart = () => {
-      cancelHoverClose();
-      hoverCloseRef.current = setTimeout(() => {
-        hoverCloseRef.current = null; setHovered(null); if (clicks) onButtonHover(null, 'chart');
-      }, 140);
-    };
-    React.useEffect(() => () => cancelHoverClose(), []);
-    React.useEffect(() => {
-      cancelHoverClose(); setHovered(null); setFocused(null); setTabIndex(0); setDismissed(false);
-    }, [rows, loading]);
+    const leaveChart = () => { setHovered(null); if (clicks) onButtonHover(null, 'chart'); };
+    React.useEffect(() => { setHovered(null); setFocused(null); setTabIndex(0); }, [rows, loading]);
     const keydown = (event, index) => {
       keyboardMode.current = true;
       if (event.key === 'Escape') {
-        event.preventDefault(); setDismissed(true); setHovered(null);
+        event.preventDefault(); setHovered(null); setFocused(null);
         if (clicks) { onButtonHover(null, 'chart'); onButtonFocus(null, 'chart'); }
         return;
       }
@@ -165,19 +36,18 @@ export function createEventBehavior({ React }) {
       event.preventDefault();
       const next = event.key === 'Home' ? 0 : event.key === 'End' ? rows.length - 1
         : Math.max(0, Math.min(rows.length - 1, index + direction));
-      setTabIndex(next); setHovered(null); setDismissed(false);
+      setTabIndex(next); setHovered(null); setFocused(next);
       if (clicks) { onButtonHover(null, 'chart'); onButtonFocus(rows[next]?.id ?? null, 'chart'); }
       rowRefs.current.get(rows[next]?.id)?.focus({ preventScroll: true });
       rowRefs.current.get(rows[next]?.id)?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
     };
-    const tooltipLine = (label, value) => h('div', { className: 'behavior-tooltip-line' }, h('span', null, label), h('b', null, value));
     const title = clicks ? '按钮点击率' : '页面停留时长';
     return h('section', { className: clicks ? 'behavior-plot-section behavior-clicks' : 'behavior-panel behavior-duration' },
       !clicks && h('div', { className: 'behavior-panel-head' },
         h('div', { className: 'behavior-title' }, h('h3', null, title))),
       !rows.length ? h('div', { className: 'behavior-empty' }, loading ? '\u00a0' : `所选时间区间暂无${clicks ? '按钮点击' : '页面停留'}数据`)
-        : h('div', { className: 'behavior-chart', onMouseEnter: cancelHoverClose, onMouseLeave: leaveChart },
-        h('p', { className: 'behavior-sr-only', id: instructionsId }, `使用方向键查看相邻项目，Home、End 跳至首尾，Esc 关闭提示${clicks ? '，Enter 或空格选中按钮并查看建议' : ''}。`),
+        : h('div', { className: 'behavior-chart', onMouseLeave: leaveChart },
+        h('p', { className: 'behavior-sr-only', id: instructionsId }, `使用方向键查看相邻项目，Home、End 跳至首尾，Esc 取消临时高亮${clicks ? '，Enter 或空格选中按钮并查看建议' : ''}。`),
         h('div', { className: 'behavior-chart-scroll', tabIndex: -1 },
           h('div', { className: 'behavior-column-canvas', style: { '--behavior-count': rows.length } },
             h('div', { className: 'behavior-axis-unit', 'aria-hidden': true }, clicks ? '点击率（%）' : '平均有效停留（秒）'),
@@ -198,18 +68,18 @@ export function createEventBehavior({ React }) {
                       if (element) { rowRefs.current.set(row.id, element); if (clicks) buttonRefs.current.set(row.id, element); }
                       else { rowRefs.current.delete(row.id); if (clicks) buttonRefs.current.delete(row.id); }
                     },
-                    className: `behavior-column-target${active ? ' is-active' : ''}${selected ? ' is-selected' : ''}`,
+                    className: `behavior-column-target${active ? ' is-active' : ''}${selected ? ' is-selected' : ''}${lowRank >= 0 ? ' is-low' : ''}`,
                     tabIndex: tabIndex === index ? 0 : -1,
                     'data-button-id': clicks ? row.id : undefined,
                     'aria-pressed': clicks ? selected : undefined,
                     'aria-label': `${row.label}，${clicks ? `${row.pageLabel || row.path || ''}，点击率${displayed}，有效曝光访问${number(row.exposureVisits)}次，点击访问${number(row.clickedVisits)}次` : `平均有效停留${displayed}，有效访问${number(row.visits)}次`}${lowRank >= 0 ? `，最低点击率第${lowRank + 1}项` : ''}`,
-                    'aria-describedby': `${instructionsId}${tooltipOpen && floating.visible && activeIndex === index ? ` ${tooltipId}` : ''}`,
-                    onMouseEnter: () => { if (!keyboardMode.current) { cancelHoverClose(); setHovered(index); setDismissed(false); if (clicks) onButtonHover(row.id, 'chart'); } },
-                    onMouseMove: () => { if (keyboardMode.current) { keyboardMode.current = false; cancelHoverClose(); setHovered(index); setDismissed(false); if (clicks) onButtonHover(row.id, 'chart'); } },
+                    'aria-describedby': instructionsId,
+                    onMouseEnter: () => { if (!keyboardMode.current) { setHovered(index); if (clicks) onButtonHover(row.id, 'chart'); } },
+                    onMouseMove: () => { if (keyboardMode.current) { keyboardMode.current = false; setHovered(index); if (clicks) onButtonHover(row.id, 'chart'); } },
                     onPointerDown: () => { keyboardMode.current = false; },
-                    onFocus: () => { setTabIndex(index); setHovered(null); setFocused(index); setDismissed(false); if (clicks) onButtonFocus(row.id, 'chart'); },
+                    onFocus: () => { setTabIndex(index); setHovered(null); setFocused(index); if (clicks) onButtonFocus(row.id, 'chart'); },
                     onBlur: () => { setFocused(null); if (clicks) onButtonFocus(null, 'chart'); },
-                    onClick: () => { setTabIndex(index); setDismissed(false); if (clicks) onButtonSelect(row.id); },
+                    onClick: () => { setTabIndex(index); if (clicks) onButtonSelect(row.id); },
                     onKeyDown: event => keydown(event, index),
                   }, h('span', { className: 'behavior-column-slot' },
                     h('strong', { className: 'behavior-column-value', style: { bottom: `calc(${(ratio || 0) * 100}% + 6px)` } }, displayed),
@@ -217,23 +87,7 @@ export function createEventBehavior({ React }) {
                       : h('i', { className: `behavior-column-marker${ratio == null ? ' is-missing' : ''}`, 'aria-hidden': true })),
                   h('span', { className: 'behavior-column-label' },
                     h('span', { className: 'behavior-label-name' }, row.label))));
-              }))))),
-        tooltipOpen && h('div', { ref: tooltipRef, className: 'behavior-tooltip', role: 'tooltip', id: tooltipId, style: floating.style, 'aria-hidden': !floating.visible, onMouseEnter: cancelHoverClose },
-          h('strong', { className: 'behavior-tooltip-title' }, activeRow.label),
-          clicks && h('span', { className: 'behavior-tooltip-page' }, activeRow.pageLabel),
-          h('p', { className: 'behavior-tooltip-path' }, activeRow.path),
-          clicks ? h(React.Fragment, null,
-            tooltipLine('有效曝光访问数', `${number(activeRow.exposureVisits)} 次`),
-            tooltipLine('点击访问数', `${number(activeRow.clickedVisits)} 次`),
-            tooltipLine('点击率', rateText(rate(activeRow))),
-            h('p', { className: 'behavior-tooltip-formula' }, activeRow.exposureVisits > 0
-              ? `${number(activeRow.clickedVisits)} ÷ ${number(activeRow.exposureVisits)} × 100% = ${rateText(rate(activeRow))}` : '暂无有效曝光，点击率暂无法计算'))
-            : h(React.Fragment, null,
-              tooltipLine('有效访问次数', `${number(activeRow.visits)} 次`),
-              tooltipLine('总有效停留时长', duration(activeRow.totalVisibleMs)),
-              tooltipLine('平均有效停留时长', seconds(average(activeRow))),
-              h('p', { className: 'behavior-tooltip-formula' }, activeRow.visits > 0
-                ? `${number(activeRow.totalVisibleMs / 1000)} 秒 ÷ ${number(activeRow.visits)} 次 = ${seconds(average(activeRow))}` : '暂无有效访问，平均时长暂无法计算')))));
+              })))))));
   }
 
   return function BehaviorAnalysis({ data, loading = false, renderModule = (_, content) => content }) {
